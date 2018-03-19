@@ -1,0 +1,26 @@
+
+body
+{
+/*Colore di sfondo*/
+	background-color: antiquewhite;
+/*Colore e font per il del testo */
+	color: saddlebrown;
+	font-size: 12px;
+}
+
+/*Proprietà dei titoli (almeno da h1 ad h3)*/
+h1, h2, h3
+{
+	font-size: 18px;
+}
+/*Proprietà dei link*/
+a /*, a:visited, a:link, a:hover, a:active*/
+{
+	color: green;
+}
+
+/*Visualizzazione dei campi di input*/
+label
+{
+	font-size: 12px;
+}
