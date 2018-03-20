@@ -24,3 +24,8 @@ label
 {
 	font-size: 12px;
 }
+
+label, input
+{
+	display: block;
+}
