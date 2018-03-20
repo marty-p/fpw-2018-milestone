@@ -29,3 +29,9 @@ label, input
 {
 	display: block;
 }
+
+input:focus
+{
+	background-color: burlywood;
+	color: crimson;
+}
