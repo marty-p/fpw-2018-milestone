@@ -41,6 +41,18 @@ input:focus
 {
 	float:left;
 }
+.toright
+{
+	float:right;
+}
+.tonone
+{
+	clear: both;
+}
+.dinline
+{
+	display:inline-block;
+}
 
 /*menu consecutivi*/
 nav div
@@ -55,7 +67,7 @@ nav div
 	color: white;
 }
 
-/*cornice dei div*/
+/*cornice dei div WRONG*/
 nav, article, aside, div{
 	/*border-style: solid;*/
 	border-color: black;
@@ -76,4 +88,10 @@ nav, article, aside, div{
 .icon3
 {
 	list-style-image: url('pics/icon3.png');
+}
+
+/*test*/
+input[type="submit"]
+{
+	text-align: center;
 }
