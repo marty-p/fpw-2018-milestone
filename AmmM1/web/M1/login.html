@@ -16,10 +16,35 @@ and open the template in the editor.
 	</head>
 	<body>
 		<nav>
-			<ul>
-				<li><a href="notizia.html">Notizie</a></li>
-			</ul>
+			<div><a>Fast Press Writer</a></div>
+			<div><a>Notizie</a></div>
+			<div class="nav-selected"><a>Login</a></div>
 		</nav>
+		<aside>
+			<section id="cerca">
+				<h3><label for="search-txt">Cerca</label></h3>
+				<input id="search-txt" name="search-txt" type="text" value="...">
+			</section>
+			<section id="categorie">
+				<h3>Categorie</h3>
+				<ul>
+					<li>Politica</li>
+					<li>Cronaca</li>
+					<li>Esteri</li>
+					<li>Economia</li>
+					<li>Sport</li>
+					<li>Cultura</li>
+				</ul>
+			</section>
+			<section id="autori">
+				<h3>Autori</h3>
+				<ul>
+					<li class="icon1">Pinco Pallino</li>
+					<li class="icon2">Pinco Pallone</li>
+					<li class="icon3">Pinco Palloncino</li>
+				</ul>
+			</section>
+		</aside>
 		<article>
 			<h1>Login</h1>
 			<form action="articoli.html" method="POST">

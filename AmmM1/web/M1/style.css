@@ -35,3 +35,45 @@ input:focus
 	background-color: burlywood;
 	color: crimson;
 }
+
+/*per immagine*/
+.toleft
+{
+	float:left;
+}
+
+/*menu consecutivi*/
+nav div
+{
+	float: left;
+}
+
+/*menu attuale bianco su nero*/
+.nav-selected
+{
+	background-color: black;
+	color: white;
+}
+
+/*cornice dei div*/
+nav, article, aside, div{
+	/*border-style: solid;*/
+	border-color: black;
+	border-width: 1px;
+}
+
+/*icone*/
+.icon1
+{
+	list-style-image: url('pics/icon1.png');
+}
+
+.icon2
+{
+	list-style-image: url('pics/icon2.png');
+}
+
+.icon3
+{
+	list-style-image: url('pics/icon3.png');
+}
