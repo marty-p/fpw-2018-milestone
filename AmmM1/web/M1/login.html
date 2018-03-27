@@ -23,7 +23,7 @@ and open the template in the editor.
 		<aside>
 			<section id="cerca">
 				<h3><label for="search-txt">Cerca</label></h3>
-				<input id="search-txt" name="search-txt" type="text" value="...">
+				<input id="search-txt" name="search-txt" type="text" placeholder="...">
 			</section>
 			<section id="categorie">
 				<h3>Categorie</h3>
@@ -45,21 +45,23 @@ and open the template in the editor.
 				</ul>
 			</section>
 		</aside>
-		<article>
-			<div class="dinline">
-				<img src="pics/logo.png"
-					 alt="logo"
-					 class="toleft"
-					 >
-				<h1 class="toright">Fast Press Writer</h1>
-			</div>
-			<form action="articoli.html" method="POST">
-				<label for="username">Nome Utente</label>
-				<input id="username" name="username" type="text"/>
-				<label for="password">Password</label>
-				<input id="password" name="password" type="password"/>
-				<input type="submit" value="Accedi"/>
-			</form>
-		</article>
+		<main>
+			<article>
+				<div class="dinline">
+					<img src="pics/logo.png"
+						 alt="logo"
+						 class="toleft"
+						 >
+					<h1 class="toright">Fast Press Writer</h1>
+				</div>
+				<form action="articoli.html" method="POST">
+					<label for="username">Nome Utente</label>
+					<input id="username" name="username" type="text"/>
+					<label for="password">Password</label>
+					<input id="password" name="password" type="password"/>
+					<input type="submit" value="Accedi"/>
+				</form>
+			</article>
+		</main>
 	</body>
 </html>

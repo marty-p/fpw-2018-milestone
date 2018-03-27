@@ -54,12 +54,6 @@ input:focus
 	display:inline-block;
 }
 
-/*menu consecutivi*/
-nav div
-{
-	float: left;
-}
-
 /*menu attuale bianco su nero*/
 .nav-selected
 {
@@ -94,4 +88,29 @@ nav, article, aside, div{
 input[type="submit"]
 {
 	text-align: center;
+}
+
+/*position*/
+nav
+{
+    float: left;
+    width:100%;
+}
+
+/*menu consecutivi*/
+nav div
+{
+	float: left;
+}
+
+aside
+{
+	float: left;
+	width: 30%;
+}
+
+main
+{
+	float: right;
+	width: 70%;
 }
