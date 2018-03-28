@@ -18,6 +18,8 @@ body, #menu1, #aside1, #main1, .nav, .nav-last
 
 input
 {
-	width: 100%;
+	width: 80%;
 	margin: 0 auto;
+	margin-top: 3%;
+	margin-bottom: 3%;
 }

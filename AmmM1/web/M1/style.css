@@ -59,11 +59,6 @@ input
 	border: 1px solid grey;
 }
 
-/*input[type="submit"]
-{
-	width: 20%;
-}*/
-
 input:focus
 {
 	background-color: orange;
@@ -143,6 +138,7 @@ input:focus
 
 .cornice
 {
+	/*interno e non esterno per non causare overflow*/
 	box-shadow: inset 0px 0px 0px 1px burlywood;
 }
 
