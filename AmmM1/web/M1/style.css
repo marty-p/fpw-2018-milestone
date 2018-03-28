@@ -123,6 +123,12 @@ input:focus
 	width:100%;
 }
 
+.navbar > div > a
+{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 /*menu consecutivi*/
 .nav-main
 {
