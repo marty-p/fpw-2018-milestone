@@ -15,18 +15,18 @@ and open the template in the editor.
 		<meta name="author" content="Martino Pinna">
 	</head>
 	<body>
-		<nav id="menu">
-			<div class="nav nav-main"><a href="#">Fast Press Writer</a></div>
-			<div class="nav"><a href="notizia.html">Notizie</a></div>
+		<nav id="menu1" class="cornice">
+			<div class="nav nav-main cornice"><a href="#">Fast Press Writer</a></div>
+			<div class="nav cornice"><a href="notizia.html">Notizie</a></div>
 			<!-- <div class="nav"><a>...</a></div> -->
-			<div class="nav nav-selected"><a href="login.html">Login</a></div>
+			<div class="nav nav-selected cornice"><a href="login.html">Login</a></div>
 		</nav>
-		<aside id="aside1">
-			<section id="cerca">
+		<aside id="aside1" class="cornice">
+			<section id="cerca" class="cornice">
 				<h3><label for="search-txt">Cerca</label></h3>
 				<input id="search-txt" name="search-txt" type="text" placeholder="...">
 			</section>
-			<section id="categorie">
+			<section id="categorie" class="cornice ">
 				<h3>Categorie</h3>
 				<ul>
 					<li>Politica</li>
@@ -37,31 +37,33 @@ and open the template in the editor.
 					<li>Cultura</li>
 				</ul>
 			</section>
-			<section id="autori">
+			<section id="autori" class="cornice">
 				<h3>Autori</h3>
 				<ul>
-					<li class="icon1">Pinco Pallino</li>
-					<li class="icon2">Pinco Pallone</li>
-					<li class="icon3">Pinco Palloncino</li>
+					<li class="icon1 underline">Pinco Pallino</li>
+					<li class="icon2 underline">Pinco Pallone</li>
+					<li class="icon3 underline">Pinco Palloncino</li>
 				</ul>
 			</section>
 		</aside>
-		<main>
+		<main id="main1" class="cornice">
 			<article>
-				<div class="dinline">
+				<div class="inline">
 					<img src="pics/logo.png"
 						 alt="logo"
 						 class="toleft"
 						 >
 					<h1 class="toright">Fast Press Writer</h1>
 				</div>
-				<form action="articoli.html" method="POST">
-					<label for="username">Nome Utente</label>
-					<input id="username" name="username" type="text"/>
-					<label for="password">Password</label>
-					<input id="password" name="password" type="password"/>
-					<input type="submit" value="Accedi"/>
-				</form>
+				<div id="form1" class="cornice centrato" style="">
+					<form action="articoli.html" method="POST">
+						<label for="username">Nome Utente</label>
+						<input id="username" name="username" type="text" placeholder="testo"/>
+						<label for="password">Password</label>
+						<input id="password" name="password" type="password" placeholder="****"/>
+						<input type="submit" value="Accedi"/>
+					</form>
+				</div>
 			</article>
 		</main>
 	</body>

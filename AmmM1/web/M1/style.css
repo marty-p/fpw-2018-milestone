@@ -5,36 +5,38 @@ body
 	background-color: antiquewhite;
 /*Colore e font per il testo */
 	color: saddlebrown;
-	font-size: 12px;
+	font-size: 1.2em;
 	font-family: Arial, Helvetica, sans-serif;
+	/*pagina centrata*/
+	width: 80%;
+	margin: 0px auto;
 }
 
 /*Proprietà dei titoli (almeno da h1 ad h3)*/
 h1
 {
-	font-size: 20px;
+	font-size: 1.8em;
 }
 
 h2
 {
-	font-size: 18px;
+	font-size: 1.5em;
 }
 
 h3
 {
-	font-size: 16px;
+	font-size: 1.3em;
 }
 
 /*Proprietà dei link*/
-a /*, a:visited, a:link, a:hover, a:active*/
+a:link, a:visited
 {
 	color: green;
 }
 
-/*Visualizzazione dei campi di input*/
-label
+a:hover
 {
-	font-size: 12px;
+	color: darkgreen;
 }
 
 /*label:after, label:before
@@ -48,6 +50,7 @@ label, input
 	display: block;
 }
 
+/*Visualizzazione dei campi di input*/
 input
 {
 	background-color: burlywood;
@@ -55,6 +58,11 @@ input
 	/*bordi*/
 	border: 1px solid grey;
 }
+
+/*input[type="submit"]
+{
+	width: 20%;
+}*/
 
 input:focus
 {
@@ -70,16 +78,16 @@ input:focus
 .toleft
 {
 	float:left;
+	clear:left;
 }
+
 .toright
 {
 	float:right;
+	clear:right;
 }
-.tonone
-{
-	clear: both;
-}
-.dinline
+
+.inline
 {
 	display:inline-block;
 }
@@ -100,8 +108,13 @@ input:focus
 	list-style-image: url('pics/icon3.png');
 }
 
+.underline
+{
+	text-decoration: underline;
+}
+
 /*position*/
-#menu
+#menu1
 {
 	float: left;
 	width:100%;
@@ -119,7 +132,6 @@ input:focus
 	width:20%;
 	padding: 15px;
 	/*bordi*/
-	border: 1px solid black;
 	background-color: Bisque;
 	text-align: center;
 }
@@ -131,14 +143,30 @@ input:focus
 	color: white;
 }
 
+.cornice
+{
+	box-shadow: inset 0px 0px 0px 1px burlywood;
+}
+
+.centrato
+{
+	width: 50%;
+	margin: 0px auto;
+	padding: 3%;
+}
+
 #aside1
 {
 	float: left;
 	width: 30%;
+	/*bordi*/
+	/* box-shadow: inset 0px 0px 0px 1px burlywood; */
 }
 
 main
 {
 	float: right;
 	width: 70%;
+	/*bordi*/
+	/* border: 1px solid black; */
 }
