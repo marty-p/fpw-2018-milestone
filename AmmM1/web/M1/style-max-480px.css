@@ -1,0 +1,10 @@
+body, #menu1, #aside1, #main1, .nav
+{
+	width: 100%;
+	text-align: center;
+}
+
+#categorie ul, #autori ul
+{
+	display: none;
+}
