@@ -3,6 +3,7 @@
 	width: 100%;
 	text-align: center;
 	clear: both;
+	margin-bottom: 10px;
 }
 
 /* nascondi aside content*/
@@ -18,4 +19,10 @@ input
 	margin: 0 auto;
 	margin-top: 3%;
 	margin-bottom: 3%;
+}
+
+#logotxt, label, #categorie, #autori
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
