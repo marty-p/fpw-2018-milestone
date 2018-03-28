@@ -7,9 +7,6 @@ body
 	color: saddlebrown;
 	font-size: 1.2em;
 	font-family: Arial, Helvetica, sans-serif;
-	/*pagina centrata*/
-	width: 80%;
-	margin: 0px auto;
 }
 
 /*Proprietà dei titoli (almeno da h1 ad h3)*/
@@ -117,12 +114,6 @@ input:focus
 }
 
 /*position*/
-#menu1
-{
-	float: left;
-	width:100%;
-}
-
 .navbar > div > a
 {
 	padding-top: 0;
@@ -137,8 +128,6 @@ input:focus
 
 .nav
 {
-	float: left;
-	width:20%;
 	padding: 15px;
 	/*bordi*/
 	background-color: Bisque;
@@ -181,20 +170,4 @@ input:focus
 	content: "";
 	clear: both;
 	display: table;
-}
-
-#aside1
-{
-	float: left;
-	width: 30%;
-	/*bordi*/
-	/* box-shadow: inset 0px 0px 0px 1px burlywood; */
-}
-
-#main1
-{
-	float: right;
-	width: 70%;
-	/*bordi*/
-	/* border: 1px solid black; */
 }

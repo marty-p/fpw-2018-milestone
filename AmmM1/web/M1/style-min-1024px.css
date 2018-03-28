@@ -1,0 +1,55 @@
+body
+{
+	/*pagina centrata*/
+	width: 80%;
+	margin: 0px auto;
+}
+
+.nav
+{
+	float: left;
+	width:20%;
+}
+
+#menu1
+{
+	float: left;
+	width:100%;
+}
+
+#aside1
+{
+	float: left;
+	width: 30%;
+}
+
+#main1
+{
+	float: right;
+	width: 70%;
+}
+
+#categorie a, #autori a
+{
+	display: none;
+}
+
+#categorie ul, #autori ul,
+#categorie h3, #autori h3
+{
+	display: block;
+}
+
+label
+{
+	width: 60%;
+	margin: 0 auto;
+}
+
+input
+{
+	width: 60%;
+	margin: 0 auto;
+	padding-left: 5%;
+	padding-right: 5%;
+}
