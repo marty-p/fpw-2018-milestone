@@ -132,9 +132,10 @@ input:focus
 	background-color: Bisque;
 }
 
-.nav
+.nav-main, .nav, .nav-last
 {
-	padding: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	/*bordi*/
 	text-align: center;
 }
