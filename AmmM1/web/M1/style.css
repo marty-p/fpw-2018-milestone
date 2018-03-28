@@ -84,13 +84,6 @@ input:focus
 	display:inline-block;
 }
 
-/*menu attuale bianco su nero*/
-.nav-selected
-{
-	background-color: black;
-	color: white;
-}
-
 /*icone*/
 .icon1
 {
@@ -107,26 +100,38 @@ input:focus
 	list-style-image: url('pics/icon3.png');
 }
 
-/*test*/
-input[type="submit"]
-{
-	text-align: center;
-}
-
 /*position*/
-nav
+#menu
 {
 	float: left;
 	width:100%;
 }
 
 /*menu consecutivi*/
-nav div
+.nav-main
 {
-	float: left;
+	font-weight: bold;
 }
 
-aside
+.nav
+{
+	float: left;
+	width:20%;
+	padding: 15px;
+	/*bordi*/
+	border: 1px solid black;
+	background-color: Bisque;
+	text-align: center;
+}
+
+/*menu attuale bianco su nero*/
+.nav-selected
+{
+	background-color: BurlyWood;
+	color: white;
+}
+
+#aside1
 {
 	float: left;
 	width: 30%;
