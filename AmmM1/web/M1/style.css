@@ -16,16 +16,19 @@ body
 h1
 {
 	font-size: 1.8em;
+	margin: 0px auto;
 }
 
 h2
 {
 	font-size: 1.5em;
+	margin: 0px auto;
 }
 
 h3
 {
 	font-size: 1.3em;
+	margin: 0px auto;
 }
 
 /*Proprietà dei link*/
@@ -78,13 +81,13 @@ input:focus
 .toleft
 {
 	float:left;
-	clear:left;
+	/* clear:left; */
 }
 
 .toright
 {
 	float:right;
-	clear:right;
+	/* clear:right; */
 }
 
 .inline
@@ -153,6 +156,25 @@ input:focus
 	width: 50%;
 	margin: 0px auto;
 	padding: 3%;
+}
+
+.centrato2
+{
+	width: 60%;
+	margin: 0px auto;
+	padding: 3%;
+}
+
+.clearfix
+{
+	overflow: auto;
+}
+
+.clearfix::after
+{
+	content: "";
+	clear: both;
+	display: table;
 }
 
 #aside1
