@@ -70,6 +70,12 @@ input:focus
 }
 
 /*per immagine*/
+.shrink
+{
+	width: 80%;
+	height: auto;
+}
+
 .toleft
 {
 	float:left;
@@ -140,6 +146,24 @@ input:focus
 {
 	/*interno e non esterno per non causare overflow*/
 	box-shadow: inset 0px 0px 0px 1px burlywood;
+}
+
+.newsdet
+{
+	font-size: 0.6em;
+	color: grey;
+}
+
+.newstxt
+{
+	font-size: 0.8em;
+}
+
+.newsdid
+{
+	clear: both;
+	font-size: 0.8em;
+	font-weight: bold;
 }
 
 .centrato
