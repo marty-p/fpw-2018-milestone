@@ -76,6 +76,12 @@ input:focus
 	height: auto;
 }
 
+.shrink16px
+{
+	width: 16px;
+	height: 16px;
+}
+
 .toleft
 {
 	float:left;
@@ -91,6 +97,32 @@ input:focus
 .inline
 {
 	display:inline-block;
+}
+
+/*tabelle*/
+table
+{
+	border-collapse: collapse;
+	width: 100%;
+	height: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+table, td, th
+{
+	border: 1px solid brown;
+}
+
+th
+{
+	background: saddlebrown;
+	color: burlywood;
+}
+
+.evenrow
+{
+	background-color: burlywood;
 }
 
 /*icone*/
@@ -143,7 +175,7 @@ input:focus
 /*menu attuale bianco su nero*/
 .nav-selected
 {
-	background-color: BurlyWood;
+	background-color: burlywood;
 	color: white;
 }
 
@@ -169,20 +201,6 @@ input:focus
 	clear: both;
 	font-size: 0.8em;
 	font-weight: bold;
-}
-
-.centrato
-{
-	width: 50%;
-	margin: 0px auto;
-	padding: 3%;
-}
-
-.centrato2
-{
-	width: 60%;
-	margin: 0px auto;
-	padding: 3%;
 }
 
 .clearfix

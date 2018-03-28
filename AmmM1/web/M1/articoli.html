@@ -6,25 +6,35 @@ and open the template in the editor.
 -->
 <html>
 	<head>
-		<title>TODO supply a title</title>
+		<title>Articoli</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" media="(min-width: 1024px)" href="style-min-1024px.css"/>
+		<link rel="stylesheet" media="(max-width: 480px)" href="style-max-480px.css"/>
+		<!--tra 480 e 1024-->
+		<!-- <link rel="stylesheet" media="(min-width: 480px)" href="style-min-1024px.css"/> -->
+		<link rel="stylesheet" media="(max-width: 1024px)" href="style-max-480px.css"/>
+		<meta name="description" content="Milestone1">
+		<meta name="keywords" content="HTML,CSS">
+		<meta name="author" content="Martino Pinna">
 	</head>
 	<body>
-		<nav>
-			<div><a>Fast Press Writer</a></div>
-			<div><a>Notizie</a></div>
-			<div><a>Profilo</a></div>
-			<div class="nav-selected"><a>I miei articoli</a></div>
+		<nav id="nav1" class="cornice navbar">
+			<div class="nav-main cornice"><a href="#">Fast Press Writer</a></div>
+			<div class="nav cornice"><a href="notizia.html">Notizie</a></div>
+			<div class="nav cornice"><a href="articoli.html">Profilo</a></div>
+			<div class="nav cornice nav-selected"><a href="articoli.html" style="display:block;">I miei Articoli</a></div>
+			<div class="nav-last cornice"><a href="login.html">Logout</a></div>
 		</nav>
-		<aside>
-			<section id="cerca">
+		<aside id="aside1" class="cornice">
+			<section id="cerca" class="cornice">
 				<h3><label for="search-txt">Cerca</label></h3>
-				<input id="search-txt" name="search-txt" type="text" value="...">
+				<input id="search-txt" name="search-txt" type="text" placeholder="...">
 			</section>
-			<section id="categorie">
+			<section id="categorie" class="cornice ">
 				<h3>Categorie</h3>
+				<a href="#autori">Categorie</a>
 				<ul>
 					<li>Politica</li>
 					<li>Cronaca</li>
@@ -34,15 +44,53 @@ and open the template in the editor.
 					<li>Cultura</li>
 				</ul>
 			</section>
-			<section id="autori">
+			<section id="autori" class="cornice">
 				<h3>Autori</h3>
+				<a href="#autori">Autori</a>
 				<ul>
-					<li>Pinco Pallino</li>
-					<li>Pinco Pallone</li>
-					<li>Pinco Palloncino</li>
+					<li class="icon1 underline">Pinco Pallino</li>
+					<li class="icon2 underline">Pinco Pallone</li>
+					<li class="icon3 underline">Pinco Palloncino</li>
 				</ul>
 			</section>
 		</aside>
-		<div>TODO write content</div>
+		<main id="main1" class="cornice">
+			<article class="centrato">
+				<h1 class="underline">I miei Articoli</h1>
+				<table class="articolo">
+					<tr>
+						<th>Data</th>
+						<th>Titolo</th>
+						<th>Modifica</th>
+						<th>Cancella</th>
+					</tr>
+					<tr>
+						<td>1/3/18</td>
+						<td>Neymar si addormenta, tre mesi di stop</td>
+						<td><a href="#"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
+						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
+					</tr>
+					<tr class="evenrow">
+						<td>23/2/18</td>
+						<td>I pronostici della 26a giornata</td>
+						<td><a href="#"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
+						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
+					</tr>
+					<tr>
+						<td>24/2/18</td>
+						<td>I castori rosicanti</td>
+						<td><a href="#"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
+						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
+					</tr>
+					<tr class="evenrow">
+						<td>27/3/18</td>
+						<td>Holy moly</td>
+						<td><a href="#"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
+						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
+					</tr>
+				</table>
+				<input type="submit" class="centrato" value="Nuovo Articolo" action="scriviArticolo.html">
+			</article>
+		</main>
 	</body>
 </html>
