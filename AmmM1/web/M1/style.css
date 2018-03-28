@@ -3,16 +3,28 @@ body
 {
 /*Colore di sfondo*/
 	background-color: antiquewhite;
-/*Colore e font per il del testo */
+/*Colore e font per il testo */
 	color: saddlebrown;
 	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 /*Proprietà dei titoli (almeno da h1 ad h3)*/
-h1, h2, h3
+h1
+{
+	font-size: 20px;
+}
+
+h2
 {
 	font-size: 18px;
 }
+
+h3
+{
+	font-size: 16px;
+}
+
 /*Proprietà dei link*/
 a /*, a:visited, a:link, a:hover, a:active*/
 {
@@ -25,15 +37,30 @@ label
 	font-size: 12px;
 }
 
+/*label:after, label:before
+{
+	content: '\A';
+	white-space: pre;
+}*/
+
 label, input
 {
 	display: block;
 }
 
-input:focus
+input
 {
 	background-color: burlywood;
 	color: crimson;
+	/*bordi*/
+	outline: none;
+	border: 1px solid grey;
+}
+
+input:focus
+{
+	background-color: orange;
+	color: red;
 }
 
 /*per immagine*/
@@ -59,13 +86,6 @@ input:focus
 {
 	background-color: black;
 	color: white;
-}
-
-/*cornice dei div WRONG*/
-nav, article, aside, div{
-	/*border-style: solid;*/
-	border-color: black;
-	border-width: 1px;
 }
 
 /*icone*/
