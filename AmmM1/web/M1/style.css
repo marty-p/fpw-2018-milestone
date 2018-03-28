@@ -5,7 +5,7 @@ body
 	background-color: antiquewhite;
 /*Colore e font per il testo */
 	color: saddlebrown;
-	font-size: 1.2em;
+	font-size: 1.0em;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -70,6 +70,12 @@ input:focus
 }
 
 /*per immagine*/
+#logotxt
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
 .shrink
 {
 	width: 80%;
@@ -82,21 +88,10 @@ input:focus
 	height: 16px;
 }
 
-.toleft
+.shrink32px
 {
-	float:left;
-	/* clear:left; */
-}
-
-.toright
-{
-	float:right;
-	/* clear:right; */
-}
-
-.inline
-{
-	display:inline-block;
+	width: 32px;
+	height: 32px;
 }
 
 /*tabelle*/
