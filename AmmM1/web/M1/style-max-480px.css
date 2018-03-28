@@ -5,11 +5,7 @@
 	clear: both;
 }
 
-#categorie a, #autori a
-{
-	display: block;
-}
-
+/* nascondi aside content*/
 #categorie ul, #autori ul,
 #categorie h3, #autori h3
 {
