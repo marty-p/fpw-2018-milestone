@@ -60,6 +60,10 @@ input:focus
 {
 	background-color: orange;
 	color: red;
+	/*bordi*/
+	outline:none;
+	border: 1px solid brown;
+	box-shadow: 0px 0px 4px 0px brown;
 }
 
 /*per immagine*/
@@ -112,8 +116,8 @@ input[type="submit"]
 /*position*/
 nav
 {
-    float: left;
-    width:100%;
+	float: left;
+	width:100%;
 }
 
 /*menu consecutivi*/
