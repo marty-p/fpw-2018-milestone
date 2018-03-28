@@ -127,11 +127,15 @@ input:focus
 	font-weight: bold;
 }
 
+#nav1, #aside1, #main1
+{
+	background-color: Bisque;
+}
+
 .nav
 {
 	padding: 15px;
 	/*bordi*/
-	background-color: Bisque;
 	text-align: center;
 }
 
@@ -183,11 +187,4 @@ input:focus
 .clearfix
 {
 	overflow: auto;
-}
-
-.clearfix::after
-{
-	content: "";
-	clear: both;
-	display: table;
 }
