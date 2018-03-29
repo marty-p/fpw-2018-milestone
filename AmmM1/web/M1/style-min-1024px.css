@@ -52,13 +52,13 @@ body
 	display: none;
 }
 
-label
+.label-hor
 {
 	width: 60%;
 	margin: 0 auto;
 }
 
-input
+.input-hor
 {
 	width: 60%;
 	margin: 0 auto;
