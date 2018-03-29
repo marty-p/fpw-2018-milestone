@@ -108,7 +108,7 @@ input:focus, textarea:focus
 }
 
 /*tabelle*/
-table
+table.articolo
 {
 	/*singolo bordo*/
 	border-collapse: collapse;
@@ -122,12 +122,12 @@ table
 	text-align: center;
 }
 
-table, td, th
+table.articolo, table.articolo td, table.articolo th
 {
 	border: 1px solid brown;
 }
 
-th
+table.articolo th
 {
 	background: saddlebrown;
 	color: antiquewhite;
