@@ -45,9 +45,16 @@ a:hover
 	white-space: pre;
 }*/
 
-label, input
+/* label, input */
+.block
 {
 	display: block;
+}
+
+input[type="submit"].block
+{
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
 
 /*Visualizzazione dei campi di input*/
