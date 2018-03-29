@@ -60,19 +60,21 @@ input[type="submit"].block
 /*Visualizzazione dei campi di input*/
 input
 {
-	background-color: burlywood;
+	background-color: navajowhite;
 	color: crimson;
 	/*bordi*/
-	border: 1px solid grey;
+	border: 1px solid tan;
+	border-radius:3px;
 }
 
 input:focus
 {
-	background-color: orange;
-	color: red;
+	background-color: peachpuff;
+	color: darkred;
 	/*bordi*/
 	outline:none;
-	border: 1px solid brown;
+	border: 1px solid tan;
+	border-radius:3px;
 	box-shadow: 0px 0px 4px 0px brown;
 }
 
@@ -162,7 +164,7 @@ th
 
 #nav1, #aside1, #main1
 {
-	background-color: Bisque;
+	background-color: bisque;
 }
 
 .nav-main, .nav, .nav-last
@@ -176,7 +178,7 @@ th
 /*menu attuale bianco su nero*/
 .nav-selected
 {
-	background-color: burlywood;
+	background-color: peachpuff;
 	color: white;
 }
 
