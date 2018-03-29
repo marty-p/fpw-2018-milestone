@@ -53,8 +53,8 @@ a:hover
 
 input[type="submit"].block
 {
-	padding-top: 2%;
-	padding-bottom: 2%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
 
 /*Visualizzazione dei campi di input*/
