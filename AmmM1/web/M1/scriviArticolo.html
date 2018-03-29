@@ -58,39 +58,51 @@ and open the template in the editor.
 			<article class="centrato2">
 				<h1>Scrivi un Articolo</h1>
 				<form action="scriviArticolo.html" method="POST">
-					<!-- Un titolo -->
-					<label class="label1" for="titolo">Titolo</label>
-					<input type="text" id="titolo"/>
-					<!-- La data di pubblicazione -->
-					<label class="label1" for="data">Data</label>
-					<input type="text" id="data"/>
-					<!-- La URL dell’immagine descrittiva -->
-					<label class="label1" for="immagine">Immagine</label>
-					<input type="text" id="immagine"/>
-					<!-- La didascalia per l’immagine -->
-					<label class="label1" for="didascalia">Didascalia</label>
-					<input type="text" id="didascalia"/>
-					<!-- Il testo dell’articolo -->
-					<label class="label1" for="testo">Testo</label>
-					<textarea id="testo"></textarea>
-					<!-- Il testo dell’articolo -->
-					<label>Categoria</label>
-					<div>
-						<input type="checkbox" id="Politica" checked />
-						<label for="Politica">Politica</label>
-						<input type="checkbox" id="Cronaca"/>
-						<label for="Cronaca">Cronaca</label>
-						<input type="checkbox" id="Esteri"/>
-						<label for="Esteri">Esteri</label>
-						<input type="checkbox" id="Economia"/>
-						<label for="Economia">Economia</label>
-						<input type="checkbox" id="Sport"/>
-						<label for="Sport">Sport</label>
-						<input type="checkbox" id="Cultura" checked />
-						<label for="Cultura">Cultura</label>
+					<div class="block form-hori">
+						<!-- Un titolo -->
+						<label class="form-hori" for="titolo">Titolo</label>
+						<input class="form-hori" type="text" id="titolo"/>
+					</div>
+					<div class="block form-hori">
+						<!-- La data di pubblicazione -->
+						<label class="form-hori" for="data">Data</label>
+						<input class="form-hori" type="text" id="data"/>
+					</div>
+					<div class="block form-hori">
+						<!-- La URL dell’immagine descrittiva -->
+						<label class="form-hori" for="immagine">Immagine</label>
+						<input class="form-hori" type="text" id="immagine"/>
+					</div>
+					<div class="block form-hori">
+						<!-- La didascalia per l’immagine -->
+						<label class="form-hori" for="didascalia">Didascalia</label>
+						<input class="form-hori" type="text" id="didascalia"/>
+					</div>
+					<div class="block form-hori">
+						<!-- Il testo dell’articolo -->
+						<label class="form-hori" for="testo">Testo</label>
+						<textarea class="form-hori" id="testo"></textarea>
+					</div>
+					<div class="block form-hori">
+						<!-- Il testo dell’articolo -->
+						<label for="categoria">Categoria</label>
+						<div id="categoria">
+							<input type="checkbox" id="Politica" checked />
+							<label for="Politica">Politica</label>
+							<input type="checkbox" id="Cronaca"/>
+							<label for="Cronaca">Cronaca</label>
+							<input type="checkbox" id="Esteri"/>
+							<label for="Esteri">Esteri</label>
+							<input type="checkbox" id="Economia"/>
+							<label for="Economia">Economia</label>
+							<input type="checkbox" id="Sport"/>
+							<label for="Sport">Sport</label>
+							<input type="checkbox" id="Cultura" checked />
+							<label for="Cultura">Cultura</label>
+						</div>
 					</div>
 					<!-- Utilizzate i tipi di input corretti. -->
-					<input type="submit" class="block" value="Salva"/>
+					<input type="submit" class="block form-vert" value="Salva"/>
 				</form>
 			</article>
 		</main>

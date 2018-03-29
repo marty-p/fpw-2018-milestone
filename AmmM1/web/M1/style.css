@@ -54,6 +54,22 @@ a:hover
 	display: block;
 }
 
+div.form-hori
+{
+	display:table-row;
+	line-height: 175%;
+}
+
+label.form-hori
+{
+	display:table-cell;
+}
+
+input.form-hori, textarea.form-hori
+{
+	display:table-cell;
+}
+
 input.form-vert, label.form-vert
 {
 	margin: auto;
