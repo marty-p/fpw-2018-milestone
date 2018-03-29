@@ -39,7 +39,7 @@ a:hover
 	color: darkgreen;
 }
 
-.label
+.label1
 {
 	float: left;
 	width: 30%;
@@ -68,7 +68,7 @@ input[type="submit"].block
 }
 
 /*Visualizzazione dei campi di input*/
-input
+input, textarea
 {
 	background-color: navajowhite;
 	color: crimson;
@@ -77,7 +77,7 @@ input
 	border-radius:3px;
 }
 
-input:focus
+input:focus, textarea:focus
 {
 	background-color: peachpuff;
 	color: darkred;
