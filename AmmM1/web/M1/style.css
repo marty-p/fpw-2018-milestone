@@ -194,7 +194,8 @@ th
 .cornice
 {
 	/*interno e non esterno per non causare overflow*/
-	box-shadow: inset 0px 0px 0px 1px burlywood;
+	box-shadow: inset 0px 0px 0px 1px blanchedalmond;
+	border-radius:3px;
 }
 
 .newsdet
