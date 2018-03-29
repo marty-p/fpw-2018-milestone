@@ -6,12 +6,80 @@ and open the template in the editor.
 -->
 <html>
 	<head>
-		<title>TODO supply a title</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Nuovo/Modifica Articoli</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" media="(min-width: 1024px)" href="style-min-1024px.css"/>
+		<link rel="stylesheet" media="(max-width: 480px)" href="style-max-480px.css"/>
+		<!--tra 480 e 1024-->
+		<!-- <link rel="stylesheet" media="(min-width: 480px)" href="style-min-1024px.css"/> -->
+		<link rel="stylesheet" media="(max-width: 1024px)" href="style-max-480px.css"/>
+		<meta name="description" content="Milestone1"/>
+		<meta name="keywords" content="HTML,CSS"/>
+		<meta name="author" content="Martino Pinna"/>
 	</head>
 	<body>
-		<div>TODO write content</div>
+		<nav id="nav1" class="navbar cornice">
+			<div class="nav-main cornice"><a href="#">Fast Press Writer</a></div>
+			<div class="nav cornice"><a href="notizia.html">Notizie</a></div>
+			<div class="nav cornice"><a href="#">Profilo</a></div>
+			<div class="nav nav-selected cornice"><a href="articoli.html">I miei Articoli</a></div>
+			<div class="nav-last cornice"><a href="login.html">Logout</a></div>
+		</nav>
+		<aside id="aside1" class="cornice">
+			<section id="cerca" class="cornice intpad1">
+				<h3><label class="centrato block" for="search-txt">Cerca</label></h3>
+				<input class="block" id="search-txt" name="search-txt" type="text" placeholder="..."/>
+			</section>
+			<section id="categorie" class="cornice">
+				<h3 class="centrato">Categorie</h3>
+				<a href="#autori">Categorie</a>
+				<ul class="centrato">
+					<li>Politica</li>
+					<li>Cronaca</li>
+					<li>Esteri</li>
+					<li>Economia</li>
+					<li>Sport</li>
+					<li>Cultura</li>
+				</ul>
+			</section>
+			<section id="autori" class="cornice">
+				<h3 class="centrato">Autori</h3>
+				<a href="#autori">Autori</a>
+				<ul class="centrato">
+					<li class="icon1 underline">Pinco Pallino</li>
+					<li class="icon2 underline">Pinco Pallone</li>
+					<li class="icon3 underline">Pinco Palloncino</li>
+				</ul>
+			</section>
+		</aside>
+		<main id="main1" class="cornice">
+			<article class="centrato">
+				<h1>Scrivi un Articolo</h1>
+				<form action="scriviArticolo.html" method="POST">
+					<!-- Un titolo -->
+					<label class="label" for="titolo">Titolo</label>
+					<input type="text" id="titolo"/>
+					<!-- La data di pubblicazione -->
+					<label class="label" for="data">Data</label>
+					<input type="text" id="data"/>
+					<!-- La URL dell’immagine descrittiva -->
+					<label class="label" for="immagine">Immagine</label>
+					<input type="text" id="immagine"/>
+					<!-- La didascalia per l’immagine -->
+					<label class="label" for="didascalia">Didascalia</label>
+					<input type="text" id="didascalia"/>
+					<!-- Il testo dell’articolo -->
+					<label class="label" for="testo">Testo</label>
+					<input type="text" id="testo"/>
+					<!-- Il testo dell’articolo -->
+					<label class="label" for="categoria">Categoria</label>
+					<input type="text" id="categoria"/>
+					<!-- Utilizzate i tipi di input corretti. -->
+					<input type="submit" class="block" value="Salva"/>
+				</form>
+			</article>
+		</main>
 	</body>
 </html>

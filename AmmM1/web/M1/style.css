@@ -39,11 +39,12 @@ a:hover
 	color: darkgreen;
 }
 
-/*label:after, label:before
+.label
 {
-	content: '\A';
-	white-space: pre;
-}*/
+	float: left;
+	width: 30%;
+	padding: 3%;
+}
 
 .intpad1
 {
