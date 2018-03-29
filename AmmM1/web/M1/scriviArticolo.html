@@ -55,7 +55,7 @@ and open the template in the editor.
 			</section>
 		</aside>
 		<main id="main1" class="cornice">
-			<article class="centrato">
+			<article class="centrato2">
 				<h1>Scrivi un Articolo</h1>
 				<form action="scriviArticolo.html" method="POST">
 					<!-- Un titolo -->
@@ -74,8 +74,21 @@ and open the template in the editor.
 					<label class="label" for="testo">Testo</label>
 					<input type="text" id="testo"/>
 					<!-- Il testo dell’articolo -->
-					<label class="label" for="categoria">Categoria</label>
-					<input type="text" id="categoria"/>
+					<label>Categoria</label>
+					<div>
+						<input type="checkbox" id="Politica" checked />
+						<label for="Politica">Politica</label>
+						<input type="checkbox" id="Cronaca"/>
+						<label for="Cronaca">Cronaca</label>
+						<input type="checkbox" id="Esteri"/>
+						<label for="Esteri">Esteri</label>
+						<input type="checkbox" id="Economia"/>
+						<label for="Economia">Economia</label>
+						<input type="checkbox" id="Sport"/>
+						<label for="Sport">Sport</label>
+						<input type="checkbox" id="Cultura" checked />
+						<label for="Cultura">Cultura</label>
+					</div>
 					<!-- Utilizzate i tipi di input corretti. -->
 					<input type="submit" class="block" value="Salva"/>
 				</form>
