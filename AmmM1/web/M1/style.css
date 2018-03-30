@@ -66,7 +66,7 @@ div.form-hori
 	line-height: 175%;
 }
 
-label.form-hori
+label.form-hori, span.form-hori
 {
 	display:table-cell;
 }
