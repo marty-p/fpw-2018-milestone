@@ -54,6 +54,11 @@ a:hover
 	display: block;
 }
 
+form.form-hori
+{
+	display:table;
+}
+
 div.form-hori
 {
 	display:table-row;
