@@ -78,7 +78,7 @@ input.form-hori, textarea.form-hori
 
 input[type="submit"].form-hori
 {
-	width: 100%;
+	width: 60%;
 }
 
 input.form-vert, label.form-vert
