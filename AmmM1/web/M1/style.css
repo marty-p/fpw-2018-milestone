@@ -57,6 +57,7 @@ a:hover
 form.form-hori
 {
 	display:table;
+	width: 100%;
 }
 
 div.form-hori
@@ -73,6 +74,11 @@ label.form-hori
 input.form-hori, textarea.form-hori
 {
 	display:table-cell;
+}
+
+input[type="submit"].form-hori
+{
+	width: 100%;
 }
 
 input.form-vert, label.form-vert
@@ -242,4 +248,16 @@ table.articolo th
 .clearfix
 {
 	overflow: auto;
+}
+
+/*categoria*/
+.left2
+{
+	float: left;
+}
+
+.right2
+{
+	float: right;
+	text-align: left;
 }

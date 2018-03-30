@@ -57,52 +57,65 @@ and open the template in the editor.
 		<main id="main1" class="cornice">
 			<article class="centrato2">
 				<h1>Scrivi un Articolo</h1>
-				<form action="scriviArticolo.html" method="POST">
-					<div class="block form-hori">
+				<form action="scriviArticolo.html" method="POST" class="form-hori">
+					<div class="form-hori">
 						<!-- Un titolo -->
 						<label class="form-hori" for="titolo">Titolo</label>
 						<input class="form-hori" type="text" id="titolo"/>
 					</div>
-					<div class="block form-hori">
+					<div class="form-hori">
 						<!-- La data di pubblicazione -->
 						<label class="form-hori" for="data">Data</label>
 						<input class="form-hori" type="text" id="data"/>
 					</div>
-					<div class="block form-hori">
-						<!-- La URL dell’immagine descrittiva -->
+					<div class="form-hori">
+						<!-- La URL dell'immagine descrittiva -->
 						<label class="form-hori" for="immagine">Immagine</label>
 						<input class="form-hori" type="text" id="immagine"/>
 					</div>
-					<div class="block form-hori">
-						<!-- La didascalia per l’immagine -->
+					<div class="form-hori">
+						<!-- La didascalia per l'immagine -->
 						<label class="form-hori" for="didascalia">Didascalia</label>
 						<input class="form-hori" type="text" id="didascalia"/>
 					</div>
-					<div class="block form-hori">
-						<!-- Il testo dell’articolo -->
+					<div class="form-hori">
+						<!-- Il testo dell'articolo -->
 						<label class="form-hori" for="testo">Testo</label>
 						<textarea class="form-hori" id="testo"></textarea>
 					</div>
-					<div class="block form-hori">
-						<!-- Il testo dell’articolo -->
-						<label for="categoria">Categoria</label>
-						<div id="categoria">
-							<input type="checkbox" id="Politica" checked />
-							<label for="Politica">Politica</label>
-							<input type="checkbox" id="Cronaca"/>
-							<label for="Cronaca">Cronaca</label>
-							<input type="checkbox" id="Esteri"/>
-							<label for="Esteri">Esteri</label>
-							<input type="checkbox" id="Economia"/>
-							<label for="Economia">Economia</label>
-							<input type="checkbox" id="Sport"/>
-							<label for="Sport">Sport</label>
-							<input type="checkbox" id="Cultura" checked />
-							<label for="Cultura">Cultura</label>
+					<div class="form-hori">
+						<!-- Il testo dell'articolo -->
+						<span class="left2">Categoria</span>
+						<div id="categoria" class="right2">
+							<div class="block">
+								<input type="checkbox" id="Politica" checked />
+								<label for="Politica">Politica</label>
+							</div>
+							<div class="block">
+								<input type="checkbox" id="Cronaca"/>
+								<label for="Cronaca">Cronaca</label>
+							</div>
+							<div class="block">
+								<input type="checkbox" id="Esteri"/>
+								<label for="Esteri">Esteri</label>
+								<label for="Esteri">Esteri</label>
+							</div>
+							<div class="block">
+								<input type="checkbox" id="Economia"/>
+								<label for="Economia">Economia</label>
+							</div>
+							<div class="block">
+								<input type="checkbox" id="Sport"/>
+								<label for="Sport">Sport</label>
+							</div>
+							<div class="block">
+								<input type="checkbox" id="Cultura" checked />
+								<label for="Cultura">Cultura</label>
+							</div>
 						</div>
 					</div>
 					<!-- Utilizzate i tipi di input corretti. -->
-					<input type="submit" class="block form-vert" value="Salva"/>
+					<input type="submit" class="block form-hori" value="Salva"/>
 				</form>
 			</article>
 		</main>
