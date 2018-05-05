@@ -54,6 +54,7 @@ public class Login extends HttpServlet {
 			// Se l'user è stato trovato, assegna la session
 			if (u != null) {
 				session.setAttribute("loggedIn", true);
+				session.setAttribute("id", u.getId());
 				session.setAttribute("name", u.getName());
 				session.setAttribute("surname", u.getSurname());
 				session.setAttribute("category", u.getCategory());

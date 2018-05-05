@@ -28,9 +28,9 @@
 			</c:if>
 			<c:forEach items="${newsList}" var="item">
 			<article class="centrato">
-				<a href="notizia.html?nid=${item.id}" target="blank"><h3 class="underline">${item.title}</h3></a>
+				<a href="notizia.html?nid=${item.id}"><h3 class="underline">${item.title}</h3></a>
 				<div class="clearfix">
-					<a href="notizia.html?nid=${item.id}" target="blank"><img src="${item.imageUrl}"
+					<a href="notizia.html?nid=${item.id}"><img src="${item.imageUrl}"
 						 alt="image"
 						 class="toleft shrink"
 						 >

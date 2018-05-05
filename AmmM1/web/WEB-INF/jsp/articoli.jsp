@@ -37,24 +37,14 @@ and open the template in the editor.
 						<th>Modifica</th>
 						<th>Cancella</th>
 					</tr>
-					<tr>
-						<td>23/1/18</td>
-						<td>I fantastici astici</td>
-						<td><a href="#"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
-						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
+					<c:forEach items="${articles}" var="item" varStatus="loopStatus">
+					<tr class="${loopStatus.index % 2 == 0 ? 'even' : 'odd'}row">
+						<td>${item.shortDate}</td>
+						<td>${item.title}</td>
+						<td><a href="scriviArticolo.html?edit=${item.id}"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
+						<td><a href="articoli.html?del=${item.id}"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
 					</tr>
-					<tr class="evenrow">
-						<td>25/2/18</td>
-						<td>I castori rosicanti</td>
-						<td><a href="#"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
-						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
-					</tr>
-					<tr>
-						<td>27/3/18</td>
-						<td>Holy moly</td>
-						<td><a href="#"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
-						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
-					</tr>
+					</c:forEach>
 				</table>
 				<form action="scriviArticolo.html" method="POST">
 					<input type="submit" class="block form-vert" value="Nuovo Articolo"/>

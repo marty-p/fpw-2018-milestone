@@ -30,13 +30,14 @@ public class NewsFactory {
 		ArrayList<News> list = new ArrayList<>();
 		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 
+		int id = 0;
 		// pinco pallino news
 		User user = new User(); // only id, name, surname
 		user.setId(1);
 		user.setName("Pinco");
 		user.setSurname("Pallino");
 		News news = new News();
-		news.setId(1);
+		news.setId(id++);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("2/3/18"));
@@ -49,13 +50,83 @@ public class NewsFactory {
 		news.setImageDesc("Pupazzi in autostrada");
 		list.add(news);
 
+		news = new News();
+		news.setId(id++);
+		news.setAuthor(user);
+		try {
+			news.setDate(df.parse("22/3/18"));
+		} catch (ParseException e) {
+		}
+		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.setTitle("title4");
+		news.setDesc("desc4");
+		news.setImageUrl("pics/snowman.png");
+		news.setImageDesc("imagedesc4");
+		list.add(news);
+
+		news = new News();
+		news.setId(id++);
+		news.setAuthor(user);
+		try {
+			news.setDate(df.parse("22/4/18"));
+		} catch (ParseException e) {
+		}
+		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.setTitle("title5");
+		news.setDesc("desc5");
+		news.setImageUrl("pics/snowman.png");
+		news.setImageDesc("imagedesc5");
+		list.add(news);
+
+		news = new News();
+		news.setId(id++);
+		news.setAuthor(user);
+		try {
+			news.setDate(df.parse("23/1/18"));
+		} catch (ParseException e) {
+		}
+		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.setTitle("I fantastici astici");
+		news.setDesc("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
+		news.setImageUrl("pics/snowman.png");
+		news.setImageDesc("imagedesc6");
+		list.add(news);
+
+		news = new News();
+		news.setId(id++);
+		news.setAuthor(user);
+		try {
+			news.setDate(df.parse("25/2/18"));
+		} catch (ParseException e) {
+		}
+		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.setTitle("I castori rosicanti");
+		news.setDesc("ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK");
+		news.setImageUrl("pics/snowman.png");
+		news.setImageDesc("imagedesc6");
+		list.add(news);
+
+		news = new News();
+		news.setId(id++);
+		news.setAuthor(user);
+		try {
+			news.setDate(df.parse("27/3/18"));
+		} catch (ParseException e) {
+		}
+		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.setTitle("Holy moly");
+		news.setDesc("H O L Y M O L Y");
+		news.setImageUrl("pics/snowman.png");
+		news.setImageDesc("imagedesc6");
+		list.add(news);
+
 		// pinco pallone news
 		user = new User(); // only id, name, surname
 		user.setId(2);
 		user.setName("Pinco");
 		user.setSurname("Pallone");
 		news = new News();
-		news.setId(2);
+		news.setId(id++);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("3/4/18"));
@@ -74,7 +145,7 @@ public class NewsFactory {
 		user.setName("Pinco");
 		user.setSurname("Palloncino");
 		news = new News();
-		news.setId(3);
+		news.setId(id++);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("4/5/18"));
@@ -109,11 +180,15 @@ public class NewsFactory {
 	}
 
 	public List<News> getNewsByAuthor(User usr) {
+		return getNewsByAuthor(usr.getId());
+	}
+
+	public List<News> getNewsByAuthor(int id) {
 		// just for milestone2 (list of news)
 		List<News> newsList = this.getNews();
 		ArrayList<News> outList = new ArrayList<>();
 		for (News n : newsList) {
-			if (n.getAuthor().getId() == usr.getId())
+			if (n.getAuthor().getId() == id)
 				outList.add(n);
 		}
 		return outList;

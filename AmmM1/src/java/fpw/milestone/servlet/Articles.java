@@ -5,6 +5,7 @@
  */
 package fpw.milestone.servlet;
 
+import fpw.milestone.model.NewsFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +42,9 @@ public class Articles extends HttpServlet {
 			response.setStatus(403);
 			return;
 		}
+		request.setAttribute("articles",
+				NewsFactory.getInstance().getNewsByAuthor((Integer)session.getAttribute("id"))
+		);
 		request.getRequestDispatcher("/WEB-INF/jsp/articoli.jsp").forward(request, response);
 	}
 
