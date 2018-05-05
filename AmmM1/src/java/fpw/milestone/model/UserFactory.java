@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class UserFactory {
 	private static UserFactory singleton;
-	public static UserFactory getInstance(){
+	public static UserFactory getInstance() {
 		if(singleton == null)
 			singleton = new UserFactory();
 		return singleton;
 	}
 
-	public List<User> getUsers(){
-		// creo la lista degli utenti nel sistema
+	public List<User> getUsers() {
+		// just for milestone2 (list of users)
 		ArrayList<User> list = new ArrayList<>();
 
 		// pinco pallino
@@ -54,5 +54,17 @@ public class UserFactory {
 		list.add(user);
 
 		return list;
+	}
+
+	public User ProcessLogin(String username, String password) {
+		// just for milestone2
+		List<User> ulist = getUsers();
+		for (User u : ulist) {
+			if (u.getUsername().equals(username)) {
+				if (u.getPassword().equals(password))
+					return u;
+			}
+		}
+		return null;
 	}
 }

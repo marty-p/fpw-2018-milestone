@@ -37,7 +37,7 @@ and open the template in the editor.
 					<h1>Fast Press Writer</h1>
 				</div>
 				<div id="form1" class="cornice centrato intpad1">
-					<form action="articoli.html" method="POST">
+					<form action="login.html" method="POST">
 						<label class="block form-vert" for="username">Nome Utente</label>
 						<input class="block form-vert" id="username" name="username" type="text" placeholder="nome utente"/>
 						<label class="block form-vert" for="password">Password</label>
