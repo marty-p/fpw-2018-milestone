@@ -10,12 +10,15 @@
 			<div class="nav-main cornice"><a href="#">Fast Press Writer</a></div>
 			<div class="nav <c:if test="${page=='notizia'}">nav-selected</c:if> cornice"><a href="notizie.html">Notizie</a></div>
 			<div class="nav <c:if test="${page=='profilo'}">nav-selected</c:if> cornice"><a href="profilo.html">Profilo</a></div>
+
+			<c:if test="${sessionScope.category=='AUTHOR'}">
 			<div class="nav <c:if test="${page=='articoli'}">nav-selected</c:if> cornice"><a href="articoli.html">I miei Articoli</a></div>
+			</c:if>
 
 			<!--login or logout-->
 			<c:choose>
 			<c:when test="${sessionScope.loggedIn=='true'}">
-			<div class="nav-last <c:if test="${page=='login'}">nav-selected</c:if> cornice">${sessionScope.name} ${sessionScope.surname}, <a href="login.html?logout">Logout</a></div>
+			<div class="nav-last <c:if test="${page=='login'}">nav-selected</c:if> cornice">Ciao ${sessionScope.name}, <a href="login.html?logout">Logout</a></div>
 			</c:when>
 			<c:otherwise>
 			<div class="nav-last <c:if test="${page=='login'}">nav-selected</c:if> cornice"><a href="login.html">Login</a></div>
