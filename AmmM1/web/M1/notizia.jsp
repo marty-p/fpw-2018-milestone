@@ -13,53 +13,20 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-	<head>
-		<title>Lettura Articolo</title>
-		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="style.css"/>
-		<link rel="stylesheet" media="(min-width: 1024px)" href="style-min-1024px.css"/>
-		<link rel="stylesheet" media="(max-width: 480px)" href="style-max-480px.css"/>
-		<!--tra 480 e 1024-->
-		<!-- <link rel="stylesheet" media="(min-width: 480px)" href="style-min-1024px.css"/> -->
-		<link rel="stylesheet" media="(max-width: 1024px)" href="style-max-480px.css"/>
-		<meta name="description" content="Milestone1"/>
-		<meta name="keywords" content="HTML,CSS"/>
-		<meta name="author" content="Martino Pinna"/>
-	</head>
+	<!-- HEAD START -->
+	<c:set var="title" value="Lettura Articolo" scope="request"/>
+	<jsp:include page="inc/head.jsp"/>
+	<!-- HEAD END -->
 	<body>
 		<!-- NAV START -->
         <c:set var="page" value="notizia" scope="request"/>
         <jsp:include page="inc/nav.jsp"/>
 		<!-- NAV END -->
 
-		<aside id="aside1" class="cornice">
-			<section id="cerca" class="cornice intpad1">
-				<h3><label class="centrato block" for="search-txt">Cerca</label></h3>
-				<input class="block form-vert" id="search-txt" name="search-txt" type="text" placeholder="..."/>
-			</section>
-			<section id="categorie" class="cornice">
-				<h3 class="centrato">Categorie</h3>
-				<a href="#autori">Categorie</a>
-				<ul class="centrato">
-					<li>Politica</li>
-					<li>Cronaca</li>
-					<li>Esteri</li>
-					<li>Economia</li>
-					<li>Sport</li>
-					<li>Cultura</li>
-				</ul>
-			</section>
-			<section id="autori" class="cornice">
-				<h3 class="centrato">Autori</h3>
-				<a href="#autori">Autori</a>
-				<ul class="centrato">
-					<li class="icon1 underline">Pinco Pallino</li>
-					<li class="icon2 underline">Pinco Pallone</li>
-					<li class="icon3 underline">Pinco Palloncino</li>
-				</ul>
-			</section>
-		</aside>
+		<!-- ASIDE START -->
+        <jsp:include page="inc/aside.jsp"/>
+		<!-- ASIDE END -->
+
 		<main id="main1" class="cornice">
 			<article class="centrato">
 				<h3 class="underline">Autostrada A1 chiusa per neve</h3>
