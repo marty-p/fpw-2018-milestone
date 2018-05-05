@@ -13,17 +13,10 @@ import java.util.List;
  */
 public class UserFactory {
     private static UserFactory singleton;
-
     public static UserFactory getInstance(){
-        if(singleton == null){
+        if(singleton == null)
             singleton = new UserFactory();
-        }
-
         return singleton;
-    }
-
-    private UserFactory(){
-
     }
 
     public List<User> getUsers(){

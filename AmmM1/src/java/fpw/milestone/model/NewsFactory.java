@@ -10,5 +10,10 @@ package fpw.milestone.model;
  * @author Marty
  */
 public class NewsFactory {
-
+    private static NewsFactory singleton;
+    public static NewsFactory getInstance(){
+        if(singleton == null)
+            singleton = new NewsFactory();
+        return singleton;
+    }
 }
