@@ -32,10 +32,11 @@
 						 class="toleft shrink"
 						 >
 					</a>
-					<p class="newsdet">${item.category}</p>
-					<p class="newsdet">${item.shortDate}</p>
-					<p class="newsdet">di ${item.author.name} ${item.author.surname}</p>
-					<p class="newsdid">${item.imageDesc}</p>
+					<p class="newsdet">di ${item.author.name} ${item.author.surname}
+						${item.category}
+						${item.shortDate}
+					</p>
+					<p class="newsdid">${item.shortDesc}</p>
 				</div>
 			</article>
 			</c:forEach>

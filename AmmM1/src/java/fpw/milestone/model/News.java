@@ -64,6 +64,13 @@ public class News {
 	}
 
 	/**
+	 * @return the first 100 characters of desc
+	 */
+	public String getShortDesc() {
+		return desc.substring(0, Math.min(desc.length(), 100));
+	}
+
+	/**
 	 * @param desc the desc to set
 	 */
 	public void setDesc(String desc) {
