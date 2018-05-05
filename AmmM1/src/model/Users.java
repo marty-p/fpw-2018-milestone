@@ -9,7 +9,7 @@ package model;
  *
  * @author Marty
  */
-public class Utenti {
+public class User {
 
     /**
      * @return the name

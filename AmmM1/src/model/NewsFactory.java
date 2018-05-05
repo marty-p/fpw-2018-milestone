@@ -9,6 +9,6 @@ package model;
  *
  * @author Marty
  */
-public class CommentiFactory {
+public class NewsFactory {
 
 }

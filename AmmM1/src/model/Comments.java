@@ -9,6 +9,6 @@ package model;
  *
  * @author Marty
  */
-public class Articoli {
+public class Comments {
 
 }

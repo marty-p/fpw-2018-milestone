@@ -5,25 +5,25 @@
  */
 package model;
 
-import model.Utenti;
+import model.User;
 import java.util.ArrayList;
 import java.util.List;
 /**
  *
  * @author Marty
  */
-public class UtentiFactory {
-    private static UtentiFactory singleton;
+public class UserFactory {
+    private static UserFactory singleton;
 
-    public static UtentiFactory getInstance(){
+    public static UserFactory getInstance(){
         if(singleton == null){
-            singleton = new UtentiFactory();
+            singleton = new UserFactory();
         }
 
         return singleton;
     }
 
-    private UtentiFactory(){
+    private UserFactory(){
 
     }
 
