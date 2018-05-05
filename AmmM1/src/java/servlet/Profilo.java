@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marty
  */
-@WebServlet(name = "Profilo", urlPatterns = {"/M1/profilo.html"})
+@WebServlet(name = "Profilo", urlPatterns = {"/profilo.html"})
 public class Profilo extends HttpServlet {
 
     /**
@@ -34,7 +34,7 @@ public class Profilo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            request.getRequestDispatcher("profilo.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/profilo.jsp").forward(request, response);
         }
     }
 

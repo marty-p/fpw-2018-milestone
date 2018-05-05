@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marty
  */
-@WebServlet(name = "NewArticle", urlPatterns = {"/M1/scriviArticolo.html"})
+@WebServlet(name = "NewArticle", urlPatterns = {"/scriviArticolo.html"})
 public class NewArticle extends HttpServlet {
 
     /**
@@ -33,7 +33,7 @@ public class NewArticle extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/scriviArticolo.jsp").forward(request, response);
         }
     }
 
