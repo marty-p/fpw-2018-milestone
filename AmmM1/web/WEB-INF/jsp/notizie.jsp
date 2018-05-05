@@ -33,7 +33,7 @@
 						 >
 					</a>
 					<p class="newsdet">${item.category}</p>
-					<p class="newsdet">${item.date}</p>
+					<p class="newsdet">${item.shortDate}</p>
 					<p class="newsdet">di ${item.author.name} ${item.author.surname}</p>
 					<p class="newsdid">${item.imageDesc}</p>
 				</div>

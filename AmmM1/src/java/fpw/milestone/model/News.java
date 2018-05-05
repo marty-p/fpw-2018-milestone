@@ -5,6 +5,9 @@
  */
 package fpw.milestone.model;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Marty
@@ -98,14 +101,22 @@ public class News {
 	/**
 	 * @return the date
 	 */
-	public String getDate() {
+	public Date getDate() {
 		return date;
+	}
+
+	/**
+	 * @return the date as dd/MM/yy
+	 */
+	public String getShortDate() {
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
+		return df.format(date);
 	}
 
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -129,7 +140,7 @@ public class News {
 	private String desc;
 	private String imageUrl;
 	private String imageDesc;
-	private String date;
+	private Date date;
 	private User author;
 	private int id;
 }

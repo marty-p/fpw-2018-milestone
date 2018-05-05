@@ -7,6 +7,11 @@ package fpw.milestone.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -23,6 +28,7 @@ public class NewsFactory {
 	public List<News> getNews() {
 		// just for milestone2 (list of news)
 		ArrayList<News> list = new ArrayList<>();
+		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 
 		// pinco pallino news
 		User user = new User(); // only id, name, surname
@@ -32,7 +38,10 @@ public class NewsFactory {
 		News news = new News();
 		news.setId(1);
 		news.setAuthor(user);
-		news.setDate("2/3/18");
+		try {
+			news.setDate(df.parse("2/3/18"));
+		} catch (ParseException e) {
+		}
 		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
 		news.setTitle("Autostrada A1 chiusa per neve");
 		news.setDesc("Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
@@ -48,7 +57,10 @@ public class NewsFactory {
 		news = new News();
 		news.setId(2);
 		news.setAuthor(user);
-		news.setDate("3/4/18");
+		try {
+			news.setDate(df.parse("3/4/18"));
+		} catch (ParseException e) {
+		}
 		news.setCategory(fpw.milestone.model.News.Category.SPORT);
 		news.setTitle("Tangenziale CC chiusa per palle");
 		news.setDesc("LE PALLE CI STANNO INVADENDO");
@@ -64,7 +76,10 @@ public class NewsFactory {
 		news = new News();
 		news.setId(3);
 		news.setAuthor(user);
-		news.setDate("4/5/18");
+		try {
+			news.setDate(df.parse("4/5/18"));
+		} catch (ParseException e) {
+		}
 		news.setCategory(fpw.milestone.model.News.Category.CULTURA);
 		news.setTitle("Festa delle feste annunciata");
 		news.setDesc("GONNA PARTY HARD");
@@ -72,6 +87,14 @@ public class NewsFactory {
 		news.setImageDesc("Party Hard");
 		list.add(news);
 
+		// sort the list by desc date
+		Collections.sort(list, new Comparator<News>() {
+			@Override
+			public int compare(News a, News b)
+			{
+				return -a.getDate().compareTo(b.getDate());
+			}
+		});
 		return list;
 	}
 
