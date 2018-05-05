@@ -119,6 +119,10 @@ public class NewsFactory {
 		return outList;
 	}
 
+	public List<News> getNewsByCategory(int id) {
+		return getNewsByCategory(fpw.milestone.model.News.Category.fromInteger(id));
+	}
+
 	public List<News> getNewsByCategory(fpw.milestone.model.News.Category c) {
 		// just for milestone2 (list of news)
 		List<News> newsList = this.getNews();

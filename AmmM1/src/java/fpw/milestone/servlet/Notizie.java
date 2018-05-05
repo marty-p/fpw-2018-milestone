@@ -7,7 +7,6 @@ package fpw.milestone.servlet;
 
 import fpw.milestone.model.NewsFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +32,21 @@ public class Notizie extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		request.setAttribute("newsList", NewsFactory.getInstance().getNews());
+
+		// if cid (category id) is specified, process by category instead of all
+		if (request.getParameter("cid") == null) {
+			request.setAttribute("newsList", NewsFactory.getInstance().getNews());
+		}
+		else {
+			int cid = 0;
+			try {
+				cid = Integer.parseInt(request.getParameter("cid"));
+			} finally {
+				request.setAttribute("newsList", NewsFactory.getInstance().getNewsByCategory(cid));
+				request.setAttribute("categoryName", fpw.milestone.model.News.Category.fromInteger(cid).name());
+			}
+		}
+
 		request.getRequestDispatcher("/WEB-INF/jsp/notizie.jsp").forward(request, response);
 	}
 

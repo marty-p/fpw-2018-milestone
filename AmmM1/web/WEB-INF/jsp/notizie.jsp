@@ -23,6 +23,9 @@
 		<!-- ASIDE END -->
 
 		<main id="main1" class="cornice">
+			<c:if test="${categoryName!=null}">
+				<h1 class="centrato"> ${categoryName} </h1>
+			</c:if>
 			<c:forEach items="${newsList}" var="item">
 			<article class="centrato">
 				<a href="notizia.html?nid=${item.id}" target="blank"><h3 class="underline">${item.title}</h3></a>

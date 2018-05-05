@@ -141,7 +141,23 @@ public class News {
 		this.id = id;
 	}
 
-	public enum Category { POLITICA, CRONACA, ESTERI, ECONOMIA, SPORT, CULTURA };
+	public enum Category {
+		POLITICA, CRONACA, ESTERI, ECONOMIA, SPORT, CULTURA;
+
+		// static cached way to convert int to enum
+		static Category[] cValues = null;
+		static public Category fromInteger(int id) {
+			// cache values once
+			if (cValues == null) {
+				cValues = Category.values();
+			}
+			// check out of bound
+			if (id >= cValues.length)
+				return POLITICA;
+			// return the cached elem by id
+			return cValues[id];
+		}
+	};
 	private Category category;
 	private String title;
 	private String desc;
