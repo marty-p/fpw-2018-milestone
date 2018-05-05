@@ -5,6 +5,7 @@
  */
 package fpw.milestone.servlet;
 
+import fpw.milestone.model.NewsFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,6 +33,7 @@ public class Notizie extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		request.setAttribute("newsList", NewsFactory.getInstance().getNews());
 		request.getRequestDispatcher("/WEB-INF/jsp/notizie.jsp").forward(request, response);
 	}
 

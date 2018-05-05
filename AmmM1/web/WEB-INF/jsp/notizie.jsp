@@ -23,32 +23,21 @@
 		<!-- ASIDE END -->
 
 		<main id="main1" class="cornice">
+			<c:forEach items="${newsList}" var="item">
 			<article class="centrato">
-				<h3 class="underline">Autostrada A1 chiusa per neve</h3>
+				<h3 class="underline">${item.title}</h3>
 				<div class="clearfix">
-					<img src="pics/snowman.png"
+					<img src="${item.imageUrl}"
 						 alt="pupazzo"
 						 class="toleft shrink"
 						 >
-					<p class="newsdet">cronaca</p>
-					<p class="newsdet">2/3/18</p>
-					<p class="newsdet">di Pinco Pallino</p>
-					<p class="newsdid">Pupazzi in autostrada</p>
+					<p class="newsdet">${item.category}</p>
+					<p class="newsdet">${item.date}</p>
+					<p class="newsdet">di ${item.author.name} ${item.author.surname}</p>
+					<p class="newsdid">${item.imageDesc}</p>
 				</div>
 			</article>
-			<article class="centrato">
-				<h3 class="underline">Autostrada B1 chiusa per palle</h3>
-				<div class="clearfix">
-					<img src="pics/snowman.png"
-						 alt="pupazzo"
-						 class="toleft shrink"
-						 >
-					<p class="newsdet">cronaca</p>
-					<p class="newsdet">3/4/18</p>
-					<p class="newsdet">di Pinco Pallone</p>
-					<p class="newsdid">Palle in autostrada</p>
-				</div>
-			</article>
+			</c:forEach>
 		</main>
 	</body>
 </html>
