@@ -27,10 +27,11 @@
 			<article class="centrato">
 				<a href="notizia.html?nid=${item.id}" target="blank"><h3 class="underline">${item.title}</h3></a>
 				<div class="clearfix">
-					<img src="${item.imageUrl}"
+					<a href="notizia.html?nid=${item.id}" target="blank"><img src="${item.imageUrl}"
 						 alt="image"
 						 class="toleft shrink"
 						 >
+					</a>
 					<p class="newsdet">${item.category}</p>
 					<p class="newsdet">${item.date}</p>
 					<p class="newsdet">di ${item.author.name} ${item.author.surname}</p>
