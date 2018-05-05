@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet;
+package fpw.milestone.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,13 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Marty
  */
-@WebServlet(name = "Articles", urlPatterns = {"/articoli.html"})
-public class Articles extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = {"/login.html"})
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +33,16 @@ public class Articles extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-		request.getRequestDispatcher("/WEB-INF/jsp/articoli.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+
+		// Nel caso l’utente non sia autenticato, deve mostrare il form di login e verificare username e password nel caso siano inviate tramite il form
+		if (session.getAttribute("loggedIn") == null || !session.getAttribute("loggedIn").equals(true)) {
+			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+		}
+		// Nel caso l’utente sia già stato autenticato (durante la gestione della richiesta corrente o ad una precedente)
+		// deve riportare alla pagina con l’elenco delle notizie. Usate una redirect.
+		else
+			response.sendRedirect("/notizie.html");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

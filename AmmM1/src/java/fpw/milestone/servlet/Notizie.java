@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet;
+package fpw.milestone.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marty
  */
-@WebServlet(name = "NewsDetail", urlPatterns = {"/notizia.html"})
-public class NewsDetail extends HttpServlet {
+@WebServlet(name = "Notizie", urlPatterns = {"/notizie.html"})
+public class Notizie extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +32,7 @@ public class NewsDetail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-		request.getRequestDispatcher("/WEB-INF/jsp/notizia.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/notizie.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
