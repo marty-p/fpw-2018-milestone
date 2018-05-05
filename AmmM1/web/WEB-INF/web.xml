@@ -10,6 +10,6 @@
         </session-timeout>
     </session-config>
 	<welcome-file-list>
-		<welcome-file>/notizie.html</welcome-file>
+		<welcome-file>notizie.html</welcome-file>
 	</welcome-file-list>
 </web-app>
