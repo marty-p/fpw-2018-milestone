@@ -25,11 +25,12 @@ public class NewsFactory {
 		ArrayList<News> list = new ArrayList<>();
 
 		// pinco pallino news
-		News news = new News();
 		User user = new User(); // only id, name, surname
 		user.setId(1);
 		user.setName("Pinco");
 		user.setSurname("Pallino");
+		News news = new News();
+		news.setId(1);
 		news.setAuthor(user);
 		news.setDate("2/3/18");
 		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
@@ -40,11 +41,12 @@ public class NewsFactory {
 		list.add(news);
 
 		// pinco pallone news
-		news = new News();
 		user = new User(); // only id, name, surname
 		user.setId(2);
 		user.setName("Pinco");
 		user.setSurname("Pallone");
+		news = new News();
+		news.setId(2);
 		news.setAuthor(user);
 		news.setDate("3/4/18");
 		news.setCategory(fpw.milestone.model.News.Category.SPORT);
@@ -55,16 +57,17 @@ public class NewsFactory {
 		list.add(news);
 
 		// pinco palloncino news
-		news = new News();
 		user = new User(); // only id, name, surname
-		user.setId(2);
+		user.setId(3);
 		user.setName("Pinco");
 		user.setSurname("Palloncino");
+		news = new News();
+		news.setId(3);
 		news.setAuthor(user);
 		news.setDate("4/5/18");
 		news.setCategory(fpw.milestone.model.News.Category.CULTURA);
 		news.setTitle("Festa delle feste annunciata");
-		news.setDesc("desc2");
+		news.setDesc("GONNA PARTY HARD");
 		news.setImageUrl("pics/partyhard.png");
 		news.setImageDesc("Party Hard");
 		list.add(news);
@@ -72,15 +75,35 @@ public class NewsFactory {
 		return list;
 	}
 
-	News getNewsById(int id) {
+	public News getNewsById(int id) {
+		// just for milestone2 (list of news)
+		List<News> newsList = this.getNews();
+		for (News n : newsList) {
+			if (n.getId() == id)
+				return n;
+		}
 		return null;
 	}
 
-	List<News> getNewsByAuthor(User usr) {
-		return null;
+	public List<News> getNewsByAuthor(User usr) {
+		// just for milestone2 (list of news)
+		List<News> newsList = this.getNews();
+		ArrayList<News> outList = new ArrayList<>();
+		for (News n : newsList) {
+			if (n.getAuthor().getId() == usr.getId())
+				outList.add(n);
+		}
+		return outList;
 	}
 
-	List<News> getNewsByCategory(fpw.milestone.model.News.Category c) {
-		return null;
+	public List<News> getNewsByCategory(fpw.milestone.model.News.Category c) {
+		// just for milestone2 (list of news)
+		List<News> newsList = this.getNews();
+		ArrayList<News> outList = new ArrayList<>();
+		for (News n : newsList) {
+			if (n.getCategory() == c)
+				outList.add(n);
+		}
+		return outList;
 	}
 }

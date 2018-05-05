@@ -25,10 +25,10 @@
 		<main id="main1" class="cornice">
 			<c:forEach items="${newsList}" var="item">
 			<article class="centrato">
-				<h3 class="underline">${item.title}</h3>
+				<a href="notizia.html?nid=${item.id}" target="blank"><h3 class="underline">${item.title}</h3></a>
 				<div class="clearfix">
 					<img src="${item.imageUrl}"
-						 alt="pupazzo"
+						 alt="image"
 						 class="toleft shrink"
 						 >
 					<p class="newsdet">${item.category}</p>

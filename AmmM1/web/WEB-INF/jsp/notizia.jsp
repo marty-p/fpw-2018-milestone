@@ -28,25 +28,22 @@ and open the template in the editor.
 		<!-- ASIDE END -->
 
 		<main id="main1" class="cornice">
+			<c:if test="${item!=null}">
 			<article class="centrato">
-				<h3 class="underline">Autostrada A1 chiusa per neve</h3>
+				<h3 class="underline">${item.title}</h3>
 				<div class="clearfix">
-					<img src="pics/snowman.png"
-						 alt="pupazzo"
+					<img src="${item.imageUrl}"
+						 alt="image"
 						 class="toleft shrink"
 						 >
-					<p class="newsdet">cronaca</p>
-					<p class="newsdet">2/3/18</p>
-					<p class="newsdet">di Pinco Pallino</p>
-					<p class="newsdid">Pupazzi in autostrada</p>
+					<p class="newsdet">${item.category}</p>
+					<p class="newsdet">${item.date}</p>
+					<p class="newsdet">di ${item.author.name} ${item.author.surname}</p>
+					<p class="newsdid">${item.imageDesc}</p>
 				</div>
-				<div class="newstxt">
-					Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-					Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
-					Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</div>
+				<div class="newstxt">${item.desc}</div>
 			</article>
+			</c:if>
 		</main>
 	</body>
 </html>

@@ -5,6 +5,7 @@
  */
 package fpw.milestone.servlet;
 
+import fpw.milestone.model.NewsFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,7 +33,15 @@ public class NewsDetail extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		request.getRequestDispatcher("/WEB-INF/jsp/notizia.jsp").forward(request, response);
+
+		int nid = 0;
+		try {
+			nid = Integer.parseInt(request.getParameter("nid"));
+		} finally {
+			request.setAttribute("item", NewsFactory.getInstance().getNewsById(nid));
+			// an empty list will be displayed if item is null
+			request.getRequestDispatcher("/WEB-INF/jsp/notizia.jsp").forward(request, response);
+		}
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
