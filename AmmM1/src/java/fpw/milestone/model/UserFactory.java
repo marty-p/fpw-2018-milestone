@@ -12,32 +12,47 @@ import java.util.List;
  * @author Marty
  */
 public class UserFactory {
-    private static UserFactory singleton;
-    public static UserFactory getInstance(){
-        if(singleton == null)
-            singleton = new UserFactory();
-        return singleton;
-    }
+	private static UserFactory singleton;
+	public static UserFactory getInstance(){
+		if(singleton == null)
+			singleton = new UserFactory();
+		return singleton;
+	}
 
-    public List<User> getUsers(){
-        // creo la lista degli utenti nel sistema
-        // (molto corta, sono solo 2)
-        ArrayList<User> list = new ArrayList<>();
-        User usr1 = new User();
-        usr1.setId(1);
-        usr1.setName("Pinco");
-        usr1.setSurname("Pallone");
-        usr1.setUsername("pinco_pallino");
-        usr1.setPassword("admin");
-        list.add(usr1);
+	public List<User> getUsers(){
+		// creo la lista degli utenti nel sistema
+		ArrayList<User> list = new ArrayList<>();
 
-        User usr2 = new User();
-        usr2.setId(2);
-        usr2.setName("Pinco");
-        usr2.setSurname("Pallone");
-        usr2.setUsername("pinco_pallone");
-        usr2.setPassword("test");
-        list.add(usr2);
-        return list;
-    }
+		// pinco pallino
+		User user = new User();
+		user.setId(1);
+		user.setName("Pinco");
+		user.setSurname("Pallino");
+		user.setUsername("pp1");
+		user.setPassword("111");
+		user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+		list.add(user);
+
+		// pinco pallone
+		user = new User();
+		user.setId(2);
+		user.setName("Pinco");
+		user.setSurname("Pallone");
+		user.setUsername("pp2");
+		user.setPassword("222");
+		user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+		list.add(user);
+
+		// pinco palloncino
+		user = new User();
+		user.setId(3);
+		user.setName("Pinco");
+		user.setSurname("Palloncino");
+		user.setUsername("pp3");
+		user.setPassword("333");
+		user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+		list.add(user);
+
+		return list;
+	}
 }

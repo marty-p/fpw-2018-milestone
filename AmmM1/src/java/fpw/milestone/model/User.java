@@ -95,11 +95,11 @@ public class User {
 		this.category = category;
 	}
 
-	private enum Category { AUTHOR, READER, GUEST };
-    private String name;
-    private String surname;
-    private String username;
-    private String password;
-    private int id;
-    private Category category;
+	public enum Category { AUTHOR, READER, GUEST };
+	private String name;
+	private String surname;
+	private String username;
+	private String password;
+	private int id;
+	private Category category;
 }

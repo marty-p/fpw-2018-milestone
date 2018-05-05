@@ -10,10 +10,10 @@ package fpw.milestone.model;
  * @author Marty
  */
 public class CommentsFactory {
-    private static CommentsFactory singleton;
-    public static CommentsFactory getInstance(){
-        if(singleton == null)
-            singleton = new CommentsFactory();
-        return singleton;
-    }
+	private static CommentsFactory singleton;
+	public static CommentsFactory getInstance(){
+		if(singleton == null)
+			singleton = new CommentsFactory();
+		return singleton;
+	}
 }
