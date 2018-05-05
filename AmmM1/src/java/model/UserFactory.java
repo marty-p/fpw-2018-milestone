@@ -5,7 +5,6 @@
  */
 package model;
 
-import model.User;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -27,11 +26,11 @@ public class UserFactory {
 
     }
 
-    public List<Utenti> getUsers(){
+    public List<User> getUsers(){
         // creo la lista degli utenti nel sistema
         // (molto corta, sono solo 2)
-        ArrayList<Utenti> list = new ArrayList<>();
-        Utenti usr1 = new Utenti();
+        ArrayList<User> list = new ArrayList<>();
+        User usr1 = new User();
         usr1.setId(1);
         usr1.setName("Pinco");
         usr1.setSurname("Pallone");
@@ -39,7 +38,7 @@ public class UserFactory {
         usr1.setPassword("admin");
         list.add(usr1);
 
-        Utenti usr2 = new Utenti();
+        User usr2 = new User();
         usr2.setId(2);
         usr2.setName("Pinco");
         usr2.setSurname("Pallone");
