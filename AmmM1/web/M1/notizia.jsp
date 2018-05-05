@@ -4,6 +4,7 @@
     Author     : Marty
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -27,13 +28,11 @@ and open the template in the editor.
 		<meta name="author" content="Martino Pinna"/>
 	</head>
 	<body>
-		<nav id="nav1" class="navbar cornice">
-			<div class="nav-main cornice"><a href="#">Fast Press Writer</a></div>
-			<div class="nav nav-selected cornice"><a href="notizia.html">Notizie</a></div>
-			<div class="nav cornice"><a href="#">Profilo</a></div>
-			<div class="nav cornice"><a href="articoli.html">I miei Articoli</a></div>
-			<div class="nav-last cornice"><a href="login.html">Logout</a></div>
-		</nav>
+		<!-- NAV START -->
+        <c:set var="page" value="notizia" scope="request"/>
+        <jsp:include page="inc/nav.jsp"/>
+		<!-- NAV END -->
+
 		<aside id="aside1" class="cornice">
 			<section id="cerca" class="cornice intpad1">
 				<h3><label class="centrato block" for="search-txt">Cerca</label></h3>
