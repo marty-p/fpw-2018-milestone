@@ -29,8 +29,15 @@ and open the template in the editor.
 
 		<main id="main1" class="cornice">
 			<article class="centrato2">
+				<c:choose>
+				<c:when  test="${item==null}">
 				<h1>Scrivi un Articolo</h1>
-				<form action="articoli.html" method="POST" class="form-hori">
+				</c:when>
+				<c:otherwise>
+				<h1>Modifica Articolo #${item.id}</h1>
+				</c:otherwise>
+				</c:choose>
+				<form action="" method="POST" class="form-hori">
 					<div class="form-hori">
 						<!-- Un titolo -->
 						<label class="form-hori" for="titolo">Titolo</label>
@@ -61,28 +68,27 @@ and open the template in the editor.
 						<span class="form-hori">Categoria</span>
 						<div id="categoria">
 							<div class="block">
-								<input type="checkbox" id="Politica" checked />
+								<input type="checkbox" id="Politica" <c:if test="${item.category=='POLITICA'}">checked</c:if> />
 								<label for="Politica">Politica</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Cronaca"/>
+								<input type="checkbox" id="Cronaca" <c:if test="${item.category=='CRONACA'}">checked</c:if> />
 								<label for="Cronaca">Cronaca</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Esteri"/>
-								<label for="Esteri">Esteri</label>
+								<input type="checkbox" id="Esteri" <c:if test="${item.category=='ESTERI'}">checked</c:if> />
 								<label for="Esteri">Esteri</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Economia"/>
+								<input type="checkbox" id="Economia" <c:if test="${item.category=='ECONOMIA'}">checked</c:if> />
 								<label for="Economia">Economia</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Sport"/>
+								<input type="checkbox" id="Sport" <c:if test="${item.category=='SPORT'}">checked</c:if> />
 								<label for="Sport">Sport</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Cultura" checked />
+								<input type="checkbox" id="Cultura" <c:if test="${item.category=='CULTURA'}">checked</c:if> />
 								<label for="Cultura">Cultura</label>
 							</div>
 						</div>

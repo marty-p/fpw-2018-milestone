@@ -30,7 +30,7 @@ public class NewsFactory {
 		ArrayList<News> list = new ArrayList<>();
 		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 
-		int id = 0;
+		int id = 1;
 		// pinco pallino news
 		User user = new User(); // only id, name, surname
 		user.setId(1);
@@ -57,7 +57,7 @@ public class NewsFactory {
 			news.setDate(df.parse("22/3/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.setCategory(fpw.milestone.model.News.Category.ESTERI);
 		news.setTitle("title4");
 		news.setDesc("desc4");
 		news.setImageUrl("pics/snowman.png");
@@ -71,7 +71,7 @@ public class NewsFactory {
 			news.setDate(df.parse("22/4/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.setCategory(fpw.milestone.model.News.Category.ESTERI);
 		news.setTitle("title5");
 		news.setDesc("desc5");
 		news.setImageUrl("pics/snowman.png");
