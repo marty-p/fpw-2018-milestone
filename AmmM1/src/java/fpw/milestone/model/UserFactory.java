@@ -40,7 +40,7 @@ public class UserFactory {
 		user.setSurname("Pallone");
 		user.setUsername("pp2");
 		user.setPassword("222");
-		user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+		user.setCategory(fpw.milestone.model.User.Category.READER);
 		list.add(user);
 
 		// pinco palloncino
@@ -50,7 +50,7 @@ public class UserFactory {
 		user.setSurname("Palloncino");
 		user.setUsername("pp3");
 		user.setPassword("333");
-		user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+		user.setCategory(fpw.milestone.model.User.Category.GUEST);
 		list.add(user);
 
 		return list;
