@@ -33,6 +33,7 @@ public class Articles extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		// if not author, 403
 		HttpSession session = request.getSession();
 		if (session == null
 				|| session.getAttribute("loggedIn") == null

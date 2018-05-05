@@ -5,12 +5,14 @@
  */
 package fpw.milestone.servlet;
 
+import fpw.milestone.model.NewsFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,6 +33,25 @@ public class NewArticle extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		// if not author, 403
+		HttpSession session = request.getSession();
+		if (session == null
+				|| session.getAttribute("loggedIn") == null
+				|| !session.getAttribute("loggedIn").equals(true)
+				|| session.getAttribute("category") == null
+				|| !session.getAttribute("category").toString().equals("AUTHOR")) {
+			response.setStatus(403);
+			return;
+		}
+		// if edit GET is present, load pre-set information
+		if (request.getParameter("edit") != null) {
+			int editId = 0;
+			try {
+				editId = Integer.parseInt(request.getParameter("edit"));
+			} finally {
+				request.setAttribute("item", NewsFactory.getInstance().getNewsById(editId));
+			}
+		}
 		request.getRequestDispatcher("/WEB-INF/jsp/scriviArticolo.jsp").forward(request, response);
 	}
 

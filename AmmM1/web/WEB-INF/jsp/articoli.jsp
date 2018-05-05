@@ -42,7 +42,7 @@ and open the template in the editor.
 						<td>${item.shortDate}</td>
 						<td>${item.title}</td>
 						<td><a href="scriviArticolo.html?edit=${item.id}"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
-						<td><a href="articoli.html?del=${item.id}"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
+						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
 					</tr>
 					</c:forEach>
 				</table>

@@ -34,27 +34,27 @@ and open the template in the editor.
 					<div class="form-hori">
 						<!-- Un titolo -->
 						<label class="form-hori" for="titolo">Titolo</label>
-						<input class="form-hori" type="text" id="titolo"/>
+						<input class="form-hori" type="text" id="titolo" value="${item.title}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La data di pubblicazione -->
 						<label class="form-hori" for="data">Data</label>
-						<input class="form-hori" type="text" id="data"/>
+						<input class="form-hori" type="text" id="data" value="${item.shortDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'immagine descrittiva -->
 						<label class="form-hori" for="immagine">Immagine</label>
-						<input class="form-hori" type="text" id="immagine"/>
+						<input class="form-hori" type="text" id="immagine" value="${item.imageUrl}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La didascalia per l'immagine -->
 						<label class="form-hori" for="didascalia">Didascalia</label>
-						<input class="form-hori" type="text" id="didascalia"/>
+						<input class="form-hori" type="text" id="didascalia" value="${item.imageDesc}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Il testo dell'articolo -->
 						<label class="form-hori" for="testo">Testo</label>
-						<textarea class="form-hori" id="testo"></textarea>
+						<textarea class="form-hori" id="testo">${item.desc}</textarea>
 					</div>
 					<div class="form-hori">
 						<!-- Il testo dell'articolo -->
