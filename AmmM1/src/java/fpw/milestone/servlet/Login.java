@@ -72,7 +72,7 @@ public class Login extends HttpServlet {
 
 		// Nel caso l’utente sia già stato autenticato (durante la gestione della richiesta corrente o ad una precedente)
 		// deve riportare alla pagina con l’elenco delle notizie. Usate una redirect.
-		response.sendRedirect("/notizie.html");
+		response.sendRedirect("notizie.html");
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
