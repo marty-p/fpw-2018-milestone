@@ -7,8 +7,9 @@
 }
 
 /* nascondi aside content*/
-#categorie ul, #autori ul,
-#categorie h3, #autori h3
+/*#categorie ul, #autori ul,
+#categorie h3, #autori h3*/
+.hide-on-med-and-down
 {
 	display: none;
 }

@@ -47,7 +47,8 @@ body
 }
 
 /* nascondi aside links*/
-#categorie a, #autori a
+/*#categorie a, #autori a*/
+.hide-on-large-only
 {
 	display: none;
 }

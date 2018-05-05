@@ -11,21 +11,22 @@
 				<input class="block form-vert" id="search-txt" name="search-txt" type="text" placeholder="..."/>
 			</section>
 			<section id="categorie" class="cornice">
-				<h3 class="centrato">Categorie</h3>
-				<a href="#autori">Categorie</a>
-				<ul class="centrato">
-					<li>Politica</li>
-					<li>Cronaca</li>
-					<li>Esteri</li>
-					<li>Economia</li>
-					<li>Sport</li>
-					<li>Cultura</li>
+				<h3 class="centrato hide-on-med-and-down">Categorie</h3>
+				<a href="#categorie" class="hide-on-large-only">Categorie</a>
+				<ul class="centrato hide-on-med-and-down">
+					<li><a href="notizie.html">Tutte</a></li>
+					<li><a href="notizie.html?cid=0">Politica</a></li>
+					<li><a href="notizie.html?cid=1">Cronaca</a></li>
+					<li><a href="notizie.html?cid=2">Esteri</a></li>
+					<li><a href="notizie.html?cid=3">Economia</a></li>
+					<li><a href="notizie.html?cid=4">Sport</a></li>
+					<li><a href="notizie.html?cid=5">Cultura</a></li>
 				</ul>
 			</section>
 			<section id="autori" class="cornice">
-				<h3 class="centrato">Autori</h3>
-				<a href="#autori">Autori</a>
-				<ul class="centrato">
+				<h3 class="centrato hide-on-med-and-down">Autori</h3>
+				<a href="#autori" class="hide-on-large-only">Autori</a>
+				<ul class="centrato hide-on-med-and-down">
 					<li class="icon1 underline">Pinco Pallino</li>
 					<li class="icon2 underline">Pinco Pallone</li>
 					<li class="icon3 underline">Pinco Palloncino</li>
