@@ -41,7 +41,7 @@ public class Profilo extends HttpServlet {
 				|| session.getAttribute("loggedIn") == null
 				|| !session.getAttribute("loggedIn").equals(true)
 				|| session.getAttribute("id") == null) {
-			response.setStatus(403);
+			response.sendError(response.SC_UNAUTHORIZED, "Solo chi si logga può accedere a questa pagina.");
 			return;
 		}
 

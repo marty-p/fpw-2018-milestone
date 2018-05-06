@@ -40,7 +40,7 @@ public class NewArticle extends HttpServlet {
 				|| !session.getAttribute("loggedIn").equals(true)
 				|| session.getAttribute("category") == null
 				|| !session.getAttribute("category").toString().equals("AUTHOR")) {
-			response.setStatus(403);
+			response.sendError(response.SC_UNAUTHORIZED, "Solo gli Autori possono accedere a questa pagina.");
 			return;
 		}
 		// if edit GET is present, load pre-set information

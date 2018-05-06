@@ -14,7 +14,7 @@
 	<!-- HEAD END -->
 	<body>
 		<!-- NAV START -->
-        <c:set var="page" value="articoli" scope="request"/>
+        <c:set var="page" value="profilo" scope="request"/>
         <jsp:include page="/WEB-INF/jsp/inc/nav.jsp"/>
 		<!-- NAV END -->
 
