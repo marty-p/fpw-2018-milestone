@@ -39,37 +39,37 @@
 					<div class="form-hori">
 						<!-- Nome -->
 						<label class="form-hori" for="name">Nome</label>
-						<input class="form-hori" type="text" id="name" value="${item.name}"/>
+						<input class="form-hori" type="text" id="name" name="name" value="${item.name}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Cognome -->
 						<label class="form-hori" for="surname">Cognome</label>
-						<input class="form-hori" type="text" id="surname" value="${item.surname}"/>
+						<input class="form-hori" type="text" id="surname" name="surname" value="${item.surname}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Data di nascita -->
 						<label class="form-hori" for="birthdate">Data di nascita</label>
-						<input class="form-hori" type="text" id="birthdate" value="${item.shortBirthDate}"/>
+						<input class="form-hori" type="text" id="birthdate" name="birthdate" value="${item.shortBirthDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'avatar -->
 						<label class="form-hori" for="imageurl">URL Immagine</label>
-						<input class="form-hori" type="text" id="imageurl" value="${item.imageUrl}"/>
+						<input class="form-hori" type="text" id="imageurl" name="imageurl" value="${item.imageUrl}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Frase di presentazione -->
 						<label class="form-hori" for="introdesc">Frase di presentazione</label>
-						<input class="form-hori" type="text" id="introdesc" value="${item.introDesc}"/>
+						<input class="form-hori" type="text" id="introdesc" name="introdesc" value="${item.introDesc}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Password (no autocompletamento) -->
 						<label class="form-hori" for="password">Password</label>
-						<input class="form-hori" type="password" id="password"/>
+						<input class="form-hori" type="password" id="password" name="password"/>
 					</div>
 					<div class="form-hori">
 						<!-- Password (no autocompletamento) -->
 						<label class="form-hori" for="password2">Conferma Password</label>
-						<input class="form-hori" type="password" id="password2"/>
+						<input class="form-hori" type="password" id="password2" name="password2"/>
 					</div>
 					<!-- Utilizzate i tipi di input corretti. -->
 					<input type="submit" class="block form-hori" value="Aggiorna"/>

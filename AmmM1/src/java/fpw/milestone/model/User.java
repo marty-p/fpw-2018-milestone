@@ -46,7 +46,7 @@ public class User {
 	 * @return the date as dd/MM/yy
 	 */
 	public String getShortBirthDate() {
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		return df.format(birthDate);
 	}
 

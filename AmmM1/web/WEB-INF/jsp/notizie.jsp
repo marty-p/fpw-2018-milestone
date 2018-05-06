@@ -31,9 +31,9 @@
 				<a href="notizia.html?nid=${item.id}"><h3 class="underline">${item.title}</h3></a>
 				<div class="clearfix">
 					<a href="notizia.html?nid=${item.id}"><img src="${item.imageUrl}"
-						 alt="image"
-						 class="toleft shrink"
-						 >
+						alt="image"
+						class="toleft shrink"
+					>
 					</a>
 					<p class="newsdet">di ${item.author.name} ${item.author.surname}
 						${item.category}

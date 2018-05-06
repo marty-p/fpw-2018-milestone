@@ -23,18 +23,20 @@
 		<!-- ASIDE END -->
 
 		<main id="main1" class="cornice">
-			<article class="centrato2">
+			<article class="centrato">
 				<h1>${item.name} ${item.surname}</h1>
-				<img
-					<c:choose>
-						<c:when test="${item.imageUrl==null}">src="pics/noavatar.png"</c:when>
-						<c:otherwise>src="${item.imageUrl}"</c:otherwise>
-					</c:choose>
-					alt="avatar"
-					class="shrink150px"
-				>
-				${item.shortBirthDate}
-				${item.introDesc}
+				<div class="clearfix">
+					<img
+						<c:choose>
+							<c:when test="${item.imageUrl==null}">src="pics/noavatar.png"</c:when>
+							<c:otherwise>src="${item.imageUrl}"</c:otherwise>
+						</c:choose>
+						alt="avatar"
+						class="left shrink150px"
+					>
+					<p class="newsdet">${item.shortBirthDate}</p>
+				</div>
+				<div class="newstxt">${item.introDesc}</div>
 			</article>
 		</main>
 	</body>

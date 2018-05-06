@@ -57,10 +57,10 @@ public class Profilo extends HttpServlet {
 			return;
 		}
 
+		request.setAttribute("item", UserFactory.getInstance().getUserById((int)session.getAttribute("id")));
 		// if POST data is sent
 		String password = request.getParameter("password");
 		if (password != null) {
-			request.setAttribute("item", UserFactory.getInstance().getUserById((int)session.getAttribute("id")));
 			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
 			return;
 		}

@@ -33,9 +33,9 @@ and open the template in the editor.
 				<h3 class="underline">${item.title}</h3>
 				<div class="clearfix">
 					<img src="${item.imageUrl}"
-						 alt="image"
-						 class="toleft shrink"
-						 >
+						alt="image"
+						class="toleft shrink"
+					>
 					<p class="newsdet">${item.category}</p>
 					<p class="newsdet">${item.shortDate}</p>
 					<p class="newsdet">di ${item.author.name} ${item.author.surname}</p>
