@@ -48,9 +48,17 @@ public class NewArticle extends HttpServlet {
 			int editId = 0;
 			try {
 				editId = Integer.parseInt(request.getParameter("edit"));
+			} catch (NumberFormatException e) {
 			} finally {
 				request.setAttribute("item", NewsFactory.getInstance().getNewsById(editId));
 			}
+		}
+		// if POST data is sent
+		String title = request.getParameter("title");
+		if (title != null) {
+			request.setAttribute("updated", true);
+			// it may require a redirect to ?edit=newid and use setAttribute item in milestone3
+			// in case a new article has been inserted
 		}
 		request.getRequestDispatcher("/WEB-INF/jsp/scriviArticolo.jsp").forward(request, response);
 	}

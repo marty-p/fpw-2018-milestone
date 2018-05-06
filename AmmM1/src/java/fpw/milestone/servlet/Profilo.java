@@ -50,6 +50,7 @@ public class Profilo extends HttpServlet {
 			int uid = 0;
 			try {
 				uid = Integer.parseInt(request.getParameter("uid"));
+			} catch (NumberFormatException e) {
 			} finally {
 				request.setAttribute("item", UserFactory.getInstance().getUserById(uid));
 			}

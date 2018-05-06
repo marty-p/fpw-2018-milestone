@@ -36,6 +36,7 @@ public class NewsDetail extends HttpServlet {
 		int nid = 0;
 		try {
 			nid = Integer.parseInt(request.getParameter("nid"));
+		} catch (NumberFormatException e) {
 		} finally {
 			request.setAttribute("item", NewsFactory.getInstance().getNewsById(nid));
 			// an empty list will be displayed if item is null

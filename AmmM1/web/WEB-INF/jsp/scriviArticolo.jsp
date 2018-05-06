@@ -29,15 +29,18 @@ and open the template in the editor.
 
 		<main id="main1" class="cornice">
 			<article class="centrato2">
+				<c:if test="${updated==true && item!=null}"><p>L'Articolo #${item.id} è stato aggiornato.</p></c:if>
+
 				<c:choose>
-				<c:when  test="${item==null}">
+				<c:when test="${item==null}">
 				<h1>Scrivi un Articolo</h1>
 				</c:when>
 				<c:otherwise>
 				<h1>Modifica Articolo #${item.id}</h1>
 				</c:otherwise>
 				</c:choose>
-				<form action="" method="POST" class="form-hori">
+
+				<form action="scriviArticolo.html<c:if test="${param.edit!=null}">?edit=${param.edit}</c:if>" method="POST" class="form-hori">
 					<div class="form-hori">
 						<!-- Un titolo -->
 						<label class="form-hori" for="title">Titolo</label>
@@ -46,7 +49,7 @@ and open the template in the editor.
 					<div class="form-hori">
 						<!-- La data di pubblicazione -->
 						<label class="form-hori" for="date">Data</label>
-						<input class="form-hori" type="text" id="date" id="date" value="${item.shortDate}"/>
+						<input class="form-hori" type="text" id="date" value="${item.shortDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'immagine descrittiva -->
