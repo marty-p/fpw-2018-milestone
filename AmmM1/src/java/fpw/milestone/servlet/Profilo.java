@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +32,15 @@ public class Profilo extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		request.getRequestDispatcher("/WEB-INF/jsp/profilo.jsp").forward(request, response);
+		// if not logged in, 403
+		HttpSession session = request.getSession();
+		if (session == null
+				|| session.getAttribute("loggedIn") == null
+				|| !session.getAttribute("loggedIn").equals(true)) {
+			response.setStatus(403);
+			return;
+		}
+		request.getRequestDispatcher("/WEB-INF/jsp/profiloEdit.jsp").forward(request, response);
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
