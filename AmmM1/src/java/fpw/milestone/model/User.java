@@ -14,6 +14,10 @@ import java.text.SimpleDateFormat;
  */
 public class User {
 
+	public User() {
+		birthDate = new Date();
+	}
+
 	/**
 	 * @return the introDesc
 	 */

@@ -14,6 +14,10 @@ import java.util.Date;
  */
 public class Comment {
 
+	public Comment() {
+		date = new Date();
+	}
+
 	/**
 	 * @return the id
 	 */
