@@ -37,6 +37,9 @@
 					<p class="newsdet">${item.shortBirthDate}</p>
 				</div>
 				<div class="newstxt">${item.introDesc}</div>
+				<c:if  test="${updated==true}">
+				<h3>Il profilo è stato aggiornato.</h3>
+				</c:if>
 			</article>
 		</main>
 	</body>

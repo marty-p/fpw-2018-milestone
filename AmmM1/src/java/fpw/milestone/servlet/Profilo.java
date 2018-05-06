@@ -61,6 +61,7 @@ public class Profilo extends HttpServlet {
 		// if POST data is sent
 		String password = request.getParameter("password");
 		if (password != null) {
+			request.setAttribute("updated", true);
 			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
 			return;
 		}
