@@ -36,6 +36,7 @@ public class CommentFactory {
 		user.setId(1);
 		user.setName("Pinco");
 		user.setSurname("Pallino");
+		user.setImageUrl("pics/icon1.png");
 		Comment comment = new Comment();
 		comment.setId(++id);
 		comment.setNewsId(1);
@@ -74,6 +75,7 @@ public class CommentFactory {
 		user.setId(2);
 		user.setName("Pinco");
 		user.setSurname("Pallone");
+		user.setImageUrl("pics/icon2.png");
 		comment = new Comment();
 		comment.setId(++id);
 		comment.setNewsId(8);

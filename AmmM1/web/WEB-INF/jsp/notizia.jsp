@@ -43,6 +43,27 @@ and open the template in the editor.
 				</div>
 				<div class="newstxt">${item.desc}</div>
 			</article>
+			<article class="centrato">
+				<div id='comments' class='cornice'>
+					<h1>Commenti</h1>
+					<c:forEach items="${comments}" var="comment">
+						<div class='clearfix'>
+							<img src='${comment.author.imageUrl}' class='shrink16px left'>
+							<span class="newsdid"><a href='profilo.html?uid=${comment.author.id}'>${comment.author.name} ${comment.author.surname}</a>:</span>
+							<span class="newsdet">${comment.desc}</span>
+							<span class="newsdet">${comment.shortDate}</span>
+						</div>
+					</c:forEach>
+					<c:if test="${sessionScope.loggedIn=='true'}">
+						<div id="form1" class="cornice intpadt3">
+							<form action="notizia.html?nid=${param.nid}" method="POST">
+								<input class="block form-vert" id="commento" name="commento" type="text" placeholder="Scrivi un commento..."/>
+								<input class="block form-vert" type="submit" value="Commenta"/>
+							</form>
+						</div>
+					</c:if>
+				</div>
+			</article>
 			</c:if>
 		</main>
 	</body>

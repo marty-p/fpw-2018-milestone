@@ -6,6 +6,7 @@
 package fpw.milestone.servlet;
 
 import fpw.milestone.model.NewsFactory;
+import fpw.milestone.model.CommentFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,6 +40,7 @@ public class NewsDetail extends HttpServlet {
 		} catch (NumberFormatException e) {
 		} finally {
 			request.setAttribute("item", NewsFactory.getInstance().getNewsById(nid));
+			request.setAttribute("comments", CommentFactory.getInstance().getCommentsByNewsId(nid));
 			// an empty list will be displayed if item is null
 			request.getRequestDispatcher("/WEB-INF/jsp/notizia.jsp").forward(request, response);
 		}
