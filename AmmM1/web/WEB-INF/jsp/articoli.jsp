@@ -40,7 +40,7 @@ and open the template in the editor.
 					<c:forEach items="${articles}" var="item" varStatus="loopStatus">
 					<tr class="${loopStatus.index % 2 == 0 ? 'even' : 'odd'}row">
 						<td>${item.shortDate}</td>
-						<td>${item.title}</td>
+						<td><a href='notizia.html?nid=${item.id}'>${item.title}</a></td>
 						<td><a href="scriviArticolo.html?edit=${item.id}"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
 						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
 					</tr>
