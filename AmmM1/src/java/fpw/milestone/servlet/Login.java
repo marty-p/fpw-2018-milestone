@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 
-		// Se è impostato il parametro GET logout, distrugge la sessione
+		// if parameter GET logout is set, destroy the session
 		if (request.getParameter("logout") != null)
 		{
 			session.invalidate();

@@ -25,7 +25,7 @@
 		<main id="main1" class="cornice">
 			<article class="centrato2">
 				<h1>Il mio profilo</h1>
-				<form action="" method="POST" class="form-hori">
+				<form action="profilo.html" method="POST" class="form-hori">
 					<div class="form-hori">
 					<img
 						<c:choose>
@@ -38,28 +38,28 @@
 					</div>
 					<div class="form-hori">
 						<!-- Nome -->
-						<label class="form-hori" for="nome">Nome</label>
-						<input class="form-hori" type="text" id="nome" value="${item.name}"/>
+						<label class="form-hori" for="name">Nome</label>
+						<input class="form-hori" type="text" id="name" value="${item.name}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Cognome -->
-						<label class="form-hori" for="cognome">Cognome</label>
-						<input class="form-hori" type="text" id="cognome" value="${item.surname}"/>
+						<label class="form-hori" for="surname">Cognome</label>
+						<input class="form-hori" type="text" id="surname" value="${item.surname}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Data di nascita -->
 						<label class="form-hori" for="birthdate">Data di nascita</label>
-						<input class="form-hori" type="text" id="birthdate" value="${item.shortDate}"/>
+						<input class="form-hori" type="text" id="birthdate" value="${item.shortBirthDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'avatar -->
-						<label class="form-hori" for="immagine">URL Immagine</label>
-						<input class="form-hori" type="text" id="immagine" value="${item.imageUrl}"/>
+						<label class="form-hori" for="imageurl">URL Immagine</label>
+						<input class="form-hori" type="text" id="imageurl" value="${item.imageUrl}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Frase di presentazione -->
-						<label class="form-hori" for="desc">Frase di presentazione</label>
-						<input class="form-hori" type="text" id="desc" value="${item.desc}"/>
+						<label class="form-hori" for="introdesc">Frase di presentazione</label>
+						<input class="form-hori" type="text" id="introdesc" value="${item.introDesc}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Password (no autocompletamento) -->

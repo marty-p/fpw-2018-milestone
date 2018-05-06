@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fpw.milestone.model.UserFactory;
+
 /**
  *
  * @author Marty
@@ -32,14 +34,37 @@ public class Profilo extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+
 		// if not logged in, 403
 		HttpSession session = request.getSession();
 		if (session == null
 				|| session.getAttribute("loggedIn") == null
-				|| !session.getAttribute("loggedIn").equals(true)) {
+				|| !session.getAttribute("loggedIn").equals(true)
+				|| session.getAttribute("id") == null) {
 			response.setStatus(403);
 			return;
 		}
+
+		// if uid (user id) is specified, view user's id's profile
+		if (request.getParameter("uid") != null) {
+			int uid = 0;
+			try {
+				uid = Integer.parseInt(request.getParameter("uid"));
+			} finally {
+				request.setAttribute("item", UserFactory.getInstance().getUserById(uid));
+			}
+			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
+			return;
+		}
+
+		// if POST data is sent
+		String password = request.getParameter("password");
+		if (password != null) {
+			request.setAttribute("item", UserFactory.getInstance().getUserById((int)session.getAttribute("id")));
+			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
+			return;
+		}
+		// if nothing is done, show how to edit your profile
 		request.getRequestDispatcher("/WEB-INF/jsp/profiloEdit.jsp").forward(request, response);
 	}
 

@@ -5,6 +5,9 @@
  */
 package fpw.milestone.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -22,6 +25,7 @@ public class UserFactory {
 	public List<User> getUsers() {
 		// just for milestone2 (list of users)
 		ArrayList<User> list = new ArrayList<>();
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 		// pinco pallino
 		User user = new User();
@@ -31,6 +35,11 @@ public class UserFactory {
 		user.setUsername("pp1");
 		user.setPassword("111");
 		user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+		// extra fields
+		try {
+			user.setBirthDate(df.parse("1/1/2018"));
+		} catch (ParseException e) {}
+		user.setIntroDesc("introducting myself 1");
 		list.add(user);
 
 		// pinco pallone
@@ -41,6 +50,11 @@ public class UserFactory {
 		user.setUsername("pp2");
 		user.setPassword("222");
 		user.setCategory(fpw.milestone.model.User.Category.READER);
+		// extra fields
+		try {
+			user.setBirthDate(df.parse("2/2/2018"));
+		} catch (ParseException e) {}
+		user.setIntroDesc("introducting myself 2");
 		list.add(user);
 
 		// pinco palloncino
@@ -51,9 +65,24 @@ public class UserFactory {
 		user.setUsername("pp3");
 		user.setPassword("333");
 		user.setCategory(fpw.milestone.model.User.Category.GUEST);
+		// extra fields
+		try {
+			user.setBirthDate(df.parse("3/3/2018"));
+		} catch (ParseException e) {}
+		user.setIntroDesc("introducting myself 3");
 		list.add(user);
 
 		return list;
+	}
+
+	public User getUserById(int id) {
+		// just for milestone2 (list of news)
+		List<User> userList = this.getUsers();
+		for (User u : userList) {
+			if (u.getId() == id)
+				return u;
+		}
+		return null;
 	}
 
 	public User ProcessLogin(String username, String password) {

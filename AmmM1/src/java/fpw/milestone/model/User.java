@@ -5,11 +5,64 @@
  */
 package fpw.milestone.model;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Marty
  */
 public class User {
+
+	/**
+	 * @return the introDesc
+	 */
+	public String getIntroDesc() {
+		return introDesc;
+	}
+
+	/**
+	 * @param introDesc the introDesc to set
+	 */
+	public void setIntroDesc(String introDesc) {
+		this.introDesc = introDesc;
+	}
+
+	/**
+	 * @return the birthDate
+	 */
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	/**
+	 * @param birthDate the birthDate to set
+	 */
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	/**
+	 * @return the date as dd/MM/yy
+	 */
+	public String getShortBirthDate() {
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
+		return df.format(birthDate);
+	}
+
+	/**
+	 * @return the imageUrl
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	/**
+	 * @param imageUrl the imageUrl to set
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	/**
 	 * @return the name
@@ -102,4 +155,7 @@ public class User {
 	private String password;
 	private int id;
 	private Category category;
+	private Date birthDate;
+	private String introDesc;
+	private String imageUrl;
 }
