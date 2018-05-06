@@ -30,14 +30,14 @@ public class NewsFactory {
 		ArrayList<News> list = new ArrayList<>();
 		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 
-		int id = 1;
+		int id = 0;
 		// pinco pallino news
 		User user = new User(); // only id, name, surname
 		user.setId(1);
 		user.setName("Pinco");
 		user.setSurname("Pallino");
 		News news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("2/3/18"));
@@ -51,35 +51,35 @@ public class NewsFactory {
 		list.add(news);
 
 		news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("22/3/18"));
 		} catch (ParseException e) {
 		}
 		news.setCategory(fpw.milestone.model.News.Category.ESTERI);
-		news.setTitle("title4");
-		news.setDesc("desc4");
+		news.setTitle("title".concat(Integer.toString(id)));
+		news.setDesc("desc".concat(Integer.toString(id)));
 		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc4");
+		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
 		list.add(news);
 
 		news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("22/4/18"));
 		} catch (ParseException e) {
 		}
 		news.setCategory(fpw.milestone.model.News.Category.ESTERI);
-		news.setTitle("title5");
-		news.setDesc("desc5");
+		news.setTitle("title".concat(Integer.toString(id)));
+		news.setDesc("desc".concat(Integer.toString(id)));
 		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc5");
+		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
 		list.add(news);
 
 		news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("23/1/18"));
@@ -89,11 +89,11 @@ public class NewsFactory {
 		news.setTitle("I fantastici astici");
 		news.setDesc("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
 		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc6");
+		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
 		list.add(news);
 
 		news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("25/2/18"));
@@ -103,11 +103,11 @@ public class NewsFactory {
 		news.setTitle("I castori rosicanti");
 		news.setDesc("ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK");
 		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc6");
+		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
 		list.add(news);
 
 		news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("27/3/18"));
@@ -117,7 +117,7 @@ public class NewsFactory {
 		news.setTitle("Holy moly");
 		news.setDesc("H O L Y M O L Y");
 		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc6");
+		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
 		list.add(news);
 
 		// pinco pallone news
@@ -126,7 +126,7 @@ public class NewsFactory {
 		user.setName("Pinco");
 		user.setSurname("Pallone");
 		news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("3/4/18"));
@@ -145,7 +145,7 @@ public class NewsFactory {
 		user.setName("Pinco");
 		user.setSurname("Palloncino");
 		news = new News();
-		news.setId(id++);
+		news.setId(++id);
 		news.setAuthor(user);
 		try {
 			news.setDate(df.parse("4/5/18"));
