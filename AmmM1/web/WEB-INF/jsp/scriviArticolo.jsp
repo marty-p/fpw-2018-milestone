@@ -40,55 +40,55 @@ and open the template in the editor.
 				<form action="" method="POST" class="form-hori">
 					<div class="form-hori">
 						<!-- Un titolo -->
-						<label class="form-hori" for="titolo">Titolo</label>
-						<input class="form-hori" type="text" id="titolo" value="${item.title}"/>
+						<label class="form-hori" for="title">Titolo</label>
+						<input class="form-hori" type="text" id="title" name="title" value="${item.title}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La data di pubblicazione -->
-						<label class="form-hori" for="data">Data</label>
-						<input class="form-hori" type="text" id="data" value="${item.shortDate}"/>
+						<label class="form-hori" for="date">Data</label>
+						<input class="form-hori" type="text" id="date" id="date" value="${item.shortDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'immagine descrittiva -->
-						<label class="form-hori" for="immagine">Immagine</label>
-						<input class="form-hori" type="text" id="immagine" value="${item.imageUrl}"/>
+						<label class="form-hori" for="imageurl">Immagine</label>
+						<input class="form-hori" type="text" id="imageurl" name="imageurl" value="${item.imageUrl}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La didascalia per l'immagine -->
-						<label class="form-hori" for="didascalia">Didascalia</label>
-						<input class="form-hori" type="text" id="didascalia" value="${item.imageDesc}"/>
+						<label class="form-hori" for="imagedesc">Didascalia</label>
+						<input class="form-hori" type="text" id="imagedesc" name="imagedesc" value="${item.imageDesc}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Il testo dell'articolo -->
-						<label class="form-hori" for="testo">Testo</label>
-						<textarea class="form-hori" id="testo">${item.desc}</textarea>
+						<label class="form-hori" for="desc">Testo</label>
+						<textarea class="form-hori" id="desc" name="desc">${item.desc}</textarea>
 					</div>
 					<div class="form-hori">
 						<!-- Il testo dell'articolo -->
 						<span class="form-hori">Categoria</span>
 						<div id="categoria">
 							<div class="block">
-								<input type="checkbox" id="Politica" <c:if test="${item.category=='POLITICA'}">checked</c:if> />
+								<input type="checkbox" id="Politica" name="Politica" <c:if test="${item.category=='POLITICA'}">checked</c:if> />
 								<label for="Politica">Politica</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Cronaca" <c:if test="${item.category=='CRONACA'}">checked</c:if> />
+								<input type="checkbox" id="Cronaca" name="Cronaca" <c:if test="${item.category=='CRONACA'}">checked</c:if> />
 								<label for="Cronaca">Cronaca</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Esteri" <c:if test="${item.category=='ESTERI'}">checked</c:if> />
+								<input type="checkbox" id="Esteri" name="Esteri" <c:if test="${item.category=='ESTERI'}">checked</c:if> />
 								<label for="Esteri">Esteri</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Economia" <c:if test="${item.category=='ECONOMIA'}">checked</c:if> />
+								<input type="checkbox" id="Economia" name="Economia" <c:if test="${item.category=='ECONOMIA'}">checked</c:if> />
 								<label for="Economia">Economia</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Sport" <c:if test="${item.category=='SPORT'}">checked</c:if> />
+								<input type="checkbox" id="Sport" name="Sport" <c:if test="${item.category=='SPORT'}">checked</c:if> />
 								<label for="Sport">Sport</label>
 							</div>
 							<div class="block">
-								<input type="checkbox" id="Cultura" <c:if test="${item.category=='CULTURA'}">checked</c:if> />
+								<input type="checkbox" id="Cultura" name="Cultura" <c:if test="${item.category=='CULTURA'}">checked</c:if> />
 								<label for="Cultura">Cultura</label>
 							</div>
 						</div>
