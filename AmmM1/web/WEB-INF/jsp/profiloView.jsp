@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 	<!-- HEAD START -->
-	<c:set var="title" value="Modifica Profilo" scope="request"/>
+	<c:set var="title" value="Mostra Profilo" scope="request"/>
 	<jsp:include page="/WEB-INF/jsp/inc/head.jsp"/>
 	<!-- HEAD END -->
 	<body>
