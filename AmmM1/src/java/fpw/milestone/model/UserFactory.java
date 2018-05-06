@@ -92,6 +92,10 @@ public class UserFactory {
 		// just for milestone2
 		List<User> ulist = getUsers();
 		for (User u : ulist) {
+			// guest users can't log in
+			if (u.getCategory()==fpw.milestone.model.User.Category.GUEST)
+				continue;
+			// check if username and password match
 			if (u.getUsername().equals(username)) {
 				if (u.getPassword().equals(password))
 					return u;
