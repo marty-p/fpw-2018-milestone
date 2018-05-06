@@ -48,7 +48,7 @@ and open the template in the editor.
 					<h1>Commenti</h1>
 					<c:forEach items="${comments}" var="comment">
 						<div class='clearfix'>
-							<img src='${comment.author.imageUrl}' class='shrink16px left'>
+							<img src='${comment.author.imageUrl}' alt='avatar' class='shrink16px left'>
 							<span class="newsdid"><a href='profilo.html?uid=${comment.author.id}'>${comment.author.name} ${comment.author.surname}</a>:</span>
 							<span class="newsdet">${comment.desc}</span>
 							<c:if test="${sessionScope.category=='AUTHOR' && sessionScope.id==item.author.id}">

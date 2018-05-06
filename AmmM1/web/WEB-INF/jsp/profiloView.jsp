@@ -24,6 +24,7 @@
 
 		<main id="main1" class="cornice">
 			<article class="centrato">
+				<c:if test="${updated==true && item!=null}"><p>Il profilo è stato aggiornato.</p></c:if>
 				<h1>${item.name} ${item.surname}</h1>
 				<div class="clearfix">
 					<img
@@ -37,9 +38,6 @@
 					<p class="newsdet">${item.shortBirthDate}</p>
 				</div>
 				<div class="newstxt">${item.introDesc}</div>
-				<c:if  test="${updated==true}">
-				<h3>Il profilo è stato aggiornato.</h3>
-				</c:if>
 			</article>
 		</main>
 	</body>
