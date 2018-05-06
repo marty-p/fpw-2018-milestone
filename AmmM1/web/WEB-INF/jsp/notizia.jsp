@@ -51,7 +51,6 @@ and open the template in the editor.
 							<img src='${comment.author.imageUrl}' class='shrink16px left'>
 							<span class="newsdid"><a href='profilo.html?uid=${comment.author.id}'>${comment.author.name} ${comment.author.surname}</a>:</span>
 							<span class="newsdet">${comment.desc}</span>
-							<span class="newsdet">${comment.shortDate}</span>
 							<c:if test="${sessionScope.category=='AUTHOR' && sessionScope.id==item.author.id}">
 								<a href="notizia.html?nid=${param.nid}&delcid=${comment.id}"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a>
 							</c:if>
