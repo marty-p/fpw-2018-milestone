@@ -8,11 +8,40 @@ package fpw.milestone.model;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+import java.util.EnumSet;
+import java.util.Set;
+
 /**
  *
  * @author Marty
  */
 public class News {
+
+	public News() {
+		date = new Date();
+		category = EnumSet.noneOf(Category.class);
+	}
+
+	/**
+	 * @return the category
+	 */
+	public Set<Category> getCategory() {
+		return category;
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(EnumSet<Category> category) {
+		this.category = category;
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void addCategory(Category category) {
+		this.category.add(category);
+	}
 
 	/**
 	 * @return the author
@@ -26,20 +55,6 @@ public class News {
 	 */
 	public void setAuthor(User author) {
 		this.author = author;
-	}
-
-	/**
-	 * @return the category
-	 */
-	public Category getCategory() {
-		return category;
-	}
-
-	/**
-	 * @param category the category to set
-	 */
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 	/**
@@ -158,7 +173,26 @@ public class News {
 			return cValues[id];
 		}
 	};
-	private Category category;
+	public boolean getHasPolitica() {
+		return category.contains(Category.POLITICA);
+	}
+	public boolean getHasCronaca() {
+		return category.contains(Category.CRONACA);
+	}
+	public boolean getHasEsteri() {
+		return category.contains(Category.ESTERI);
+	}
+	public boolean getHasEconomia() {
+		return category.contains(Category.ECONOMIA);
+	}
+	public boolean getHasSport() {
+		return category.contains(Category.SPORT);
+	}
+	public boolean getHasCultura() {
+		return category.contains(Category.CULTURA);
+	}
+
+	private EnumSet<Category> category; // it can have multiple values
 	private String title;
 	private String desc;
 	private String imageUrl;

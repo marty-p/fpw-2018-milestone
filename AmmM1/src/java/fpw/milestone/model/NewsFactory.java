@@ -43,7 +43,8 @@ public class NewsFactory {
 			news.setDate(df.parse("2/3/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.addCategory(fpw.milestone.model.News.Category.POLITICA);
 		news.setTitle("Autostrada A1 chiusa per neve");
 		news.setDesc("Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 		news.setImageUrl("pics/snowman.png");
@@ -57,7 +58,7 @@ public class NewsFactory {
 			news.setDate(df.parse("22/3/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.ESTERI);
+		news.addCategory(fpw.milestone.model.News.Category.ESTERI);
 		news.setTitle("title".concat(Integer.toString(id)));
 		news.setDesc("desc".concat(Integer.toString(id)));
 		news.setImageUrl("pics/snowman.png");
@@ -71,7 +72,7 @@ public class NewsFactory {
 			news.setDate(df.parse("22/4/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.ESTERI);
+		news.addCategory(fpw.milestone.model.News.Category.ESTERI);
 		news.setTitle("title".concat(Integer.toString(id)));
 		news.setDesc("desc".concat(Integer.toString(id)));
 		news.setImageUrl("pics/snowman.png");
@@ -85,7 +86,7 @@ public class NewsFactory {
 			news.setDate(df.parse("23/1/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
 		news.setTitle("I fantastici astici");
 		news.setDesc("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
 		news.setImageUrl("pics/snowman.png");
@@ -99,7 +100,7 @@ public class NewsFactory {
 			news.setDate(df.parse("25/2/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
 		news.setTitle("I castori rosicanti");
 		news.setDesc("ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK");
 		news.setImageUrl("pics/snowman.png");
@@ -113,7 +114,7 @@ public class NewsFactory {
 			news.setDate(df.parse("27/3/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.CRONACA);
+		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
 		news.setTitle("Holy moly");
 		news.setDesc("H O L Y M O L Y");
 		news.setImageUrl("pics/snowman.png");
@@ -132,7 +133,7 @@ public class NewsFactory {
 			news.setDate(df.parse("3/4/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.SPORT);
+		news.addCategory(fpw.milestone.model.News.Category.SPORT);
 		news.setTitle("Tangenziale CC chiusa per palle");
 		news.setDesc("LE PALLE CI STANNO INVADENDO");
 		news.setImageUrl("pics/palleintangenziale.png");
@@ -151,7 +152,7 @@ public class NewsFactory {
 			news.setDate(df.parse("4/5/18"));
 		} catch (ParseException e) {
 		}
-		news.setCategory(fpw.milestone.model.News.Category.CULTURA);
+		news.addCategory(fpw.milestone.model.News.Category.CULTURA);
 		news.setTitle("Festa delle feste annunciata");
 		news.setDesc("GONNA PARTY HARD");
 		news.setImageUrl("pics/partyhard.png");
@@ -203,7 +204,7 @@ public class NewsFactory {
 		List<News> newsList = this.getNews();
 		ArrayList<News> outList = new ArrayList<>();
 		for (News n : newsList) {
-			if (n.getCategory() == c)
+			if (n.getCategory().contains(c))
 				outList.add(n);
 		}
 		return outList;
