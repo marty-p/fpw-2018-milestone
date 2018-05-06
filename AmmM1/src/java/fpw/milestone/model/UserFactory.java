@@ -40,6 +40,7 @@ public class UserFactory {
 			user.setBirthDate(df.parse("1/1/2018"));
 		} catch (ParseException e) {}
 		user.setIntroDesc("introducting myself 1");
+		user.setImageUrl("pics/icon1.png");
 		list.add(user);
 
 		// pinco pallone
@@ -55,6 +56,7 @@ public class UserFactory {
 			user.setBirthDate(df.parse("2/2/2018"));
 		} catch (ParseException e) {}
 		user.setIntroDesc("introducting myself 2");
+		user.setImageUrl("pics/icon2.png");
 		list.add(user);
 
 		// pinco palloncino
@@ -70,6 +72,7 @@ public class UserFactory {
 			user.setBirthDate(df.parse("3/3/2018"));
 		} catch (ParseException e) {}
 		user.setIntroDesc("introducting myself 3");
+		user.setImageUrl("pics/icon3.png");
 		list.add(user);
 
 		return list;
