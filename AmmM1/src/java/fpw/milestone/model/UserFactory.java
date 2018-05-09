@@ -33,19 +33,22 @@ public class UserFactory {
 		ArrayList<User> list = new ArrayList<>();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
 		try {
-			Connection conn = DbConnection.getInstance().Connect();
-			String query = "select * from users;";
-			PreparedStatement stmt = conn.prepareStatement(query);
-            ResultSet res = stmt.executeQuery();
-            if (res.next()) {
+			conn = DbHelper.getInstance().connect();
+			String query = "select * from users";
+			stmt = conn.prepareStatement(query);
+            res = stmt.executeQuery();
+            while (res.next()) {
 				User user = new User();
 				user.setId(res.getInt("id"));
 				user.setName(res.getString("name"));
 				user.setSurname(res.getString("surname"));
 				user.setUsername(res.getString("username"));
 				user.setPassword(res.getString("password"));
-				user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+				user.setCategory(fpw.milestone.model.User.Category.valueOf(res.getString("category")));
 				// extra fields
 				try {
 					user.setBirthDate(df.parse(res.getString("birthDate")));
@@ -55,7 +58,9 @@ public class UserFactory {
 				list.add(user);
 			}
 		} catch (SQLException ex) {
-			Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
 		}
 
 		return list;

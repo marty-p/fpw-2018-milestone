@@ -152,7 +152,22 @@ public class User {
 		this.category = category;
 	}
 
-	public enum Category { AUTHOR, READER, GUEST };
+	public enum Category {
+		AUTHOR, READER, GUEST;
+		// static cached way to convert int to enum
+		static Category[] cValues = null;
+		static public Category fromInteger(int id) {
+			// cache values once
+			if (cValues == null) {
+				cValues = Category.values();
+			}
+			// check out of bound
+			if (id >= cValues.length)
+				return cValues[0];
+			// return the cached elem by id
+			return cValues[id];
+		}
+	};
 	private String name;
 	private String surname;
 	private String username;

@@ -168,7 +168,7 @@ public class News {
 			}
 			// check out of bound
 			if (id >= cValues.length)
-				return POLITICA;
+				return cValues[0];
 			// return the cached elem by id
 			return cValues[id];
 		}
