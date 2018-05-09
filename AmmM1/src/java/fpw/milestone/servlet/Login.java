@@ -69,6 +69,7 @@ public class Login extends HttpServlet {
 		// Nel caso l’utente non sia autenticato, deve mostrare il form di login e verificare username e password nel caso siano inviate tramite il form
 		if (session.getAttribute("loggedIn") == null || !session.getAttribute("loggedIn").equals(true)) {
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+			return;
 		}
 
 		// Nel caso l’utente sia già stato autenticato (durante la gestione della richiesta corrente o ad una precedente)

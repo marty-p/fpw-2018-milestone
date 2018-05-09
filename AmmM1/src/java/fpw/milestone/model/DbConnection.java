@@ -8,9 +8,6 @@ package fpw.milestone.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
 import java.sql.SQLException;
 
 /**
@@ -25,19 +22,33 @@ public class DbConnection {
 		return singleton;
 	}
 
-	private Connection conn;
-	public DbConnection() {
-		String hostname = "jdbc:mysql://ec2-52-47-198-123.eu-west-3.compute.amazonaws.com:443/fpw18_pinnamartino";
-		String username = "fpw18_pinnamartino";
-		String password = "marty-p";
-		Connect(hostname, username, password);
+	/**
+	 * @return the conn
+	 */
+	public Connection getConn() {
+		return conn;
 	}
 
-	public void Connect(String hostname, String username, String password) {
-		try {
-			conn = DriverManager.getConnection(hostname, username, password);
-		} catch (SQLException ex) {
-			Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
-		}
+	/**
+	 * @param conn the conn to set
+	 */
+	public void setConn(Connection conn) {
+		this.conn = conn;
 	}
+
+	public Connection Connect() throws SQLException {
+		if (getConn()==null) {
+			String hostname = "jdbc:mysql://ec2-52-47-198-123.eu-west-3.compute.amazonaws.com:443/fpw18_pinnamartino";
+			String username = "fpw18_pinnamartino";
+			String password = "marty-p";
+			Connect(hostname, username, password);
+		}
+		return getConn();
+	}
+
+	public void Connect(String hostname, String username, String password) throws SQLException {
+		setConn(DriverManager.getConnection(hostname, username, password));
+	}
+
+	private Connection conn;
 }

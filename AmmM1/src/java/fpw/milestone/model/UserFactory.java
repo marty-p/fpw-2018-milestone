@@ -10,6 +10,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Marty
@@ -23,57 +30,33 @@ public class UserFactory {
 	}
 
 	public List<User> getUsers() {
-		// just for milestone2 (list of users)
 		ArrayList<User> list = new ArrayList<>();
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-		// pinco pallino
-		User user = new User();
-		user.setId(1);
-		user.setName("Pinco");
-		user.setSurname("Pallino");
-		user.setUsername("pp1");
-		user.setPassword("111");
-		user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
-		// extra fields
 		try {
-			user.setBirthDate(df.parse("1/1/2018"));
-		} catch (ParseException e) {}
-		user.setIntroDesc("introducting myself 1");
-		user.setImageUrl("pics/icon1.png");
-		list.add(user);
-
-		// pinco pallone
-		user = new User();
-		user.setId(2);
-		user.setName("Pinco");
-		user.setSurname("Pallone");
-		user.setUsername("pp2");
-		user.setPassword("222");
-		user.setCategory(fpw.milestone.model.User.Category.READER);
-		// extra fields
-		try {
-			user.setBirthDate(df.parse("2/2/2018"));
-		} catch (ParseException e) {}
-		user.setIntroDesc("introducting myself 2");
-		user.setImageUrl("pics/icon2.png");
-		list.add(user);
-
-		// pinco palloncino
-		user = new User();
-		user.setId(3);
-		user.setName("Pinco");
-		user.setSurname("Palloncino");
-		user.setUsername("pp3");
-		user.setPassword("333");
-		user.setCategory(fpw.milestone.model.User.Category.GUEST);
-		// extra fields
-		try {
-			user.setBirthDate(df.parse("3/3/2018"));
-		} catch (ParseException e) {}
-		user.setIntroDesc("introducting myself 3");
-		user.setImageUrl("pics/icon3.png");
-		list.add(user);
+			Connection conn = DbConnection.getInstance().Connect();
+			String query = "select * from users;";
+			PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet res = stmt.executeQuery();
+            if (res.next()) {
+				User user = new User();
+				user.setId(res.getInt("id"));
+				user.setName(res.getString("name"));
+				user.setSurname(res.getString("surname"));
+				user.setUsername(res.getString("username"));
+				user.setPassword(res.getString("password"));
+				user.setCategory(fpw.milestone.model.User.Category.AUTHOR);
+				// extra fields
+				try {
+					user.setBirthDate(df.parse(res.getString("birthDate")));
+				} catch (ParseException e) {}
+				user.setIntroDesc(res.getString("introDesc"));
+				user.setImageUrl(res.getString("imageUrl"));
+				list.add(user);
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
 		return list;
 	}
