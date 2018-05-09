@@ -43,7 +43,7 @@ create table comments(
 	`newsId` bigint unsigned,
 	foreign key(`newsId`) references `news`(`id`)
 		on update cascade
-		/*on delete cascade,*/
+		/*on delete cascade*/,
 	`desc` varchar(200),
 	`date` date,
 	`authorId` bigint unsigned,
