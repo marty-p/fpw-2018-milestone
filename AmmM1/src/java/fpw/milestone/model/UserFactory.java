@@ -31,7 +31,6 @@ public class UserFactory {
 
 	public List<User> getUsers() {
 		ArrayList<User> list = new ArrayList<>();
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -48,11 +47,9 @@ public class UserFactory {
 				user.setSurname(res.getString("surname"));
 				user.setUsername(res.getString("username"));
 				user.setPassword(res.getString("password"));
-				user.setCategory(fpw.milestone.model.User.Category.valueOf(res.getString("category")));
+				user.setCategory(res.getString("category"));
 				// extra fields
-				try {
-					user.setBirthDate(df.parse(res.getString("birthDate")));
-				} catch (ParseException e) {}
+				user.setBirthDate(res.getDate("birthDate"));
 				user.setIntroDesc(res.getString("introDesc"));
 				user.setImageUrl(res.getString("imageUrl"));
 				list.add(user);

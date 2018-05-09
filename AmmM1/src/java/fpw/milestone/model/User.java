@@ -152,6 +152,10 @@ public class User {
 		this.category = category;
 	}
 
+	public void setCategory(String category) {
+		this.category = Category.valueOf(category);
+	}
+
 	public enum Category {
 		AUTHOR, READER, GUEST;
 		// static cached way to convert int to enum
