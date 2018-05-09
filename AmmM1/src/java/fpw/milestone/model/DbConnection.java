@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,7 +43,12 @@ public class DbConnection {
 			String hostname = "jdbc:mysql://ec2-52-47-198-123.eu-west-3.compute.amazonaws.com:443/fpw18_pinnamartino";
 			String username = "fpw18_pinnamartino";
 			String password = "marty-p";
-			Connect(hostname, username, password);
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connect(hostname, username, password);
+			} catch (ClassNotFoundException ex) {
+				Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+			}
 		}
 		return getConn();
 	}
