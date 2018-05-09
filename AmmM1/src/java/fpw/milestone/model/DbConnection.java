@@ -43,18 +43,18 @@ public class DbConnection {
 			String hostname = "jdbc:mysql://ec2-52-47-198-123.eu-west-3.compute.amazonaws.com:443/fpw18_pinnamartino";
 			String username = "fpw18_pinnamartino";
 			String password = "marty-p";
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				Connect(hostname, username, password);
-			} catch (ClassNotFoundException ex) {
-				Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
-			}
+			Connect(hostname, username, password);
 		}
 		return getConn();
 	}
 
 	public void Connect(String hostname, String username, String password) throws SQLException {
-		setConn(DriverManager.getConnection(hostname, username, password));
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			setConn(DriverManager.getConnection(hostname, username, password));
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 
 	private Connection conn;
