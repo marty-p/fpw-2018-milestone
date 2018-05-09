@@ -39,6 +39,7 @@ public class UserFactory {
 			conn = DbHelper.getInstance().connect();
 			String query = "select * from users";
 			stmt = conn.prepareStatement(query);
+
             res = stmt.executeQuery();
             while (res.next()) {
 				User user = new User();
@@ -64,28 +65,71 @@ public class UserFactory {
 	}
 
 	public User getUserById(int id) {
-		// just for milestone2 (list of news)
-		List<User> userList = this.getUsers();
-		for (User u : userList) {
-			if (u.getId() == id)
-				return u;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select * from users where id = ?";
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, id);
+
+            res = stmt.executeQuery();
+            if (res.next()) {
+				User user = new User();
+				user.setId(res.getInt("id"));
+				user.setName(res.getString("name"));
+				user.setSurname(res.getString("surname"));
+				user.setUsername(res.getString("username"));
+				user.setPassword(res.getString("password"));
+				user.setCategory(res.getString("category"));
+				// extra fields
+				user.setBirthDate(res.getDate("birthDate"));
+				user.setIntroDesc(res.getString("introDesc"));
+				user.setImageUrl(res.getString("imageUrl"));
+				return user;
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
 		}
+
 		return null;
 	}
 
 	public User ProcessLogin(String username, String password) {
-		// just for milestone2
-		List<User> ulist = getUsers();
-		for (User u : ulist) {
-			// guest users can't log in
-			if (u.getCategory()==fpw.milestone.model.User.Category.GUEST)
-				continue;
-			// check if username and password match
-			if (u.getUsername().equals(username)) {
-				if (u.getPassword().equals(password))
-					return u;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select * from users where username = ? and password = ?";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+
+            res = stmt.executeQuery();
+            if (res.next()) {
+				User user = new User();
+				user.setId(res.getInt("id"));
+				user.setName(res.getString("name"));
+				user.setSurname(res.getString("surname"));
+				user.setUsername(res.getString("username"));
+				user.setPassword(res.getString("password"));
+				user.setCategory(res.getString("category"));
+				// extra fields
+				user.setBirthDate(res.getDate("birthDate"));
+				user.setIntroDesc(res.getString("introDesc"));
+				user.setImageUrl(res.getString("imageUrl"));
+				return user;
 			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
 		}
+
 		return null;
 	}
 }
