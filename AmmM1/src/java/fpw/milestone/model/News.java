@@ -44,6 +44,14 @@ public class News {
 	}
 
 	/**
+	 * @param category the category to set
+	 */
+	public void addCategory(String category) {
+		for (String elem : category.split(","))
+			this.category.add(Category.valueOf(elem.trim()));
+	}
+
+	/**
 	 * @return the author
 	 */
 	public User getAuthor() {
@@ -158,6 +166,12 @@ public class News {
 
 	public enum Category {
 		POLITICA, CRONACA, ESTERI, ECONOMIA, SPORT, CULTURA;
+
+		@Override
+		public String toString() {
+			String n = name();
+			return n.length() == 0 ? n : n.substring(0, 1).toUpperCase() + n.substring(1).toLowerCase();
+		}
 
 		// static cached way to convert int to enum
 		static Category[] cValues = null;

@@ -158,6 +158,13 @@ public class User {
 
 	public enum Category {
 		AUTHOR, READER, GUEST;
+
+		@Override
+		public String toString() {
+			String n = name();
+			return n.length() == 0 ? n : n.substring(0, 1).toUpperCase() + n.substring(1).toLowerCase();
+		}
+
 		// static cached way to convert int to enum
 		static Category[] cValues = null;
 		static public Category fromInteger(int id) {

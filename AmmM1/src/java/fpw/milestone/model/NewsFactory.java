@@ -5,13 +5,14 @@
  */
 package fpw.milestone.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,147 +27,41 @@ public class NewsFactory {
 	}
 
 	public List<News> getNews() {
-		// just for milestone2 (list of news)
 		ArrayList<News> list = new ArrayList<>();
-		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 
-		int id = 0;
-		// pinco pallino news
-		User user = new User(); // only id, name, surname
-		user.setId(1);
-		user.setName("Pinco");
-		user.setSurname("Pallino");
-		News news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
 		try {
-			news.setDate(df.parse("2/3/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
-		news.addCategory(fpw.milestone.model.News.Category.POLITICA);
-		news.setTitle("Autostrada A1 chiusa per neve");
-		news.setDesc("Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("Pupazzi in autostrada");
-		list.add(news);
+			conn = DbHelper.getInstance().connect();
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+					+ " from `news`, `users` where `users`.`id` = `news`.`authorId`"
+					+ " ORDER BY `date` DESC";
+			stmt = conn.prepareStatement(query);
 
-		news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
-		try {
-			news.setDate(df.parse("22/3/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.ESTERI);
-		news.setTitle("title".concat(Integer.toString(id)));
-		news.setDesc("desc".concat(Integer.toString(id)));
-		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
-		list.add(news);
-
-		news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
-		try {
-			news.setDate(df.parse("22/4/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.ESTERI);
-		news.setTitle("title".concat(Integer.toString(id)));
-		news.setDesc("desc".concat(Integer.toString(id)));
-		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
-		list.add(news);
-
-		news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
-		try {
-			news.setDate(df.parse("23/1/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
-		news.setTitle("I fantastici astici");
-		news.setDesc("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
-		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
-		list.add(news);
-
-		news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
-		try {
-			news.setDate(df.parse("25/2/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
-		news.setTitle("I castori rosicanti");
-		news.setDesc("ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK ROSIK");
-		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
-		list.add(news);
-
-		news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
-		try {
-			news.setDate(df.parse("27/3/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.CRONACA);
-		news.setTitle("Holy moly");
-		news.setDesc("H O L Y M O L Y");
-		news.setImageUrl("pics/snowman.png");
-		news.setImageDesc("imagedesc".concat(Integer.toString(id)));
-		list.add(news);
-
-		// pinco pallone news
-		user = new User(); // only id, name, surname
-		user.setId(2);
-		user.setName("Pinco");
-		user.setSurname("Pallone");
-		news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
-		try {
-			news.setDate(df.parse("3/4/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.SPORT);
-		news.setTitle("Tangenziale CC chiusa per palle");
-		news.setDesc("LE PALLE CI STANNO INVADENDO");
-		news.setImageUrl("pics/palleintangenziale.png");
-		news.setImageDesc("Palle in tangenziale");
-		list.add(news);
-
-		// pinco palloncino news
-		user = new User(); // only id, name, surname
-		user.setId(3);
-		user.setName("Pinco");
-		user.setSurname("Palloncino");
-		news = new News();
-		news.setId(++id);
-		news.setAuthor(user);
-		try {
-			news.setDate(df.parse("4/5/18"));
-		} catch (ParseException e) {
-		}
-		news.addCategory(fpw.milestone.model.News.Category.CULTURA);
-		news.setTitle("Festa delle feste annunciata");
-		news.setDesc("GONNA PARTY HARD");
-		news.setImageUrl("pics/partyhard.png");
-		news.setImageDesc("Party Hard");
-		list.add(news);
-
-		// sort the list by desc date
-		Collections.sort(list, new Comparator<News>() {
-			@Override
-			public int compare(News a, News b)
-			{
-				return -a.getDate().compareTo(b.getDate());
+            res = stmt.executeQuery();
+            while (res.next()) {
+				User user = new User();
+				user.setId(res.getInt("uid"));
+				user.setName(res.getString("uname"));
+				user.setSurname(res.getString("usurname"));
+				News news = new News();
+				news.setId(res.getInt("id"));
+				news.setAuthor(user);
+				news.setDate(res.getDate("date"));
+				news.setTitle(res.getString("title"));
+				news.setDesc(res.getString("desc"));
+				news.setImageUrl(res.getString("imageUrl"));
+				news.setImageDesc(res.getString("imageDesc"));
+				news.addCategory(res.getString("category"));
+				list.add(news);
 			}
-		});
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+
 		return list;
 	}
 
