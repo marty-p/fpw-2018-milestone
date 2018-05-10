@@ -54,19 +54,19 @@ public class DbHelper {
 		}
 	}
 
-	public void close(PreparedStatement ps) {
-		if (ps != null) {
+	public void close(PreparedStatement stmt) {
+		if (stmt != null) {
 			try {
-				ps.close();
+				stmt.close();
 			} catch (SQLException e) {
 			}
 		}
 	}
 
-	public void close(ResultSet rs) {
-		if (rs != null) {
+	public void close(ResultSet res) {
+		if (res != null) {
 			try {
-				rs.close();
+				res.close();
 			} catch (SQLException e) {
 			}
 		}

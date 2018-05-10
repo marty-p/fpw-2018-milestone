@@ -9,13 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.text.ParseException;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -76,14 +71,31 @@ public class CommentFactory {
 	}
 
 	public List<Comment> getCommentsByNewsId(int newsId) {
-		// just for milestone2 (list of comments)
-		List<Comment> commentsList = this.getComments();
-		ArrayList<Comment> outList = new ArrayList<>();
-		for (Comment c : commentsList) {
-			if (c.getNewsId() == newsId)
-				outList.add(c);
+		ArrayList<Comment> list = new ArrayList<>();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select `comments`.*, `users`.`id` as `uid`,"
+					+" `users`.`name` as `uName`, `users`.`surname` as `uSurname`, `users`.`imageUrl` as `uImageUrl`"
+					+ " from `comments`, `users` where `users`.`id` = `comments`.`authorId` and `comments`.`newsId` = ?"
+					+ " order by `date` desc";
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, newsId);
+
+            res = stmt.executeQuery();
+            while (res.next()) {
+				list.add(processRow(res));
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
 		}
-		return outList;
+
+		return list;
 	}
 
 }
