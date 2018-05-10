@@ -25,9 +25,9 @@
 				<h3 class="centrato hide-on-med-and-down">Autori</h3>
 				<a href="#autori" class="hide-on-large-only">Autori</a>
 				<ul class="centrato hide-on-med-and-down">
-					<li class="icon1 underline"><a href="profilo.html?uid=1">Pinco Pallino</a></li>
-					<li class="icon2 underline"><a href="profilo.html?uid=2">Pinco Pallone</a></li>
-					<li class="icon3 underline"><a href="profilo.html?uid=3">Pinco Palloncino</a></li>
+					<c:forEach items="${authorList}" var="item" varStatus="loopStatus">
+					<li class="icon1 underline"><a href="profilo.html?uid=${item.id}">${item.name} ${item.surname}</a></li>
+					</c:forEach>
 				</ul>
 			</section>
 		</aside>

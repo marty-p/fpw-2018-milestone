@@ -6,6 +6,8 @@
 package fpw.milestone.servlet;
 
 import fpw.milestone.model.News;
+import fpw.milestone.model.User;
+import fpw.milestone.model.UserFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +34,7 @@ public abstract class PageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setAttribute("newsCategories", News.Category.getValues());
+		request.setAttribute("authorList", UserFactory.getInstance().getUsersByCategory(User.Category.AUTHOR));
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -90,6 +90,31 @@ public class UserFactory {
 		return null;
 	}
 
+	public List<User> getUsersByCategory(User.Category category) {
+		ArrayList<User> list = new ArrayList<>();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select * from users where category = ?";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, category.name());
+
+            res = stmt.executeQuery();
+            if (res.next()) {
+				list.add(processRow(res));
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+
+		return list;
+	}
+
 	public User ProcessLogin(String username, String password) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
