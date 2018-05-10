@@ -6,6 +6,7 @@
 package fpw.milestone.servlet;
 
 import fpw.milestone.model.NewsFactory;
+import fpw.milestone.model.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +40,7 @@ public class NewArticle extends HttpServlet {
 				|| session.getAttribute("loggedIn") == null
 				|| !session.getAttribute("loggedIn").equals(true)
 				|| session.getAttribute("category") == null
-				|| !session.getAttribute("category").toString().toUpperCase().equals("AUTHOR")) {
+				|| !((User.Category)session.getAttribute("category")).equals(User.Category.AUTHOR)) {
 			response.sendError(response.SC_UNAUTHORIZED, "Solo gli Autori possono accedere a questa pagina.");
 			return;
 		}
