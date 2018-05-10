@@ -60,7 +60,7 @@ public class Profilo extends PageServlet {
 				// force logout
 				session.invalidate();
 				// redirect to homepage
-				response.sendRedirect("notizie.html");
+				response.sendRedirect(".");
 				return;
 			}
 		}
