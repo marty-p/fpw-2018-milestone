@@ -4,6 +4,7 @@
     Author     : Marty
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 		<aside id="aside1" class="cornice">
 			<section id="cerca" class="cornice intpad1">
@@ -15,12 +16,9 @@
 				<a href="#categorie" class="hide-on-large-only">Categorie</a>
 				<ul class="centrato hide-on-med-and-down">
 					<li><a href="notizie.html">Tutte</a></li>
-					<li><a href="notizie.html?cid=0">Politica</a></li>
-					<li><a href="notizie.html?cid=1">Cronaca</a></li>
-					<li><a href="notizie.html?cid=2">Esteri</a></li>
-					<li><a href="notizie.html?cid=3">Economia</a></li>
-					<li><a href="notizie.html?cid=4">Sport</a></li>
-					<li><a href="notizie.html?cid=5">Cultura</a></li>
+					<c:forEach items="${newsCategories}" var="item" varStatus="loopStatus">
+					<li><a href="notizie.html?cid=${loopStatus.index}">${item.name}</a></li>
+					</c:forEach>
 				</ul>
 			</section>
 			<section id="autori" class="cornice">

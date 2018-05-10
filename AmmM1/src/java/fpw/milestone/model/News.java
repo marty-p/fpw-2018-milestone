@@ -169,22 +169,20 @@ public class News {
 
 		@Override
 		public String toString() {
+			return getName();
+		}
+		public String getName() {
 			String n = name();
 			return n.length() == 0 ? n : n.substring(0, 1).toUpperCase() + n.substring(1).toLowerCase();
 		}
 
 		// static cached way to convert int to enum
-		static Category[] cValues = null;
+		static private Category[] cachedValues = Category.values();
+		static public Category[] getValues() {
+			return cachedValues;
+		}
 		static public Category fromInteger(int id) {
-			// cache values once
-			if (cValues == null) {
-				cValues = Category.values();
-			}
-			// check out of bound
-			if (id >= cValues.length)
-				return cValues[0];
-			// return the cached elem by id
-			return cValues[id];
+			return (id >= cachedValues.length) ? cachedValues[0] : cachedValues[id];
 		}
 	};
 	public boolean getHasPolitica() {
