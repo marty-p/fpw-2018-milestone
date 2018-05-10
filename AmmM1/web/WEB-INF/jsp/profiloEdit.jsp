@@ -74,9 +74,7 @@
 					<!-- Utilizzate i tipi di input corretti. -->
 					<input type="submit" class="block form-hori" value="Aggiorna"/>
 				</form>
-				<c:if test="${sessionScope.category=='READER'}">
 				<p>Mi sono stancato, <a href='profilo.html?deluid=${sessionScope.id}'>Cancella il profilo</a></p>
-				</c:if>
 			</article>
 		</main>
 	</body>
