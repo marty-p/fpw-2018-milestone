@@ -26,6 +26,23 @@ public class UserFactory {
 		return singleton;
 	}
 
+	public User processRow(ResultSet res) throws SQLException {
+		if (res==null)
+			return null;
+		User user = new User();
+		user.setId(res.getInt("id"));
+		user.setName(res.getString("name"));
+		user.setSurname(res.getString("surname"));
+		user.setUsername(res.getString("username"));
+		user.setPassword(res.getString("password"));
+		user.setCategory(res.getString("category"));
+		// extra fields
+		user.setBirthDate(res.getDate("birthDate"));
+		user.setIntroDesc(res.getString("introDesc"));
+		user.setImageUrl(res.getString("imageUrl"));
+		return user;
+	}
+
 	public List<User> getUsers() {
 		ArrayList<User> list = new ArrayList<>();
 
@@ -39,18 +56,7 @@ public class UserFactory {
 
             res = stmt.executeQuery();
             while (res.next()) {
-				User user = new User();
-				user.setId(res.getInt("id"));
-				user.setName(res.getString("name"));
-				user.setSurname(res.getString("surname"));
-				user.setUsername(res.getString("username"));
-				user.setPassword(res.getString("password"));
-				user.setCategory(res.getString("category"));
-				// extra fields
-				user.setBirthDate(res.getDate("birthDate"));
-				user.setIntroDesc(res.getString("introDesc"));
-				user.setImageUrl(res.getString("imageUrl"));
-				list.add(user);
+				list.add(processRow(res));
 			}
 		} catch (SQLException ex) {
 			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,18 +79,7 @@ public class UserFactory {
 
             res = stmt.executeQuery();
             if (res.next()) {
-				User user = new User();
-				user.setId(res.getInt("id"));
-				user.setName(res.getString("name"));
-				user.setSurname(res.getString("surname"));
-				user.setUsername(res.getString("username"));
-				user.setPassword(res.getString("password"));
-				user.setCategory(res.getString("category"));
-				// extra fields
-				user.setBirthDate(res.getDate("birthDate"));
-				user.setIntroDesc(res.getString("introDesc"));
-				user.setImageUrl(res.getString("imageUrl"));
-				return user;
+				return processRow(res);
 			}
 		} catch (SQLException ex) {
 			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,18 +103,7 @@ public class UserFactory {
 
             res = stmt.executeQuery();
             if (res.next()) {
-				User user = new User();
-				user.setId(res.getInt("id"));
-				user.setName(res.getString("name"));
-				user.setSurname(res.getString("surname"));
-				user.setUsername(res.getString("username"));
-				user.setPassword(res.getString("password"));
-				user.setCategory(res.getString("category"));
-				// extra fields
-				user.setBirthDate(res.getDate("birthDate"));
-				user.setIntroDesc(res.getString("introDesc"));
-				user.setImageUrl(res.getString("imageUrl"));
-				return user;
+				return processRow(res);
 			}
 		} catch (SQLException ex) {
 			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);

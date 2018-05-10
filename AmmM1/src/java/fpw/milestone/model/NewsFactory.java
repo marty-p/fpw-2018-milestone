@@ -27,10 +27,8 @@ public class NewsFactory {
 	}
 
 	public News processRow(ResultSet res) throws SQLException {
-		if (res==null) {
+		if (res==null)
 			return null;
-		}
-
 		User user = new User();
 		user.setId(res.getInt("uid"));
 		user.setName(res.getString("uname"));
