@@ -48,13 +48,8 @@ public class Profilo extends PageServlet {
 
 		// if uid (user id) is specified, view user's id's profile
 		if (request.getParameter("uid") != null) {
-			int uid = 0;
-			try {
-				uid = Integer.parseInt(request.getParameter("uid"));
-			} catch (NumberFormatException e) {
-			} finally {
-				request.setAttribute("item", UserFactory.getInstance().getUserById(uid));
-			}
+			int uid = getIntParameter(request, "uid");;
+			request.setAttribute("item", UserFactory.getInstance().getUserById(uid));
 			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
 			return;
 		}

@@ -19,8 +19,21 @@ import javax.servlet.http.HttpServletResponse;
  * @author Marty
  */
 
-public abstract class PageServlet extends HttpServlet {
-	
+public class PageServlet extends HttpServlet {
+
+	protected int getIntParameter(HttpServletRequest request, String param) {
+		return getIntParameter(request, param, 0);
+	}
+
+	protected int getIntParameter(HttpServletRequest request, String paramName, int defaultValue) {
+		int retValue = defaultValue;
+		try {
+			retValue = Integer.parseInt(request.getParameter(paramName));
+		} catch (NumberFormatException e) {
+		}
+		return retValue;
+	}
+
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
 	 * methods.

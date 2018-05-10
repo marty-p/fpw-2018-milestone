@@ -39,14 +39,9 @@ public class Notizie extends PageServlet {
 			request.setAttribute("newsList", NewsFactory.getInstance().getNews());
 		}
 		else {
-			int cid = 0;
-			try {
-				cid = Integer.parseInt(request.getParameter("cid"));
-			} catch (NumberFormatException e) {
-			} finally {
-				request.setAttribute("newsList", NewsFactory.getInstance().getNewsByCategory(cid));
-				request.setAttribute("categoryName", fpw.milestone.model.News.Category.fromInteger(cid).name());
-			}
+			int cid = getIntParameter(request, "cid");
+			request.setAttribute("newsList", NewsFactory.getInstance().getNewsByCategory(cid));
+			request.setAttribute("categoryName", fpw.milestone.model.News.Category.fromInteger(cid).name());
 		}
 
 		request.getRequestDispatcher("/WEB-INF/jsp/notizie.jsp").forward(request, response);

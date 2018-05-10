@@ -35,17 +35,12 @@ public class NewsDetail extends PageServlet {
 		// load general content
 		super.processRequest(request, response);
 
-
-		int nid = 0;
-		try {
-			nid = Integer.parseInt(request.getParameter("nid"));
-		} catch (NumberFormatException e) {
-		} finally {
-			request.setAttribute("item", NewsFactory.getInstance().getNewsById(nid));
-			request.setAttribute("comments", CommentFactory.getInstance().getCommentsByNewsId(nid));
-			// an empty list will be displayed if item is null
-			request.getRequestDispatcher("/WEB-INF/jsp/notizia.jsp").forward(request, response);
-		}
+		// get nid parameter
+		int nid = getIntParameter(request, "nid");
+		request.setAttribute("item", NewsFactory.getInstance().getNewsById(nid));
+		request.setAttribute("comments", CommentFactory.getInstance().getCommentsByNewsId(nid));
+		// an empty list will be displayed if item is null
+		request.getRequestDispatcher("/WEB-INF/jsp/notizia.jsp").forward(request, response);
 	}
 
 }

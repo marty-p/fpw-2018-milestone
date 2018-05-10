@@ -48,13 +48,8 @@ public class NewArticle extends PageServlet {
 		}
 		// if edit GET is present, load pre-set information
 		if (request.getParameter("edit") != null) {
-			int editId = 0;
-			try {
-				editId = Integer.parseInt(request.getParameter("edit"));
-			} catch (NumberFormatException e) {
-			} finally {
-				request.setAttribute("item", NewsFactory.getInstance().getNewsById(editId));
-			}
+			int editId = getIntParameter(request, "edit");
+			request.setAttribute("item", NewsFactory.getInstance().getNewsById(editId));
 		}
 		// if POST data is sent
 		String title = request.getParameter("title");
