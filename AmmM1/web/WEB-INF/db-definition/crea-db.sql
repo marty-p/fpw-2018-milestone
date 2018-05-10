@@ -68,3 +68,8 @@ INSERT INTO `news`(`id`, `title`, `desc`, `imageUrl`, `imageDesc`, `date`, `cate
 INSERT INTO `news`(`id`, `title`, `desc`, `imageUrl`, `imageDesc`, `date`, `category`, `authorId`) VALUES (8, 'Festa delle feste annunciata', 'GONNA PARTY HARD', 'pics/partyhard.png', 'Party Hard', '2018/5/4', 'CULTURA', 3);
 
 
+INSERT INTO `comments`(`id`, `newsId`, `desc`, `date`, `authorId`) VALUES (1, 1, 'BELLO BELLO BELLO', '2018/2/1', 1);
+INSERT INTO `comments`(`id`, `newsId`, `desc`, `date`, `authorId`) VALUES (2, 8, 'QuANtO CoStANo I PaLLONcInI!?????', '2018/2/1', 1);
+INSERT INTO `comments`(`id`, `newsId`, `desc`, `date`, `authorId`) VALUES (3, 8, '(breathing intensifies)', '2018/4/4', 1);
+INSERT INTO `comments`(`id`, `newsId`, `desc`, `date`, `authorId`) VALUES (4, 8, 'DAJE CHE SE GIOKAAAA', '2018/5/5', 2);
+

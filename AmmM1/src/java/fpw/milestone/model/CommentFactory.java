@@ -5,6 +5,10 @@
  */
 package fpw.milestone.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,6 +16,8 @@ import java.util.List;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,77 +30,48 @@ public class CommentFactory {
 			singleton = new CommentFactory();
 		return singleton;
 	}
-	public List<Comment> getComments() {
-		// just for milestone2 (list of comments)
-		ArrayList<Comment> list = new ArrayList<>();
-		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 
-		int id = 0; // comment incremental id
-
-		// pinco pallino comments
-		User user = new User(); // only id, name, surname
-		user.setId(1);
-		user.setName("Pinco");
-		user.setSurname("Pallino");
-		user.setImageUrl("pics/icon1.png");
+	public Comment processRow(ResultSet res) throws SQLException {
+		if (res==null)
+			return null;
+		User user = new User();
+		user.setId(res.getInt("uid"));
+		user.setName(res.getString("uName"));
+		user.setSurname(res.getString("uSurname"));
+		user.setImageUrl(res.getString("uImageUrl"));
 		Comment comment = new Comment();
-		comment.setId(++id);
-		comment.setNewsId(1);
+		comment.setId(res.getInt("id"));
+		comment.setNewsId(res.getInt("newsId"));
 		comment.setAuthor(user);
-		try {
-			comment.setDate(df.parse("1/2/18"));
-		} catch (ParseException e) {
-		}
-		comment.setDesc("BELLO BELLO BELLO");
-		list.add(comment);
+		comment.setDate(res.getDate("date"));
+		comment.setDesc(res.getString("desc"));
+		return comment;
+	}
 
-		comment = new Comment();
-		comment.setId(++id);
-		comment.setNewsId(8);
-		comment.setAuthor(user);
-		try {
-			comment.setDate(df.parse("3/3/18"));
-		} catch (ParseException e) {
-		}
-		comment.setDesc("QuANtO CoStANo I PaLLONcInI!?????");
-		list.add(comment);
+	public List<Comment> getComments() {
+		ArrayList<Comment> list = new ArrayList<>();
 
-		comment = new Comment();
-		comment.setId(++id);
-		comment.setNewsId(8);
-		comment.setAuthor(user);
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
 		try {
-			comment.setDate(df.parse("4/4/18"));
-		} catch (ParseException e) {
-		}
-		comment.setDesc("(breathing intensifies)");
-		list.add(comment);
+			conn = DbHelper.getInstance().connect();
+			String query = "select `comments`.*, `users`.`id` as `uid`,"
+					+" `users`.`name` as `uName`, `users`.`surname` as `uSurname`, `users`.`imageUrl` as `uImageUrl`"
+					+ " from `comments`, `users` where `users`.`id` = `comments`.`authorId`"
+					+ " order by `date` desc";
+			stmt = conn.prepareStatement(query);
 
-		// pinco pallone comments
-		user = new User(); // only id, name, surname
-		user.setId(2);
-		user.setName("Pinco");
-		user.setSurname("Pallone");
-		user.setImageUrl("pics/icon2.png");
-		comment = new Comment();
-		comment.setId(++id);
-		comment.setNewsId(8);
-		comment.setAuthor(user);
-		try {
-			comment.setDate(df.parse("5/5/18"));
-		} catch (ParseException e) {
-		}
-		comment.setDesc("DAJE CHE SE GIOKAAAA");
-		list.add(comment);
-
-		// sort the list by desc date
-		Collections.sort(list, new Comparator<Comment>() {
-			@Override
-			public int compare(Comment a, Comment b)
-			{
-				return -a.getDate().compareTo(b.getDate());
+            res = stmt.executeQuery();
+            while (res.next()) {
+				list.add(processRow(res));
 			}
-		});
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+
 		return list;
 	}
 

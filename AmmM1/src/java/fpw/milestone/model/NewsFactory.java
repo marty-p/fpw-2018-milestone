@@ -31,8 +31,8 @@ public class NewsFactory {
 			return null;
 		User user = new User();
 		user.setId(res.getInt("uid"));
-		user.setName(res.getString("uname"));
-		user.setSurname(res.getString("usurname"));
+		user.setName(res.getString("uName"));
+		user.setSurname(res.getString("uSurname"));
 		News news = new News();
 		news.setId(res.getInt("id"));
 		news.setAuthor(user);
@@ -53,7 +53,7 @@ public class NewsFactory {
 		ResultSet res = null;
 		try {
 			conn = DbHelper.getInstance().connect();
-			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uName`, `users`.`surname` as `uSurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId`"
 					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
@@ -77,7 +77,7 @@ public class NewsFactory {
 		ResultSet res = null;
 		try {
 			conn = DbHelper.getInstance().connect();
-			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uName`, `users`.`surname` as `uSurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and `news`.id = ?"
 					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
@@ -108,7 +108,7 @@ public class NewsFactory {
 		ResultSet res = null;
 		try {
 			conn = DbHelper.getInstance().connect();
-			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uName`, `users`.`surname` as `uSurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and `news`.authorId = ?"
 					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
@@ -139,7 +139,7 @@ public class NewsFactory {
 		ResultSet res = null;
 		try {
 			conn = DbHelper.getInstance().connect();
-			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uName`, `users`.`surname` as `uSurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and FIND_IN_SET(?, `news`.category) > 0"
 					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
