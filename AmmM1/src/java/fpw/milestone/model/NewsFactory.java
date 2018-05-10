@@ -57,7 +57,7 @@ public class NewsFactory {
 			conn = DbHelper.getInstance().connect();
 			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId`"
-					+ " ORDER BY `date` DESC";
+					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
 
             res = stmt.executeQuery();
@@ -81,7 +81,7 @@ public class NewsFactory {
 			conn = DbHelper.getInstance().connect();
 			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and `news`.id = ?"
-					+ " ORDER BY `date` DESC";
+					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, id);
 
@@ -112,7 +112,7 @@ public class NewsFactory {
 			conn = DbHelper.getInstance().connect();
 			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and `news`.authorId = ?"
-					+ " ORDER BY `date` DESC";
+					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, id);
 
@@ -143,7 +143,7 @@ public class NewsFactory {
 			conn = DbHelper.getInstance().connect();
 			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
 					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and FIND_IN_SET(?, `news`.category) > 0"
-					+ " ORDER BY `date` DESC";
+					+ " order by `date` desc";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, c.name());
 

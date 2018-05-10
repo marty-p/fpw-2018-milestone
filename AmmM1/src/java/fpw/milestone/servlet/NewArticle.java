@@ -39,7 +39,7 @@ public class NewArticle extends HttpServlet {
 				|| session.getAttribute("loggedIn") == null
 				|| !session.getAttribute("loggedIn").equals(true)
 				|| session.getAttribute("category") == null
-				|| !session.getAttribute("category").toString().equals("AUTHOR")) {
+				|| !session.getAttribute("category").toString().toUpperCase().equals("AUTHOR")) {
 			response.sendError(response.SC_UNAUTHORIZED, "Solo gli Autori possono accedere a questa pagina.");
 			return;
 		}
