@@ -42,7 +42,12 @@ and open the template in the editor.
 						<td>${item.shortDate}</td>
 						<td><a href='notizia.html?nid=${item.id}'>${item.title}</a></td>
 						<td><a href="scriviArticolo.html?edit=${item.id}"><img class="shrink16px" src="pics/pencil.png" alt="edit"/></a></td>
-						<td><a href="#"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></a></td>
+						<td>
+							<form action="articoli.html" method="POST">
+								<input type="hidden" name="id" value="${item.id}"/>
+								<button type="submit" name="deleteme" class="btn-link right"><img class="shrink16px" src="pics/trashbin.png" alt="delete"/></button>
+							</form>
+						</td>
 					</tr>
 					</c:forEach>
 				</table>

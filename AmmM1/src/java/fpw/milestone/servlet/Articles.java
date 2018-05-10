@@ -47,8 +47,14 @@ public class Articles extends PageServlet {
 			return;
 		}
 
+		// if GET/POST deleteme is specified, delete GET/POST id article
+		if (request.getParameter("deleteme") != null) {
+			int deleteId = getIntParameter(request, "id");
+			NewsFactory.getInstance().deleteNewsById(deleteId, (Integer)session.getAttribute("id"));
+		}
+
 		request.setAttribute("articles",
-				NewsFactory.getInstance().getNewsByAuthor((Integer)session.getAttribute("id"))
+			NewsFactory.getInstance().getNewsByAuthor((Integer)session.getAttribute("id"))
 		);
 		request.getRequestDispatcher("/WEB-INF/jsp/articoli.jsp").forward(request, response);
 	}

@@ -157,4 +157,24 @@ public class NewsFactory {
 
 		return list;
 	}
+
+	public boolean deleteNewsById(int id, int authorId) {
+		boolean success = false;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			stmt = conn.prepareStatement("delete from `news` where `id` = ? and `authorId` = ?");
+			stmt.setInt(1, id);
+			stmt.setInt(2, authorId);
+			stmt.executeUpdate();
+			success = true;
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+		return success;
+	}
 }
