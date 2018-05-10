@@ -46,17 +46,18 @@ public class Profilo extends PageServlet {
 			return;
 		}
 
+		int userId = (int)session.getAttribute("id");
 		// if POST data is sent
 		if (request.getParameter("submit") != null) {
-			request.setAttribute("updated", true);
-			request.setAttribute("item", UserFactory.getInstance().getUserById((int)session.getAttribute("id")));
+			request.setAttribute("updated", UserFactory.getInstance().updateUserByRequest(request, userId));
+			request.setAttribute("item", UserFactory.getInstance().getUserById(userId));
 			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
 			return;
 		}
 
 		// if GET/POST deleteme is specified, delete current user and redirect
 		if (request.getParameter("deleteme") != null) {
-			if (UserFactory.getInstance().deleteUserById((int)session.getAttribute("id"))) {
+			if (UserFactory.getInstance().deleteUserById(userId)) {
 				// force logout
 				session.invalidate();
 				// redirect to homepage
@@ -67,14 +68,14 @@ public class Profilo extends PageServlet {
 
 		// if GET uid (user id) is specified, view user's id's profile
 		if (request.getParameter("uid") != null) {
-			int uid = getIntParameter(request, "uid");;
+			int uid = getIntParameter(request, "uid");
 			request.setAttribute("item", UserFactory.getInstance().getUserById(uid));
 			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
 			return;
 		}
 
 		// if nothing is done, show how to edit your profile
-		request.setAttribute("item", UserFactory.getInstance().getUserById((int)session.getAttribute("id")));
+		request.setAttribute("item", UserFactory.getInstance().getUserById(userId));
 		request.getRequestDispatcher("/WEB-INF/jsp/profiloEdit.jsp").forward(request, response);
 	}
 

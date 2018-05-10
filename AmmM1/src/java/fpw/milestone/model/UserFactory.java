@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 /**
  *
  * @author Marty
@@ -113,6 +114,51 @@ public class UserFactory {
 		}
 
 		return list;
+	}
+
+	public boolean updateUserByRequest(HttpServletRequest request, int id) {
+		boolean success = false;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+
+		// check if all the fields exist
+		if (request.getParameter("name")==null
+				|| request.getParameter("surname")==null
+				|| request.getParameter("password")==null
+				|| request.getParameter("password2")==null
+				|| request.getParameter("birthDate")==null
+				|| request.getParameter("introDesc")==null
+				|| request.getParameter("imageUrl")==null
+		)
+			return false;
+
+		// password and password2 must be the same
+		if (!request.getParameter("password").toString().equals(request.getParameter("password2").toString()))
+			return false;
+
+		try {
+			conn = DbHelper.getInstance().connect();
+			// delete all the comments by author id
+			stmt = conn.prepareStatement("UPDATE `users`"
+					+ " SET `name` = ?, `surname` = ?, `password` = ?,"
+					+ "`birthDate` = STR_TO_DATE(?, '%d/%m/%Y'), `introDesc` = ?, `imageUrl` = ?"
+					+ " WHERE `id` = ?");
+			stmt.setString(1, request.getParameter("name").toString());
+			stmt.setString(2, request.getParameter("surname").toString());
+			stmt.setString(3, request.getParameter("password").toString());
+			stmt.setString(4, request.getParameter("birthDate").toString());
+			stmt.setString(5, request.getParameter("introDesc").toString());
+			stmt.setString(6, request.getParameter("imageUrl").toString());
+			stmt.setInt(7, id);
+            stmt.executeUpdate();
+			success = true;
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+		return success;
 	}
 
 	public boolean deleteUserById(int id) {

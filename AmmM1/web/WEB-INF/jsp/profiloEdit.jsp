@@ -48,18 +48,18 @@
 					</div>
 					<div class="form-hori">
 						<!-- Data di nascita -->
-						<label class="form-hori" for="birthdate">Data di nascita</label>
-						<input class="form-hori" type="text" id="birthdate" name="birthdate" value="${item.shortBirthDate}"/>
+						<label class="form-hori" for="birthDate">Data di nascita</label>
+						<input class="form-hori" type="text" id="birthDate" name="birthDate" value="${item.shortBirthDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'avatar -->
-						<label class="form-hori" for="imageurl">URL Immagine</label>
-						<input class="form-hori" type="text" id="imageurl" name="imageurl" value="${item.imageUrl}"/>
+						<label class="form-hori" for="imageUrl">URL Immagine</label>
+						<input class="form-hori" type="text" id="imageUrl" name="imageUrl" value="${item.imageUrl}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Frase di presentazione -->
-						<label class="form-hori" for="introdesc">Frase di presentazione</label>
-						<input class="form-hori" type="text" id="introdesc" name="introdesc" value="${item.introDesc}"/>
+						<label class="form-hori" for="introDesc">Frase di presentazione</label>
+						<input class="form-hori" type="text" id="introDesc" name="introDesc" value="${item.introDesc}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Password (no autocompletamento) -->
