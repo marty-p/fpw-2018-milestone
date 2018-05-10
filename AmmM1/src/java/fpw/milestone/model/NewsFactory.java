@@ -26,6 +26,27 @@ public class NewsFactory {
 		return singleton;
 	}
 
+	public News processRow(ResultSet res) throws SQLException {
+		if (res==null) {
+			return null;
+		}
+
+		User user = new User();
+		user.setId(res.getInt("uid"));
+		user.setName(res.getString("uname"));
+		user.setSurname(res.getString("usurname"));
+		News news = new News();
+		news.setId(res.getInt("id"));
+		news.setAuthor(user);
+		news.setDate(res.getDate("date"));
+		news.setTitle(res.getString("title"));
+		news.setDesc(res.getString("desc"));
+		news.setImageUrl(res.getString("imageUrl"));
+		news.setImageDesc(res.getString("imageDesc"));
+		news.addCategory(res.getString("category"));
+		return news;
+	}
+
 	public List<News> getNews() {
 		ArrayList<News> list = new ArrayList<>();
 
@@ -41,20 +62,7 @@ public class NewsFactory {
 
             res = stmt.executeQuery();
             while (res.next()) {
-				User user = new User();
-				user.setId(res.getInt("uid"));
-				user.setName(res.getString("uname"));
-				user.setSurname(res.getString("usurname"));
-				News news = new News();
-				news.setId(res.getInt("id"));
-				news.setAuthor(user);
-				news.setDate(res.getDate("date"));
-				news.setTitle(res.getString("title"));
-				news.setDesc(res.getString("desc"));
-				news.setImageUrl(res.getString("imageUrl"));
-				news.setImageDesc(res.getString("imageDesc"));
-				news.addCategory(res.getString("category"));
-				list.add(news);
+				list.add(processRow(res));
 			}
 		} catch (SQLException ex) {
 			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,12 +74,27 @@ public class NewsFactory {
 	}
 
 	public News getNewsById(int id) {
-		// just for milestone2 (list of news)
-		List<News> newsList = this.getNews();
-		for (News n : newsList) {
-			if (n.getId() == id)
-				return n;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and `news`.id = ?"
+					+ " ORDER BY `date` DESC";
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, id);
+
+            res = stmt.executeQuery();
+            if (res.next()) {
+				return processRow(res);
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
 		}
+
 		return null;
 	}
 
@@ -80,14 +103,30 @@ public class NewsFactory {
 	}
 
 	public List<News> getNewsByAuthor(int id) {
-		// just for milestone2 (list of news)
-		List<News> newsList = this.getNews();
-		ArrayList<News> outList = new ArrayList<>();
-		for (News n : newsList) {
-			if (n.getAuthor().getId() == id)
-				outList.add(n);
+		ArrayList<News> list = new ArrayList<>();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and `news`.authorId = ?"
+					+ " ORDER BY `date` DESC";
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, id);
+
+            res = stmt.executeQuery();
+            while (res.next()) {
+				list.add(processRow(res));
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
 		}
-		return outList;
+
+		return list;
 	}
 
 	public List<News> getNewsByCategory(int id) {
@@ -95,13 +134,29 @@ public class NewsFactory {
 	}
 
 	public List<News> getNewsByCategory(fpw.milestone.model.News.Category c) {
-		// just for milestone2 (list of news)
-		List<News> newsList = this.getNews();
-		ArrayList<News> outList = new ArrayList<>();
-		for (News n : newsList) {
-			if (n.getCategory().contains(c))
-				outList.add(n);
+		ArrayList<News> list = new ArrayList<>();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select `news`.*, `users`.`id` as `uid`, `users`.`name` as `uname`, `users`.`surname` as `usurname`"
+					+ " from `news`, `users` where `users`.`id` = `news`.`authorId` and FIND_IN_SET(?, `news`.category) > 0"
+					+ " ORDER BY `date` DESC";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, c.name());
+
+            res = stmt.executeQuery();
+            while (res.next()) {
+				list.add(processRow(res));
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
 		}
-		return outList;
+
+		return list;
 	}
 }
