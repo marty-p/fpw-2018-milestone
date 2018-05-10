@@ -74,7 +74,9 @@
 					<!-- Utilizzate i tipi di input corretti. -->
 					<input type="submit" name="submit" class="block form-hori" value="Aggiorna"/>
 				</form>
-				<p>Mi sono stancato, <a href='profilo.html?deleteme'>Cancella il profilo</a></p>
+				<form action="profilo.html" method="POST">
+					<p>Mi sono stancato, <button type="submit" name="deleteme" class="btn-link right">Cancella il profilo</button></p>
+				</form>				
 			</article>
 		</main>
 	</body>
