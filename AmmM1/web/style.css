@@ -198,6 +198,12 @@ table.articolo th
 	text-decoration: underline;
 }
 
+.list-unstyled
+{
+	padding-left: 0;
+	list-style: none;
+}
+
 /*position*/
 .navbar > div > a
 {

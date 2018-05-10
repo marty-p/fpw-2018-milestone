@@ -24,9 +24,12 @@
 			<section id="autori" class="cornice">
 				<h3 class="centrato hide-on-med-and-down">Autori</h3>
 				<a href="#autori" class="hide-on-large-only">Autori</a>
-				<ul class="centrato hide-on-med-and-down">
+				<ul class="centrato hide-on-med-and-down list-unstyled">
 					<c:forEach items="${authorList}" var="item" varStatus="loopStatus">
-					<li class="icon1 underline"><a href="profilo.html?uid=${item.id}">${item.name} ${item.surname}</a></li>
+						<li class="underline">
+							<img src="${item.imageUrl}" alt="avatar"></img>
+							<a href="profilo.html?uid=${item.id}">${item.name} ${item.surname}</a>
+						</li>
 					</c:forEach>
 				</ul>
 			</section>
