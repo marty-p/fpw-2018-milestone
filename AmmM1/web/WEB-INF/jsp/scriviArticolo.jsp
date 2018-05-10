@@ -97,7 +97,7 @@ and open the template in the editor.
 						</div>
 					</div>
 					<!-- Utilizzate i tipi di input corretti. -->
-					<input type="submit" class="block form-hori" value="Salva"/>
+					<input type="submit" name="submit" class="block form-hori" value="Salva"/>
 				</form>
 			</article>
 		</main>

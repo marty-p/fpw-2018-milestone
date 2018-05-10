@@ -46,18 +46,20 @@ public class NewArticle extends PageServlet {
 			response.sendError(response.SC_UNAUTHORIZED, "Solo gli Autori possono accedere a questa pagina.");
 			return;
 		}
-		// if edit GET is present, load pre-set information
+
+		// if GET edit is present, load pre-set information
 		if (request.getParameter("edit") != null) {
 			int editId = getIntParameter(request, "edit");
 			request.setAttribute("item", NewsFactory.getInstance().getNewsById(editId));
 		}
+
 		// if POST data is sent
-		String title = request.getParameter("title");
-		if (title != null) {
+		if (request.getParameter("submit") != null) {
 			request.setAttribute("updated", true);
 			// it may require a redirect to ?edit=newid and use setAttribute item in milestone3
 			// in case a new article has been inserted
 		}
+
 		request.getRequestDispatcher("/WEB-INF/jsp/scriviArticolo.jsp").forward(request, response);
 	}
 

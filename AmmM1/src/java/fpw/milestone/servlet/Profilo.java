@@ -46,7 +46,7 @@ public class Profilo extends PageServlet {
 			return;
 		}
 
-		// if uid (user id) is specified, view user's id's profile
+		// if GET uid (user id) is specified, view user's id's profile
 		if (request.getParameter("uid") != null) {
 			int uid = getIntParameter(request, "uid");;
 			request.setAttribute("item", UserFactory.getInstance().getUserById(uid));
@@ -56,8 +56,7 @@ public class Profilo extends PageServlet {
 
 		request.setAttribute("item", UserFactory.getInstance().getUserById((int)session.getAttribute("id")));
 		// if POST data is sent
-		String password = request.getParameter("password");
-		if (password != null) {
+		if (request.getParameter("submit") != null) {
 			request.setAttribute("updated", true);
 			request.getRequestDispatcher("/WEB-INF/jsp/profiloView.jsp").forward(request, response);
 			return;

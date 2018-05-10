@@ -35,7 +35,7 @@ public class NewsDetail extends PageServlet {
 		// load general content
 		super.processRequest(request, response);
 
-		// get nid parameter
+		// GET nid parameter
 		int nid = getIntParameter(request, "nid");
 		request.setAttribute("item", NewsFactory.getInstance().getNewsById(nid));
 		request.setAttribute("comments", CommentFactory.getInstance().getCommentsByNewsId(nid));

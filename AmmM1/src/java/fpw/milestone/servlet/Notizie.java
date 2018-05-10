@@ -34,14 +34,14 @@ public class Notizie extends PageServlet {
 		// load general content
 		super.processRequest(request, response);
 
-		// if cid (category id) is specified, process by category instead of all
-		if (request.getParameter("cid") == null) {
-			request.setAttribute("newsList", NewsFactory.getInstance().getNews());
-		}
-		else {
+		// if GET cid (category id) is specified, process by category instead of all
+		if (request.getParameter("cid") != null) {
 			int cid = getIntParameter(request, "cid");
 			request.setAttribute("newsList", NewsFactory.getInstance().getNewsByCategory(cid));
 			request.setAttribute("categoryName", fpw.milestone.model.News.Category.fromInteger(cid).name());
+		}
+		else {
+			request.setAttribute("newsList", NewsFactory.getInstance().getNews());
 		}
 
 		request.getRequestDispatcher("/WEB-INF/jsp/notizie.jsp").forward(request, response);

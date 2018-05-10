@@ -42,7 +42,7 @@ and open the template in the editor.
 						<input class="block form-vert" id="username" name="username" type="text" placeholder="nome utente"/>
 						<label class="block form-vert" for="password">Password</label>
 						<input class="block form-vert" id="password" name="password" type="password" placeholder="password"/>
-						<input class="block form-vert" type="submit" value="Accedi"/>
+						<input class="block form-vert" type="submit" name="submit" value="Accedi"/>
 					</form>
 				</div>
 			</article>

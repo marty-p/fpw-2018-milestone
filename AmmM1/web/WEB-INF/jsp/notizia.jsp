@@ -60,7 +60,7 @@ and open the template in the editor.
 						<div id="form1" class="cornice intpadt3">
 							<form action="notizia.html?nid=${param.nid}" method="POST">
 								<input class="block form-vert" id="commento" name="commento" type="text" placeholder="Scrivi un commento..."/>
-								<input class="block form-vert" type="submit" value="Commenta"/>
+								<input class="block form-vert" type="submit" name="submit" value="Commenta"/>
 							</form>
 						</div>
 					</c:if>

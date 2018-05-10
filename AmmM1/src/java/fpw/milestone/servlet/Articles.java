@@ -46,6 +46,7 @@ public class Articles extends PageServlet {
 			response.sendError(response.SC_UNAUTHORIZED, "Solo gli Autori possono accedere a questa pagina.");
 			return;
 		}
+
 		request.setAttribute("articles",
 				NewsFactory.getInstance().getNewsByAuthor((Integer)session.getAttribute("id"))
 		);

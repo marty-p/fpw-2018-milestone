@@ -48,22 +48,24 @@ public class Login extends PageServlet {
 		}
 
 		// Controlla se l'user stia effettuando un login
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		if (username != null && password != null) {
-			User u = UserFactory.getInstance().ProcessLogin(username, password);
-			// Se l'user è stato trovato, assegna la session
-			if (u != null) {
-				session.setAttribute("loggedIn", true);
-				session.setAttribute("id", u.getId());
-				session.setAttribute("name", u.getName());
-				session.setAttribute("surname", u.getSurname());
-				session.setAttribute("category", u.getCategory());
-			}
-			// Altrimenti, mostra la pagina di login
-			else {
-				request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-				return;
+		if (request.getParameter("submit") != null) {
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			if (username != null && password != null) {
+				User u = UserFactory.getInstance().ProcessLogin(username, password);
+				// Se l'user è stato trovato, assegna la session
+				if (u != null) {
+					session.setAttribute("loggedIn", true);
+					session.setAttribute("id", u.getId());
+					session.setAttribute("name", u.getName());
+					session.setAttribute("surname", u.getSurname());
+					session.setAttribute("category", u.getCategory());
+				}
+				// Altrimenti, mostra la pagina di login
+				else {
+					request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+					return;
+				}
 			}
 		}
 

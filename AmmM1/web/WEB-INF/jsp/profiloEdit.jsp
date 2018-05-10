@@ -72,7 +72,7 @@
 						<input class="form-hori" type="password" id="password2" name="password2"/>
 					</div>
 					<!-- Utilizzate i tipi di input corretti. -->
-					<input type="submit" class="block form-hori" value="Aggiorna"/>
+					<input type="submit" name="submit" class="block form-hori" value="Aggiorna"/>
 				</form>
 				<p>Mi sono stancato, <a href='profilo.html?deluid=${sessionScope.id}'>Cancella il profilo</a></p>
 			</article>
