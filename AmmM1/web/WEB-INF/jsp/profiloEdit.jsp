@@ -74,7 +74,7 @@
 					<!-- Utilizzate i tipi di input corretti. -->
 					<input type="submit" name="submit" class="block form-hori" value="Aggiorna"/>
 				</form>
-				<p>Mi sono stancato, <a href='profilo.html?deluid=${sessionScope.id}'>Cancella il profilo</a></p>
+				<p>Mi sono stancato, <a href='profilo.html?deleteme'>Cancella il profilo</a></p>
 			</article>
 		</main>
 	</body>
