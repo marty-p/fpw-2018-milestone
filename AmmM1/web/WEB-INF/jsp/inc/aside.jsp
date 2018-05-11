@@ -27,7 +27,7 @@
 				<ul class="centrato hide-on-med-and-down list-unstyled">
 					<c:forEach items="${authorList}" var="item" varStatus="loopStatus">
 						<li class="underline">
-							<img src="${item.imageUrl}" alt="avatar"></img>
+							<img src="${item.imageUrl}" alt="avatar"/>
 							<a href="profilo.html?uid=${item.id}">${item.name} ${item.surname}</a>
 						</li>
 					</c:forEach>
