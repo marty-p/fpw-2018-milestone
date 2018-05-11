@@ -52,7 +52,7 @@ and open the template in the editor.
 					</c:forEach>
 				</table>
 				<form action="scriviArticolo.html" method="POST">
-					<input type="submit" name="submit" class="block form-vert" value="Nuovo Articolo"/>
+					<input type="submit" class="block form-vert" value="Nuovo Articolo"/>
 				</form>
 			</article>
 		</main>

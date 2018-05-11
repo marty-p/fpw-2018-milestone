@@ -57,6 +57,8 @@ public class NewArticle extends PageServlet {
 			} else {
 				// it may require a redirect to ?edit=newid and use setAttribute item in milestone3
 				// in case a new article has been inserted
+				int editId = NewsFactory.getInstance().insertNewsByRequest(request, userId);
+				response.sendRedirect("scriviArticolo.html?edit="+editId);
 				return;
 			}
 		}

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -173,6 +174,51 @@ public class NewsFactory {
 		return fmtCategory;
 	}
 
+	public int insertNewsByRequest(HttpServletRequest request, int authorId) {
+		int success = 0;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+
+		// check if all the fields exist
+		if (request.getParameter("title")==null
+				|| request.getParameter("date")==null
+				|| request.getParameter("imageUrl")==null
+				|| request.getParameter("imageDesc")==null
+				|| request.getParameter("desc")==null
+		) {
+			Logger.getLogger(NewsFactory.class.getName()).log(Level.SEVERE, "no valid arguments for updateNewsByRequest");
+			return success;
+		}
+
+		try {
+			conn = DbHelper.getInstance().connect();
+			// prepare query
+			stmt = conn.prepareStatement("INSERT INTO `news`(`title`, `desc`,"
+					+ " `imageUrl`, `imageDesc`, `date`, `category`, `authorId`)"
+					+ "  VALUES (?, ?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?)",
+					Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, request.getParameter("title").toString());
+			stmt.setString(2, request.getParameter("desc").toString());
+			stmt.setString(3, request.getParameter("imageUrl").toString());
+			stmt.setString(4, request.getParameter("imageDesc").toString());
+			stmt.setString(5, request.getParameter("date").toString());
+			stmt.setString(6, getCategoryFromRequest(request));
+			stmt.setInt(7, authorId);
+            stmt.executeUpdate();
+			// get the generated key
+			res = stmt.getGeneratedKeys();
+			if (res.next()) {
+				success = res.getInt(1);
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+		return success;
+	}
+
 	public boolean updateNewsByRequest(HttpServletRequest request, int id, int authorId) {
 		boolean success = false;
 		Connection conn = null;
@@ -192,7 +238,7 @@ public class NewsFactory {
 
 		try {
 			conn = DbHelper.getInstance().connect();
-			// delete all the comments by author id
+			// prepare query
 			stmt = conn.prepareStatement("UPDATE `news`"
 					+ " SET `title` = ?, `desc` = ?, `imageUrl` = ?,"
 					+ " `imageDesc` = ?, `date` = STR_TO_DATE(?, '%d/%m/%Y'),"
