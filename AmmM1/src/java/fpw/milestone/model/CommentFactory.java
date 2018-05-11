@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -98,4 +99,33 @@ public class CommentFactory {
 		return list;
 	}
 
+	public int insertCommentByNewsId(String comment, int newsId, int userId) {
+		int success = 0;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+
+		try {
+			conn = DbHelper.getInstance().connect();
+			// prepare query
+			stmt = conn.prepareStatement("INSERT INTO `comments`"
+					+ " (`newsId`, `desc`, `date`, `authorId`)"
+					+ " VALUES (?, ?, NOW(), ?)",
+					Statement.RETURN_GENERATED_KEYS);
+			stmt.setInt(1, newsId);
+			stmt.setString(2, comment);
+			stmt.setInt(3, userId);
+            stmt.executeUpdate();
+			// get the generated key
+			res = stmt.getGeneratedKeys();
+			if (res.next()) {
+				success = res.getInt(1);
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+		return success;
+	}
 }

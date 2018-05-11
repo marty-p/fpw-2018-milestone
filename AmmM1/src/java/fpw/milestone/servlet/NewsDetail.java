@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,6 +38,20 @@ public class NewsDetail extends PageServlet {
 
 		// GET nid parameter
 		int nid = getIntParameter(request, "nid");
+
+		HttpSession session = request.getSession();
+		// if POST comment-submit (only after being logged in), insert comment
+		if (request.getParameter("comment-submit")!=null
+				&& request.getParameter("comment")!=null
+				&& session!=null
+				&& session.getAttribute("loggedIn")!=null
+				&& session.getAttribute("loggedIn").equals(true)) {
+			int userId = (int)session.getAttribute("id");
+			int commentId = CommentFactory.getInstance().insertCommentByNewsId(request.getParameter("comment").toString(), nid, userId);
+			request.setAttribute("updated", (commentId > 0));
+		}
+
+		// request data
 		request.setAttribute("item", NewsFactory.getInstance().getNewsById(nid));
 		request.setAttribute("comments", CommentFactory.getInstance().getCommentsByNewsId(nid));
 		// an empty list will be displayed if item is null
