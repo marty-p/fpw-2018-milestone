@@ -159,6 +159,20 @@ public class NewsFactory {
 		return list;
 	}
 
+	public String getCategoryFromRequest(HttpServletRequest request) {
+		String fmtCategory = "";
+		for (News.Category e : News.Category.getValues()) {
+			if (request.getParameter(e.name())!=null) {
+				String reqName = request.getParameter(e.name());
+				if (!fmtCategory.isEmpty())
+					fmtCategory += ",";
+				if (!reqName.isEmpty())
+					fmtCategory += reqName;
+			}
+		}
+		return fmtCategory;
+	}
+
 	public boolean updateNewsByRequest(HttpServletRequest request, int id, int authorId) {
 		boolean success = false;
 		Connection conn = null;
@@ -189,7 +203,7 @@ public class NewsFactory {
 			stmt.setString(3, request.getParameter("imageUrl").toString());
 			stmt.setString(4, request.getParameter("imageDesc").toString());
 			stmt.setString(5, request.getParameter("date").toString());
-			stmt.setString(6, "POLITICA,CRONACA");
+			stmt.setString(6, getCategoryFromRequest(request));
 			stmt.setInt(7, id);
 			stmt.setInt(8, authorId);
             stmt.executeUpdate();

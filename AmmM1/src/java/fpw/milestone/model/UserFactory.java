@@ -130,8 +130,10 @@ public class UserFactory {
 				|| request.getParameter("birthDate")==null
 				|| request.getParameter("introDesc")==null
 				|| request.getParameter("imageUrl")==null
-		)
+		) {
+			Logger.getLogger(NewsFactory.class.getName()).log(Level.SEVERE, "no valid arguments for updateUserByRequest");
 			return false;
+		}
 
 		// password and password2 must be the same
 		if (!request.getParameter("password").toString().equals(request.getParameter("password2").toString()))

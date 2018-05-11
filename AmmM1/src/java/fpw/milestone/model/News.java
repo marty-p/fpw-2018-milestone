@@ -47,8 +47,10 @@ public class News {
 	 * @param category the category to set
 	 */
 	public void addCategory(String category) {
-		for (String elem : category.split(","))
-			this.category.add(Category.valueOf(elem.trim()));
+		for (String elem : category.split(",")) {
+			if (!elem.isEmpty())
+				this.category.add(Category.valueOf(elem.trim()));
+		}
 	}
 
 	/**
