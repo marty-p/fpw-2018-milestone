@@ -5,6 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -70,30 +71,14 @@ and open the template in the editor.
 						<!-- Il testo dell'articolo -->
 						<span class="form-hori">Categoria</span>
 						<div id="categoria">
+							<c:forEach items="${newsCategories}" var="myEnum" varStatus="loopStatus">
 							<div class="block">
-								<input type="checkbox" id="Politica" name="Politica" <c:if test="${item.hasPolitica==true}">checked</c:if> />
-								<label for="Politica">Politica</label>
+								<input type="checkbox" id="${myEnum}" name="${myEnum}" value="${myEnum}"
+										<c:if test="${fn:containsIgnoreCase(item.category, myEnum.name)}">checked</c:if>
+								/>
+								<label for="${myEnum}">${myEnum.name}</label>
 							</div>
-							<div class="block">
-								<input type="checkbox" id="Cronaca" name="Cronaca" <c:if test="${item.hasCronaca==true}">checked</c:if> />
-								<label for="Cronaca">Cronaca</label>
-							</div>
-							<div class="block">
-								<input type="checkbox" id="Esteri" name="Esteri" <c:if test="${item.hasEsteri==true}">checked</c:if> />
-								<label for="Esteri">Esteri</label>
-							</div>
-							<div class="block">
-								<input type="checkbox" id="Economia" name="Economia" <c:if test="${item.hasEconomia==true}">checked</c:if> />
-								<label for="Economia">Economia</label>
-							</div>
-							<div class="block">
-								<input type="checkbox" id="Sport" name="Sport" <c:if test="${item.hasSport==true}">checked</c:if> />
-								<label for="Sport">Sport</label>
-							</div>
-							<div class="block">
-								<input type="checkbox" id="Cultura" name="Cultura" <c:if test="${item.hasCultura==true}">checked</c:if> />
-								<label for="Cultura">Cultura</label>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 					<!-- Utilizzate i tipi di input corretti. -->
