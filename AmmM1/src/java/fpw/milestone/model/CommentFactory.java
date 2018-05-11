@@ -128,4 +128,33 @@ public class CommentFactory {
 		}
 		return success;
 	}
+
+	public int deleteCommentByNewsId(String comment, int newsId, int userId, int commentId) {
+		int success = 0;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+
+		try {
+			conn = DbHelper.getInstance().connect();
+			// prepare query
+			stmt = conn.prepareStatement("delete from `comments`"
+					+ " where `id` = ? and `newsId` = ? and `authorId` = ?",
+					Statement.RETURN_GENERATED_KEYS);
+			stmt.setInt(1, commentId);
+			stmt.setInt(2, newsId);
+			stmt.setInt(3, userId);
+            stmt.executeUpdate();
+			// get the generated key
+			res = stmt.getGeneratedKeys();
+			if (res.next()) {
+				success = res.getInt(1);
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+		return success;
+	}
 }

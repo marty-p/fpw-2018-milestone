@@ -45,7 +45,7 @@ create table comments(
 		on update cascade
 		on delete cascade*/,
 	`desc` varchar(200),
-	`date` date,
+	`date` datetime,
 	`authorId` bigint unsigned/*,
 	foreign key(`authorId`) references `users`(`id`)
 		on update cascade

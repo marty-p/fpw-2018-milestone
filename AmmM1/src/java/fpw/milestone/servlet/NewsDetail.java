@@ -43,11 +43,22 @@ public class NewsDetail extends PageServlet {
 		// if POST comment-submit (only after being logged in), insert comment
 		if (request.getParameter("comment-submit")!=null
 				&& request.getParameter("comment")!=null
+				&& !request.getParameter("comment").toString().isEmpty()
 				&& session!=null
 				&& session.getAttribute("loggedIn")!=null
 				&& session.getAttribute("loggedIn").equals(true)) {
 			int userId = (int)session.getAttribute("id");
 			int commentId = CommentFactory.getInstance().insertCommentByNewsId(request.getParameter("comment").toString(), nid, userId);
+			request.setAttribute("updated", (commentId > 0));
+		}
+		// if POST comment-delete-submit (only after being logged in), delete comment
+		else if (request.getParameter("comment-delete-submit")!=null
+				&& request.getParameter("commentId")!=null
+				&& session!=null
+				&& session.getAttribute("loggedIn")!=null
+				&& session.getAttribute("loggedIn").equals(true)) {
+			int userId = (int)session.getAttribute("id");
+			int commentId = CommentFactory.getInstance().deleteCommentByNewsId(request.getParameter("commentId").toString(), nid, userId, getIntParameter(request, "commentId"));
 			request.setAttribute("updated", (commentId > 0));
 		}
 
