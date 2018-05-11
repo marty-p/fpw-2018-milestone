@@ -8,7 +8,10 @@
  * Created: 9-mag-2018
  */
 
+drop table if exists comments;
+drop table if exists news;
 drop table if exists users;
+
 create table users(
 	`id` serial primary key,
 	`name` varchar(100),
@@ -22,7 +25,6 @@ create table users(
 	`imageUrl` varchar(100)
 );
 
-drop table if exists news;
 create table news(
 	`id` serial primary key,
 	`title` varchar(100),
@@ -31,25 +33,24 @@ create table news(
 	`imageDesc` varchar(200),
 	`date` date,
 	`category` set('POLITICA','CRONACA','ESTERI','ECONOMIA','SPORT','CULTURA'),
-	`authorId` bigint unsigned/*,
+	`authorId` bigint unsigned,
 	foreign key(`authorId`) references `users`(`id`)
 		on update cascade
-		on delete cascade*/
+		/*on delete cascade*/
 );
 
-drop table if exists comments;
 create table comments(
 	`id` serial primary key,
-	`newsId` bigint unsigned/*,
+	`newsId` bigint unsigned,
 	foreign key(`newsId`) references `news`(`id`)
 		on update cascade
-		on delete cascade*/,
+		/*on delete cascade*/,
 	`desc` varchar(200),
 	`date` datetime,
-	`authorId` bigint unsigned/*,
+	`authorId` bigint unsigned,
 	foreign key(`authorId`) references `users`(`id`)
 		on update cascade
-		on delete cascade*/
+		/*on delete cascade*/
 );
 
 INSERT INTO `users`(`id`, `name`, `surname`, `username`, `password`, `category`, `birthDate`, `introDesc`, `imageUrl`) VALUES (1, 'Pinco', 'Pallino', 'pp1', '111', 'AUTHOR', '2018/1/1', 'introducting myself 1', 'pics/icon1.png');
