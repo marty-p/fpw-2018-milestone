@@ -26,7 +26,7 @@ drop table if exists news;
 create table news(
 	`id` serial primary key,
 	`title` varchar(100),
-	`desc` varchar(600),
+	`desc` varchar(300),
 	`imageUrl` varchar(100),
 	`imageDesc` varchar(200),
 	`date` date,
@@ -57,7 +57,7 @@ INSERT INTO `users`(`id`, `name`, `surname`, `username`, `password`, `category`,
 INSERT INTO `users`(`id`, `name`, `surname`, `username`, `password`, `category`, `birthDate`, `introDesc`, `imageUrl`) VALUES (3, 'Pinco', 'Palloncino', 'pp3', '333', 'GUEST', '2018/3/3', 'introducting myself 3', 'pics/icon3.png');
 
 
-INSERT INTO `news`(`id`, `title`, `desc`, `imageUrl`, `imageDesc`, `date`, `category`, `authorId`) VALUES (1, 'Autostrada A1 chiusa per neve', 'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'pics/snowman.png', 'Pupazzi in autostrada', '2018/3/2', 'POLITICA,CRONACA', 1);
+INSERT INTO `news`(`id`, `title`, `desc`, `imageUrl`, `imageDesc`, `date`, `category`, `authorId`) VALUES (1, 'Autostrada A1 chiusa per neve', 'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.', 'pics/snowman.png', 'Pupazzi in autostrada', '2018/3/2', 'POLITICA,CRONACA', 1);
 INSERT INTO `news`(`id`, `title`, `desc`, `imageUrl`, `imageDesc`, `date`, `category`, `authorId`) VALUES (2, 'title2', 'desc2', 'pics/snowman.png', 'imagedesc2', '2018/3/22', 'ESTERI', 1);
 INSERT INTO `news`(`id`, `title`, `desc`, `imageUrl`, `imageDesc`, `date`, `category`, `authorId`) VALUES (3, 'title3', 'desc3', 'pics/snowman.png', 'imagedesc3', '2018/4/22', 'ESTERI', 1);
 INSERT INTO `news`(`id`, `title`, `desc`, `imageUrl`, `imageDesc`, `date`, `category`, `authorId`) VALUES (4, 'I fantastici astici', '! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !', 'pics/snowman.png', 'imagedesc4', '2018/1/23', 'CRONACA', 1);
