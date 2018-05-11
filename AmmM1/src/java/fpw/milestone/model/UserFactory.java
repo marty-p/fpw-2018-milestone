@@ -209,7 +209,7 @@ public class UserFactory {
 		ResultSet res = null;
 		try {
 			conn = DbHelper.getInstance().connect();
-			String query = "select * from `users` where `username` = ? and `password` = ?";
+			String query = "select * from `users` where `username` = ? and `password` = ? and category <> 'GUEST'";
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
