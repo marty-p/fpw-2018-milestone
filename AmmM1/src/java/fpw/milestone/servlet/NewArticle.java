@@ -47,17 +47,24 @@ public class NewArticle extends PageServlet {
 			return;
 		}
 
+		int userId = (int)session.getAttribute("id");
+		// if POST data is sent
+		if (request.getParameter("submit") != null) {
+			// if GET edit is present, send update, otherwise insert with redirect
+			if (request.getParameter("edit") != null) {
+				int editId = getIntParameter(request, "edit");
+				request.setAttribute("updated", NewsFactory.getInstance().updateNewsByRequest(request, editId, userId));
+			} else {
+				// it may require a redirect to ?edit=newid and use setAttribute item in milestone3
+				// in case a new article has been inserted
+				return;
+			}
+		}
+
 		// if GET edit is present, load pre-set information
 		if (request.getParameter("edit") != null) {
 			int editId = getIntParameter(request, "edit");
 			request.setAttribute("item", NewsFactory.getInstance().getNewsById(editId));
-		}
-
-		// if POST data is sent
-		if (request.getParameter("submit") != null) {
-			request.setAttribute("updated", true);
-			// it may require a redirect to ?edit=newid and use setAttribute item in milestone3
-			// in case a new article has been inserted
 		}
 
 		request.getRequestDispatcher("/WEB-INF/jsp/scriviArticolo.jsp").forward(request, response);

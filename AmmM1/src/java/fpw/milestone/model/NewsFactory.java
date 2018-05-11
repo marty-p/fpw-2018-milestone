@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -156,6 +157,49 @@ public class NewsFactory {
 		}
 
 		return list;
+	}
+
+	public boolean updateNewsByRequest(HttpServletRequest request, int id, int authorId) {
+		boolean success = false;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+
+		// check if all the fields exist
+		if (request.getParameter("title")==null
+				|| request.getParameter("date")==null
+				|| request.getParameter("imageUrl")==null
+				|| request.getParameter("imageDesc")==null
+				|| request.getParameter("desc")==null
+		) {
+			Logger.getLogger(NewsFactory.class.getName()).log(Level.SEVERE, "no valid arguments for updateNewsByRequest");
+			return false;
+		}
+
+		try {
+			conn = DbHelper.getInstance().connect();
+			// delete all the comments by author id
+			stmt = conn.prepareStatement("UPDATE `news`"
+					+ " SET `title` = ?, `desc` = ?, `imageUrl` = ?,"
+					+ " `imageDesc` = ?, `date` = STR_TO_DATE(?, '%d/%m/%Y'),"
+					+ " `category` = ?"
+					+ " WHERE `id` = ? and `authorId` = ?");
+			stmt.setString(1, request.getParameter("title").toString());
+			stmt.setString(2, request.getParameter("desc").toString());
+			stmt.setString(3, request.getParameter("imageUrl").toString());
+			stmt.setString(4, request.getParameter("imageDesc").toString());
+			stmt.setString(5, request.getParameter("date").toString());
+			stmt.setString(6, "POLITICA,CRONACA");
+			stmt.setInt(7, id);
+			stmt.setInt(8, authorId);
+            stmt.executeUpdate();
+			success = true;
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+		return success;
 	}
 
 	public boolean deleteNewsById(int id, int authorId) {

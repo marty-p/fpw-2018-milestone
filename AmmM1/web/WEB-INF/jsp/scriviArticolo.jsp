@@ -49,17 +49,17 @@ and open the template in the editor.
 					<div class="form-hori">
 						<!-- La data di pubblicazione -->
 						<label class="form-hori" for="date">Data</label>
-						<input class="form-hori" type="text" id="date" value="${item.shortDate}"/>
+						<input class="form-hori" type="text" id="date" name="date" value="${item.shortDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'immagine descrittiva -->
-						<label class="form-hori" for="imageurl">Immagine</label>
-						<input class="form-hori" type="text" id="imageurl" name="imageurl" value="${item.imageUrl}"/>
+						<label class="form-hori" for="imageUrl">Immagine</label>
+						<input class="form-hori" type="text" id="imageUrl" name="imageUrl" value="${item.imageUrl}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La didascalia per l'immagine -->
-						<label class="form-hori" for="imagedesc">Didascalia</label>
-						<input class="form-hori" type="text" id="imagedesc" name="imagedesc" value="${item.imageDesc}"/>
+						<label class="form-hori" for="imageDesc">Didascalia</label>
+						<input class="form-hori" type="text" id="imageDesc" name="imageDesc" value="${item.imageDesc}"/>
 					</div>
 					<div class="form-hori">
 						<!-- Il testo dell'articolo -->
