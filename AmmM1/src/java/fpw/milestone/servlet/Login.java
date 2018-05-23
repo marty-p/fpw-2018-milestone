@@ -52,7 +52,7 @@ public class Login extends PageServlet {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			if (username != null && password != null) {
-				User u = UserFactory.getInstance().ProcessLogin(username, password);
+				User u = UserFactory.getInstance().processLogin(username, password);
 				// Se l'user è stato trovato, assegna la session
 				if (u != null) {
 					session.setAttribute("loggedIn", true);

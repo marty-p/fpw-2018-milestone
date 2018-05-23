@@ -50,7 +50,7 @@ and open the template in the editor.
 					<div class="form-hori">
 						<!-- La data di pubblicazione -->
 						<label class="form-hori" for="date">Data</label>
-						<input class="form-hori" type="text" id="date" name="date" value="${item.shortDate}"/>
+						<input class="form-hori" type="date" id="date" name="date" value="${item.inputDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'immagine descrittiva -->

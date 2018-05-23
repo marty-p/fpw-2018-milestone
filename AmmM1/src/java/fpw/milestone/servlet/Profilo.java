@@ -42,7 +42,7 @@ public class Profilo extends PageServlet {
 				|| session.getAttribute("loggedIn") == null
 				|| !session.getAttribute("loggedIn").equals(true)
 				|| session.getAttribute("id") == null) {
-			response.sendError(response.SC_UNAUTHORIZED, "Solo chi si logga può accedere a questa pagina.");
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Solo chi si logga può accedere a questa pagina.");
 			return;
 		}
 

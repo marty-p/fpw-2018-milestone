@@ -141,8 +141,14 @@ public class News {
 	 * @return the date as dd/MM/yy
 	 */
 	public String getShortDate() {
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
-		return df.format(date);
+		return new SimpleDateFormat("dd/MM/yy").format(date);
+	}
+
+	/**
+	 * @return the date as yyyy-MM-dd
+	 */
+	public String getInputDate() {
+		return new SimpleDateFormat("yyyy-MM-dd").format(date);
 	}
 
 	/**
@@ -173,35 +179,81 @@ public class News {
 		public String toString() {
 			return getName();
 		}
+
+		/**
+		 *
+		 * @return
+		 */
 		public String getName() {
 			String n = name();
 			return n.length() == 0 ? n : n.substring(0, 1).toUpperCase() + n.substring(1).toLowerCase();
 		}
 
 		// static cached way to convert int to enum
-		static private Category[] cachedValues = Category.values();
+		private static final Category[] cachedValues = Category.values();
+
+		/**
+		 *
+		 * @return
+		 */
 		static public Category[] getValues() {
 			return cachedValues;
 		}
+
+		/**
+		 *
+		 * @param id
+		 * @return
+		 */
 		static public Category fromInteger(int id) {
 			return (id >= cachedValues.length) ? cachedValues[0] : cachedValues[id];
 		}
 	};
+
+	/**
+	 *
+	 * @return
+	 */
 	public boolean getHasPolitica() {
 		return category.contains(Category.POLITICA);
 	}
+
+	/**
+	 *
+	 * @return
+	 */
 	public boolean getHasCronaca() {
 		return category.contains(Category.CRONACA);
 	}
+
+	/**
+	 *
+	 * @return
+	 */
 	public boolean getHasEsteri() {
 		return category.contains(Category.ESTERI);
 	}
+
+	/**
+	 *
+	 * @return
+	 */
 	public boolean getHasEconomia() {
 		return category.contains(Category.ECONOMIA);
 	}
+
+	/**
+	 *
+	 * @return
+	 */
 	public boolean getHasSport() {
 		return category.contains(Category.SPORT);
 	}
+
+	/**
+	 *
+	 * @return
+	 */
 	public boolean getHasCultura() {
 		return category.contains(Category.CULTURA);
 	}

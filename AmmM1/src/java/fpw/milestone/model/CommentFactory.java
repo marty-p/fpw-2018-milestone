@@ -20,13 +20,24 @@ import java.util.logging.Logger;
  * @author Marty
  */
 public class CommentFactory {
-	private static CommentFactory singleton;
-	public static CommentFactory getInstance(){
-		if(singleton == null)
+
+	/**
+	 *
+	 * @return
+	 */
+	public static synchronized CommentFactory getInstance(){
+		if (singleton == null)
 			singleton = new CommentFactory();
 		return singleton;
 	}
+	private static CommentFactory singleton;
 
+	/**
+	 *
+	 * @param res
+	 * @return
+	 * @throws SQLException
+	 */
 	public Comment processRow(ResultSet res) throws SQLException {
 		if (res==null)
 			return null;
@@ -44,6 +55,10 @@ public class CommentFactory {
 		return comment;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public List<Comment> getComments() {
 		ArrayList<Comment> list = new ArrayList<>();
 
@@ -71,6 +86,11 @@ public class CommentFactory {
 		return list;
 	}
 
+	/**
+	 *
+	 * @param newsId
+	 * @return
+	 */
 	public List<Comment> getCommentsByNewsId(int newsId) {
 		ArrayList<Comment> list = new ArrayList<>();
 
@@ -99,6 +119,13 @@ public class CommentFactory {
 		return list;
 	}
 
+	/**
+	 *
+	 * @param comment
+	 * @param newsId
+	 * @param userId
+	 * @return
+	 */
 	public int insertCommentByNewsId(String comment, int newsId, int userId) {
 		int success = 0;
 		Connection conn = null;
@@ -129,6 +156,14 @@ public class CommentFactory {
 		return success;
 	}
 
+	/**
+	 *
+	 * @param comment
+	 * @param newsId
+	 * @param userId
+	 * @param commentId
+	 * @return
+	 */
 	public int deleteCommentByNewsId(String comment, int newsId, int userId, int commentId) {
 		int success = 0;
 		Connection conn = null;

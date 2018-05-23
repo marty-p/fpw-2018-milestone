@@ -21,13 +21,23 @@ import javax.servlet.http.HttpServletRequest;
  * @author Marty
  */
 public class NewsFactory {
-	private static NewsFactory singleton;
-	public static NewsFactory getInstance(){
-		if(singleton == null)
+	/**
+	 *
+	 * @return
+	 */
+	public static synchronized NewsFactory getInstance(){
+		if (singleton == null)
 			singleton = new NewsFactory();
 		return singleton;
 	}
+	private static NewsFactory singleton;
 
+	/**
+	 *
+	 * @param res
+	 * @return
+	 * @throws SQLException
+	 */
 	public News processRow(ResultSet res) throws SQLException {
 		if (res==null)
 			return null;
@@ -47,6 +57,10 @@ public class NewsFactory {
 		return news;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public List<News> getNews() {
 		ArrayList<News> list = new ArrayList<>();
 
@@ -73,6 +87,11 @@ public class NewsFactory {
 		return list;
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
 	public News getNewsById(int id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -98,10 +117,20 @@ public class NewsFactory {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param usr
+	 * @return
+	 */
 	public List<News> getNewsByAuthor(User usr) {
 		return getNewsByAuthor(usr.getId());
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
 	public List<News> getNewsByAuthor(int id) {
 		ArrayList<News> list = new ArrayList<>();
 
@@ -129,10 +158,20 @@ public class NewsFactory {
 		return list;
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
 	public List<News> getNewsByCategory(int id) {
 		return getNewsByCategory(fpw.milestone.model.News.Category.fromInteger(id));
 	}
 
+	/**
+	 *
+	 * @param c
+	 * @return
+	 */
 	public List<News> getNewsByCategory(fpw.milestone.model.News.Category c) {
 		ArrayList<News> list = new ArrayList<>();
 
@@ -160,20 +199,31 @@ public class NewsFactory {
 		return list;
 	}
 
+	/**
+	 *
+	 * @param request
+	 * @return
+	 */
 	public String getCategoryFromRequest(HttpServletRequest request) {
-		String fmtCategory = "";
+		StringBuilder fmtCategory = new StringBuilder();
 		for (News.Category e : News.Category.getValues()) {
 			if (request.getParameter(e.name())!=null) {
 				String reqName = request.getParameter(e.name());
-				if (!fmtCategory.isEmpty())
-					fmtCategory += ",";
+				if (fmtCategory.length()==0)
+					fmtCategory.append(",");
 				if (!reqName.isEmpty())
-					fmtCategory += reqName;
+					fmtCategory.append(reqName);
 			}
 		}
-		return fmtCategory;
+		return fmtCategory.toString();
 	}
 
+	/**
+	 *
+	 * @param request
+	 * @param authorId
+	 * @return
+	 */
 	public int insertNewsByRequest(HttpServletRequest request, int authorId) {
 		int success = 0;
 		Connection conn = null;
@@ -196,13 +246,13 @@ public class NewsFactory {
 			// prepare query
 			stmt = conn.prepareStatement("INSERT INTO `news`(`title`, `desc`,"
 					+ " `imageUrl`, `imageDesc`, `date`, `category`, `authorId`)"
-					+ "  VALUES (?, ?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?)",
+					+ "  VALUES (?, ?, ?, ?, ?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, request.getParameter("title").toString());
-			stmt.setString(2, request.getParameter("desc").toString());
-			stmt.setString(3, request.getParameter("imageUrl").toString());
-			stmt.setString(4, request.getParameter("imageDesc").toString());
-			stmt.setString(5, request.getParameter("date").toString());
+			stmt.setString(1, request.getParameter("title"));
+			stmt.setString(2, request.getParameter("desc"));
+			stmt.setString(3, request.getParameter("imageUrl"));
+			stmt.setString(4, request.getParameter("imageDesc"));
+			stmt.setString(5, request.getParameter("date"));
 			stmt.setString(6, getCategoryFromRequest(request));
 			stmt.setInt(7, authorId);
             stmt.executeUpdate();
@@ -219,6 +269,13 @@ public class NewsFactory {
 		return success;
 	}
 
+	/**
+	 *
+	 * @param request
+	 * @param id
+	 * @param authorId
+	 * @return
+	 */
 	public boolean updateNewsByRequest(HttpServletRequest request, int id, int authorId) {
 		boolean success = false;
 		Connection conn = null;
@@ -241,14 +298,14 @@ public class NewsFactory {
 			// prepare query
 			stmt = conn.prepareStatement("UPDATE `news`"
 					+ " SET `title` = ?, `desc` = ?, `imageUrl` = ?,"
-					+ " `imageDesc` = ?, `date` = STR_TO_DATE(?, '%d/%m/%Y'),"
+					+ " `imageDesc` = ?, `date` = ?,"
 					+ " `category` = ?"
 					+ " WHERE `id` = ? and `authorId` = ?");
-			stmt.setString(1, request.getParameter("title").toString());
-			stmt.setString(2, request.getParameter("desc").toString());
-			stmt.setString(3, request.getParameter("imageUrl").toString());
-			stmt.setString(4, request.getParameter("imageDesc").toString());
-			stmt.setString(5, request.getParameter("date").toString());
+			stmt.setString(1, request.getParameter("title"));
+			stmt.setString(2, request.getParameter("desc"));
+			stmt.setString(3, request.getParameter("imageUrl"));
+			stmt.setString(4, request.getParameter("imageDesc"));
+			stmt.setString(5, request.getParameter("date"));
 			stmt.setString(6, getCategoryFromRequest(request));
 			stmt.setInt(7, id);
 			stmt.setInt(8, authorId);
@@ -262,6 +319,12 @@ public class NewsFactory {
 		return success;
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @param authorId
+	 * @return
+	 */
 	public boolean deleteNewsById(int id, int authorId) {
 		boolean success = false;
 		Connection conn = null;

@@ -20,13 +20,23 @@ import javax.servlet.http.HttpServletRequest;
  * @author Marty
  */
 public class UserFactory {
-	private static UserFactory singleton;
-	public static UserFactory getInstance() {
-		if(singleton == null)
+	/**
+	 *
+	 * @return
+	 */
+	public static synchronized UserFactory getInstance() {
+		if (singleton == null)
 			singleton = new UserFactory();
 		return singleton;
 	}
+	private static UserFactory singleton;
 
+	/**
+	 *
+	 * @param res
+	 * @return
+	 * @throws SQLException
+	 */
 	public User processRow(ResultSet res) throws SQLException {
 		if (res==null)
 			return null;
@@ -44,6 +54,10 @@ public class UserFactory {
 		return user;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public List<User> getUsers() {
 		ArrayList<User> list = new ArrayList<>();
 
@@ -68,6 +82,11 @@ public class UserFactory {
 		return list;
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
 	public User getUserById(int id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -91,6 +110,11 @@ public class UserFactory {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param category
+	 * @return
+	 */
 	public List<User> getUsersByCategory(User.Category category) {
 		ArrayList<User> list = new ArrayList<>();
 
@@ -116,6 +140,12 @@ public class UserFactory {
 		return list;
 	}
 
+	/**
+	 *
+	 * @param request
+	 * @param id
+	 * @return
+	 */
 	public boolean updateUserByRequest(HttpServletRequest request, int id) {
 		boolean success = false;
 		Connection conn = null;
@@ -136,7 +166,7 @@ public class UserFactory {
 		}
 
 		// password and password2 must be the same
-		if (!request.getParameter("password").toString().equals(request.getParameter("password2").toString()))
+		if (!request.getParameter("password").equals(request.getParameter("password2")))
 			return false;
 
 		try {
@@ -144,14 +174,14 @@ public class UserFactory {
 			// delete all the comments by author id
 			stmt = conn.prepareStatement("UPDATE `users`"
 					+ " SET `name` = ?, `surname` = ?, `password` = ?,"
-					+ "`birthDate` = STR_TO_DATE(?, '%d/%m/%Y'), `introDesc` = ?, `imageUrl` = ?"
+					+ "`birthDate` = STR_TO_DATE(?, '%Y-%m-%d'), `introDesc` = ?, `imageUrl` = ?"
 					+ " WHERE `id` = ?");
-			stmt.setString(1, request.getParameter("name").toString());
-			stmt.setString(2, request.getParameter("surname").toString());
-			stmt.setString(3, request.getParameter("password").toString());
-			stmt.setString(4, request.getParameter("birthDate").toString());
-			stmt.setString(5, request.getParameter("introDesc").toString());
-			stmt.setString(6, request.getParameter("imageUrl").toString());
+			stmt.setString(1, request.getParameter("name"));
+			stmt.setString(2, request.getParameter("surname"));
+			stmt.setString(3, request.getParameter("password"));
+			stmt.setString(4, request.getParameter("birthDate"));
+			stmt.setString(5, request.getParameter("introDesc"));
+			stmt.setString(6, request.getParameter("imageUrl"));
 			stmt.setInt(7, id);
             stmt.executeUpdate();
 			success = true;
@@ -163,6 +193,11 @@ public class UserFactory {
 		return success;
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
 	public boolean deleteUserById(int id) {
 		boolean success = false;
 		Connection conn = null;
@@ -190,12 +225,12 @@ public class UserFactory {
 		} catch (SQLException ex) {
 			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
 			// rollback transation
-			try { conn.rollback(); } catch(SQLException ex2) {
+			try { if (conn != null) conn.rollback(); } catch(SQLException ex2) {
 				Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex2);
 			}
 		} finally {
 			// rollback transation
-			try { conn.setAutoCommit(true); } catch(SQLException ex2) {
+			try { if (conn != null) conn.setAutoCommit(true); } catch(SQLException ex2) {
 				Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex2);
 			}
 			DbHelper.getInstance().close(conn, stmt, res);
@@ -203,7 +238,13 @@ public class UserFactory {
 		return success;
 	}
 
-	public User ProcessLogin(String username, String password) {
+	/**
+	 *
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public User processLogin(String username, String password) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet res = null;

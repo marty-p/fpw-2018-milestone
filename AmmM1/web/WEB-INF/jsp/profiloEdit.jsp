@@ -49,7 +49,7 @@
 					<div class="form-hori">
 						<!-- Data di nascita -->
 						<label class="form-hori" for="birthDate">Data di nascita</label>
-						<input class="form-hori" type="text" id="birthDate" name="birthDate" value="${item.shortBirthDate}"/>
+						<input class="form-hori" type="date" id="birthDate" name="birthDate" value="${item.inputBirthDate}"/>
 					</div>
 					<div class="form-hori">
 						<!-- La URL dell'avatar -->

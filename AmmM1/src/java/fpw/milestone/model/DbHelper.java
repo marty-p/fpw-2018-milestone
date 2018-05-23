@@ -19,12 +19,17 @@ import java.util.logging.Logger;
  * @author Marty
  */
 public class DbHelper {
-	private static DbHelper singleton;
-	public static DbHelper getInstance(){
-		if(singleton == null)
+
+	/**
+	 *
+	 * @return
+	 */
+	public static synchronized DbHelper getInstance(){
+		if (singleton == null)
 			singleton = new DbHelper();
 		return singleton;
 	}
+	private static DbHelper singleton;
 
 	public DbHelper() {
 		try {
@@ -34,6 +39,11 @@ public class DbHelper {
 		}
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws SQLException
+	 */
 	public Connection connect() throws SQLException {
 		String hostname = "jdbc:mysql://ec2-52-47-198-123.eu-west-3.compute.amazonaws.com:443/fpw18_pinnamartino";
 		String username = "fpw18_pinnamartino";
@@ -41,10 +51,22 @@ public class DbHelper {
 		return connect(hostname, username, password);
 	}
 
+	/**
+	 *
+	 * @param hostname
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 */
 	public Connection connect(String hostname, String username, String password) throws SQLException {
 		return DriverManager.getConnection(hostname, username, password);
 	}
 
+	/**
+	 *
+	 * @param conn
+	 */
 	public void close(Connection conn) {
 		if (conn != null) {
 			try {
@@ -54,6 +76,10 @@ public class DbHelper {
 		}
 	}
 
+	/**
+	 *
+	 * @param stmt
+	 */
 	public void close(PreparedStatement stmt) {
 		if (stmt != null) {
 			try {
@@ -63,6 +89,10 @@ public class DbHelper {
 		}
 	}
 
+	/**
+	 *
+	 * @param res
+	 */
 	public void close(ResultSet res) {
 		if (res != null) {
 			try {
@@ -72,6 +102,12 @@ public class DbHelper {
 		}
 	}
 
+	/**
+	 *
+	 * @param conn
+	 * @param stmt
+	 * @param res
+	 */
 	public void close(Connection conn, PreparedStatement stmt, ResultSet res) {
 		close(res);
 		close(stmt);

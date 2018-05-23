@@ -50,8 +50,14 @@ public class User {
 	 * @return the date as dd/MM/yy
 	 */
 	public String getShortBirthDate() {
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		return df.format(birthDate);
+		return new SimpleDateFormat("dd/MM/yy").format(birthDate);
+	}
+
+	/**
+	 * @return the date as yyyy-MM-dd
+	 */
+	public String getInputBirthDate() {
+		return new SimpleDateFormat("yyyy-MM-dd").format(birthDate);
 	}
 
 	/**
@@ -152,6 +158,10 @@ public class User {
 		this.category = category;
 	}
 
+	/**
+	 *
+	 * @param category
+	 */
 	public void setCategory(String category) {
 		this.category = Category.valueOf(category);
 	}
@@ -163,16 +173,32 @@ public class User {
 		public String toString() {
 			return getName();
 		}
+
+		/**
+		 *
+		 * @return
+		 */
 		public String getName() {
 			String n = name();
 			return n.length() == 0 ? n : n.substring(0, 1).toUpperCase() + n.substring(1).toLowerCase();
 		}
 
 		// static cached way to convert int to enum
-		static private Category[] cachedValues = Category.values();
+		private static final Category[] cachedValues = Category.values();
+
+		/**
+		 *
+		 * @return
+		 */
 		static public Category[] getValues() {
 			return cachedValues;
 		}
+
+		/**
+		 *
+		 * @param id
+		 * @return
+		 */
 		static public Category fromInteger(int id) {
 			return (id >= cachedValues.length) ? cachedValues[0] : cachedValues[id];
 		}

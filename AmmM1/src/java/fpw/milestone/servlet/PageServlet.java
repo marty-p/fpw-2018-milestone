@@ -19,12 +19,25 @@ import javax.servlet.http.HttpServletResponse;
  * @author Marty
  */
 
-public class PageServlet extends HttpServlet {
+public abstract class PageServlet extends HttpServlet {
 
+	/**
+	 *
+	 * @param request
+	 * @param param
+	 * @return
+	 */
 	protected int getIntParameter(HttpServletRequest request, String param) {
 		return getIntParameter(request, param, 0);
 	}
 
+	/**
+	 *
+	 * @param request
+	 * @param paramName
+	 * @param defaultValue
+	 * @return
+	 */
 	protected int getIntParameter(HttpServletRequest request, String paramName, int defaultValue) {
 		int retValue = defaultValue;
 		try {
