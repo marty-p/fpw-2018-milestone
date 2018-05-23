@@ -205,7 +205,6 @@ table.articolo th
 }
 
 .btn-link {
-	align-items: normal;
 	background-color: rgba(0,0,0,0);
 	border-color: green;
 	border-style: none;
@@ -221,11 +220,6 @@ table.articolo th
 	text-decoration: underline;
 	transform-origin: 0 0;
 	width: auto;
-	/* Mozilla specific properties */
-	-moz-appearance: none;
-	/* Webkit specific properties */
-	-webkit-logical-height: 1em; /* should be auto, but since Chrome ignores auto, we have to use this hack to set the correct height  */
-	-webkit-logical-width: auto; /* ignored by Chrome, but here for completeness */
 }
 
 /*position*/
