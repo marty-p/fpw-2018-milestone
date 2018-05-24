@@ -71,8 +71,7 @@ public class Comment {
 	 * @return the date as dd/MM/yy
 	 */
 	public String getShortDate() {
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
-		return df.format(date);
+		return new SimpleDateFormat("dd/MM/yy").format(date);
 	}
 
 	/**
