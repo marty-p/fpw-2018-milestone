@@ -209,7 +209,7 @@ public class NewsFactory {
 		for (News.Category e : News.Category.getValues()) {
 			if (request.getParameter(e.name())!=null) {
 				String reqName = request.getParameter(e.name());
-				if (fmtCategory.length()==0)
+				if (fmtCategory.length()!=0)
 					fmtCategory.append(",");
 				if (!reqName.isEmpty())
 					fmtCategory.append(reqName);
