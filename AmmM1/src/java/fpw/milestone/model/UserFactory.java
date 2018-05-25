@@ -174,7 +174,7 @@ public class UserFactory {
 			// delete all the comments by author id
 			stmt = conn.prepareStatement("UPDATE `users`"
 					+ " SET `name` = ?, `surname` = ?, `password` = ?,"
-					+ "`birthDate` = STR_TO_DATE(?, '%Y-%m-%d'), `introDesc` = ?, `imageUrl` = ?"
+					+ "`birthDate` = ?, `introDesc` = ?, `imageUrl` = ?"
 					+ " WHERE `id` = ?");
 			stmt.setString(1, request.getParameter("name"));
 			stmt.setString(2, request.getParameter("surname"));
