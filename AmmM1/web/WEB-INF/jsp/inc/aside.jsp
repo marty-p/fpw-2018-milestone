@@ -28,7 +28,7 @@
 					<c:forEach items="${authorList}" var="item" varStatus="loopStatus">
 						<li class="underline">
 							<img src="${item.imageUrl}" alt="avatar"/>
-							<a href="profilo.html?uid=${item.id}">${item.name} ${item.surname}</a>
+							<a href="notizie.html?uid=${item.id}">${item.name} ${item.surname}</a>
 						</li>
 					</c:forEach>
 				</ul>

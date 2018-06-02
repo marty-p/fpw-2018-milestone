@@ -6,6 +6,8 @@
 package fpw.milestone.servlet;
 
 import fpw.milestone.model.NewsFactory;
+import fpw.milestone.model.User;
+import fpw.milestone.model.UserFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,6 +41,14 @@ public class Notizie extends PageServlet {
 			int cid = getIntParameter(request, "cid");
 			request.setAttribute("newsList", NewsFactory.getInstance().getNewsByCategory(cid));
 			request.setAttribute("categoryName", fpw.milestone.model.News.Category.fromInteger(cid).name());
+		}
+		// if GET uid (user id) is specified, process by user instead of all
+		if (request.getParameter("uid") != null) {
+			int uid = getIntParameter(request, "uid");
+			request.setAttribute("newsList", NewsFactory.getInstance().getNewsByAuthor(uid));
+			User u = UserFactory.getInstance().getUserById(uid);
+			if (u != null)
+				request.setAttribute("categoryName", u.getName() + " " + u.getSurname());
 		}
 		else {
 			request.setAttribute("newsList", NewsFactory.getInstance().getNews());
