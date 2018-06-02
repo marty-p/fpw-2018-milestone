@@ -16,6 +16,7 @@
 		<!--tra 480 e 1024-->
 		<!-- <link rel="stylesheet" media="(min-width: 480px)" href="style-min-1024px.css"/> -->
 		<link rel="stylesheet" media="(max-width: 1024px)" href="style-max-480px.css"/>
+		<script type="text/javascript" src="js/jquery.js"></script>
 		<meta name="description" content="Milestone2"/>
 		<meta name="keywords" content="HTML,CSS"/>
 		<meta name="author" content="Martino Pinna"/>
