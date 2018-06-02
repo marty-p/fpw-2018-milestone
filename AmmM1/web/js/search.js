@@ -35,8 +35,7 @@ $(document).ready(function () {
 		$.ajax({
 			url: "./filter.json",
 			data: {
-				cmd: "search",
-				query: $("#search-txt").val()
+				q: $("#search-txt").val()
 			},
 			dataType: 'json',
 			success: function (data, state) {
