@@ -43,7 +43,9 @@ public class Filter extends PageServlet {
 				request.setAttribute("isDefault", true);
 			}
 			else {
-				// todo
+				request.setAttribute("categoryList", News.Category.getValuesLike(q));
+				request.setAttribute("authorList", UserFactory.getInstance().getUsersByCategoryLike(User.Category.AUTHOR, q));
+				request.setAttribute("isDefault", false);
 			}
 			response.setContentType("application/json");
 			response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");

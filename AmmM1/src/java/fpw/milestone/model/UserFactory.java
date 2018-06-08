@@ -142,6 +142,39 @@ public class UserFactory {
 
 	/**
 	 *
+	 * @param category
+	 * @param q
+	 * @return
+	 */
+	public List<User> getUsersByCategoryLike(User.Category category, String q) {
+		ArrayList<User> list = new ArrayList<>();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet res = null;
+		try {
+			conn = DbHelper.getInstance().connect();
+			String query = "select * from `users` where `category` = ? and (`name` like ? or `surname` like ?)";
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, category.name());
+			stmt.setString(2, "%" + q + "%");
+			stmt.setString(3, "%" + q + "%");
+
+            res = stmt.executeQuery();
+            if (res.next()) {
+				list.add(processRow(res));
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			DbHelper.getInstance().close(conn, stmt, res);
+		}
+
+		return list;
+	}
+
+	/**
+	 *
 	 * @param request
 	 * @param id
 	 * @return

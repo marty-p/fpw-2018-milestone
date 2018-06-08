@@ -7,8 +7,10 @@ package fpw.milestone.model;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -206,6 +208,20 @@ public class News {
 		 */
 		static public Category[] getValues() {
 			return cachedValues;
+		}
+
+		/**
+		 *
+		 * @param q
+		 * @return
+		 */
+		static public List<Category> getValuesLike(String q) {
+			List<Category> l = new ArrayList<>();
+			for (Category e : getValues()) {
+				if (e.toString().contains(q))
+					l.add(e);
+			}
+			return l;
 		}
 
 		/**
