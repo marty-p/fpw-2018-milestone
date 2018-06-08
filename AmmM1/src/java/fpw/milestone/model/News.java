@@ -184,6 +184,14 @@ public class News {
 		 *
 		 * @return
 		 */
+		public int getId() {
+			return ordinal();
+		}
+
+		/**
+		 *
+		 * @return
+		 */
 		public String getName() {
 			String n = name();
 			return n.length() == 0 ? n : n.substring(0, 1).toUpperCase() + n.substring(1).toLowerCase();

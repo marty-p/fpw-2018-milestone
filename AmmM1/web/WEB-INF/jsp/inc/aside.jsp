@@ -14,9 +14,9 @@
 			<section id="categorie" class="cornice">
 				<h3 class="centrato hide-on-med-and-down">Categorie</h3>
 				<a href="#categorie" class="hide-on-large-only">Categorie</a>
-				<ul class="centrato hide-on-med-and-down">
+				<ul class="centrato hide-on-med-and-down" id="category-list">
 					<li><a href="notizie.html">Tutte</a></li>
-					<c:forEach items="${newsCategories}" var="item" varStatus="loopStatus">
+					<c:forEach items="${categoryList}" var="item" varStatus="loopStatus">
 					<li><a href="notizie.html?cid=${loopStatus.index}">${item.name}</a></li>
 					</c:forEach>
 				</ul>
@@ -24,7 +24,7 @@
 			<section id="autori" class="cornice">
 				<h3 class="centrato hide-on-med-and-down">Autori</h3>
 				<a href="#autori" class="hide-on-large-only">Autori</a>
-				<ul class="centrato hide-on-med-and-down list-unstyled">
+				<ul class="centrato hide-on-med-and-down list-unstyled" id="author-list">
 					<c:forEach items="${authorList}" var="item" varStatus="loopStatus">
 						<li class="underline">
 							<img src="${item.imageUrl}" alt="avatar"/>

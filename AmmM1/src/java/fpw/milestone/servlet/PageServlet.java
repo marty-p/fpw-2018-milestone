@@ -59,7 +59,7 @@ public abstract class PageServlet extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		request.setAttribute("newsCategories", News.Category.getValues());
+		request.setAttribute("categoryList", News.Category.getValues());
 		request.setAttribute("authorList", UserFactory.getInstance().getUsersByCategory(User.Category.AUTHOR));
 	}
 
