@@ -43,7 +43,7 @@ public class Notizie extends PageServlet {
 			request.setAttribute("categoryName", fpw.milestone.model.News.Category.fromInteger(cid).name());
 		}
 		// if GET uid (user id) is specified, process by user instead of all
-		if (request.getParameter("uid") != null) {
+		else if (request.getParameter("uid") != null) {
 			int uid = getIntParameter(request, "uid");
 			request.setAttribute("newsList", NewsFactory.getInstance().getNewsByAuthor(uid));
 			User u = UserFactory.getInstance().getUserById(uid);
