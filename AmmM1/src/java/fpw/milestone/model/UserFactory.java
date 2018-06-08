@@ -128,7 +128,7 @@ public class UserFactory {
 			stmt.setString(1, category.name());
 
             res = stmt.executeQuery();
-            if (res.next()) {
+            while (res.next()) {
 				list.add(processRow(res));
 			}
 		} catch (SQLException ex) {
@@ -161,7 +161,7 @@ public class UserFactory {
 			stmt.setString(3, "%" + q + "%");
 
             res = stmt.executeQuery();
-            if (res.next()) {
+            while (res.next()) {
 				list.add(processRow(res));
 			}
 		} catch (SQLException ex) {
