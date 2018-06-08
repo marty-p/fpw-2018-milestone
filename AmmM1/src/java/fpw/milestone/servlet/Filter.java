@@ -40,6 +40,7 @@ public class Filter extends PageServlet {
 			if (q.isEmpty()) {
 				request.setAttribute("categoryList", News.Category.getValues());
 				request.setAttribute("authorList", UserFactory.getInstance().getUsersByCategory(User.Category.AUTHOR));
+				request.setAttribute("isDefault", true);
 			}
 			else {
 				// todo

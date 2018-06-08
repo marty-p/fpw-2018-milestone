@@ -16,6 +16,7 @@
 			<json:property name="imageUrl" value="${item.imageUrl}"/>
 		</json:object>
 	</json:array>
+	<json:property name="isDefault" value="${isDefault}"/>
 	<json:array name="category" var="item" items="${categoryList}">
 		<json:object>
 			<json:property name="id" value="${item.id}"/>

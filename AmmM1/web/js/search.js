@@ -9,6 +9,11 @@ function createCategoryElement(elem)
 	return "<li><a href='notizie.html?cid="+elem.id+"'>"+elem.name+"</a></li>";
 }
 
+function createAllCategoryElement(elem)
+{
+	return "<li><a href='notizie.html'>Tutte</a></li>";
+}
+
 function createAuthorElement(elem)
 {
 	return "<li class='underline'>"+
@@ -24,6 +29,9 @@ function showNewsCategory(ncList){
 	// clear the old news list
 	$(cList).empty();
 	$(aList).empty();
+	// add "Tutte" if default
+	if (ncList.isDefault == true)
+		$(cList).append(createAllCategoryElement());
 	// add the new news list
 	for (var i in ncList.category)
 		$(cList).append(createCategoryElement(ncList.category[i]));
