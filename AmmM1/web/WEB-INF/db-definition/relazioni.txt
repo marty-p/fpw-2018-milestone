@@ -1,0 +1,17 @@
+Entità:
+-Comments
+-News
+-Users
+
+Relazioni:
+- autore news
+  - Users -> News: M
+  - News -> Users: 1
+
+- autore commento
+  - Users -> Comments: M
+  - Comments -> Users: 1
+
+- articolo
+  - News -> Comments: M
+  - Comments -> News: 1
